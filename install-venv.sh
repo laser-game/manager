@@ -19,3 +19,6 @@ pip install -r requirements.txt
 
 echo "installed modules"
 pip freeze
+
+echo "migrated - created tables in database"
+python manage.py migrate
