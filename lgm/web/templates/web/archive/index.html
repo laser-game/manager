@@ -1,3 +1,6 @@
+{% load static %}
+{% load utils %}
+
 <!DOCTYPE html>
 <html lang="cs-CZ">
 <head>
@@ -5,27 +8,27 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="author" content="wykys - Jan Vykydal">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/page.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/gui.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/font.css') }}">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favico.png') }}">
+    <link rel="stylesheet" href="{% static 'web/css/page.css' %}">
+    <link rel="stylesheet" href="{% static 'web/css/menu.css' %}">
+    <link rel="stylesheet" href="{% static 'web/css/gui.css' %}">
+    <link rel="stylesheet" href="{% static 'web/css/font.css' %}">
+    <link rel="shortcut icon" href="{% static 'web/img/favico.png' %}">
 
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.1.1.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/menu.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/gui.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/archive/widget_games.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/archive/widget_players.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/archive/widget_events.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/archive/widget_game_details.js') }}"></script>
+    <script type="text/javascript" src="{% static 'web/js/jquery-3.1.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'web/js/menu.js' %}"></script>
+    <script type="text/javascript" src="{% static 'web/js/gui.js' %}"></script>
+    <script type="text/javascript" src="{% static 'web/js/archive/widget_games.js' %}"></script>
+    <script type="text/javascript" src="{% static 'web/js/archive/widget_players.js' %}"></script>
+    <script type="text/javascript" src="{% static 'web/js/archive/widget_events.js' %}"></script>
+    <script type="text/javascript" src="{% static 'web/js/archive/widget_game_details.js' %}"></script>
 
     <script>
         var Color = [];
-        {% for i in range(COLOR|length) %}
-            Color[{{i}}] = Object();
-            Color[{{i}}].RGB = "{{COLOR[i]}}";
-            Color[{{i}}].Members = 0;
-            Color[{{i}}].Available = false;
+        {% for color in COLOR %}
+            Color[{{ forloop.counter0 }}] = Object();
+            Color[{{ forloop.counter0 }}].RGB = "{{ color }}";
+            Color[{{ forloop.counter0 }}].Members = 0;
+            Color[{{ forloop.counter0 }}].Available = false;
         {% endfor %}
 
         var Team = [];
@@ -66,22 +69,22 @@
 
 <body>
 <div class="packaging">
-    {% include 'menu.html' %}
+    {% include 'web/menu.html' %}
     <div class="row">
         <div class="col-1">
-					{% include 'archive/archive_games.html' %}
+					{% include 'web/archive/archive_games.html' %}
 				</div>
 
         <div class="col-1">
-					{% include 'archive/archive_players.html' %}
+					{% include 'web/archive/archive_players.html' %}
 				</div>
 
         <div class="col-1">
-					{% include 'archive/archive_events.html' %}
+					{% include 'web/archive/archive_events.html' %}
 				</div>
 
         <div class="col-2">
-					{% include 'archive/archive_game_details.html' %}
+					{% include 'web/archive/archive_game_details.html' %}
 				</div>
     </div>
 </div>
