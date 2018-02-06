@@ -1,0 +1,84 @@
+<div class="widget">
+    <h1>Nastavení hry</h1>
+    <div class="widget-pack">
+        <table>
+            <tr>
+                <td align="left">Typ hry</td>
+                <td align="right"><select id="SetGame-Name"></select></td>
+            </tr>
+            <tr>
+                <td>Herní čas v mimutách</td>
+                <td align="right"><input type="number" min="1" max="30" value="" id="SetGame-GameTime"></td>
+            </tr>
+            <tr>
+                <td>Doba smrti v sekundách</td>
+                <td align="right"><input type="number" min="1" max="30" value="" id="SetGame-DeathTime"></td>
+            </tr>
+            <tr>
+                <td>Počet výstřelů v dávce</td>
+                <td align="right"><input type="number" min="1" max="30" value="" id="SetGame-ShotsInBatch"></td>
+            </tr>
+        </table>
+
+        <div class="widget-sub">
+            <h2>Pokročilá nastavení</h2>
+            <div class="widget-sub">
+                <table>
+                    <tr>
+                        <td align="left">Zvukové efekty</td>
+                        <td align="right">
+                            <button id="SetGame-Sound"></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left">Nesmrtelnost (1 s)</td>
+                        <td align="right">
+                            <button id="SetGame-Immorality"></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left">Po začátku hry vypnout LED</td>
+                        <td align="right">
+                            <button id="SetGame-OffLED"></button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="widget-sub">
+            <h2>Fn tlačítko</h2>
+            <div class="widget-sub">
+                <table>
+                    <tr>
+                        <td align="left">Pojistka palby</td>
+                        <td align="right">
+                            <button class="SetGame-Fn" id="SetGame-Fn-0"></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left">Svítilna</td>
+                        <td align="right">
+                            <button class="SetGame-Fn" id="SetGame-Fn-1"></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left">Svítilna UV</td>
+                        <td align="right">
+                            <button class="SetGame-Fn" id="SetGame-Fn-2"></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left">Deaktivovat</td>
+                        <td align="right">
+                            <button class="SetGame-Fn" id="SetGame-Fn-3"></button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <input type="button" value="OBNOVIT" id="refresh"></input>
+</div>
+
+

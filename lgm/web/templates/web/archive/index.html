@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="cs-CZ">
+<head>
+    <title>Laser Game Manager wykys 2016</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="author" content="wykys - Jan Vykydal">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/page.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gui.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favico.png') }}">
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.1.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/menu.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/gui.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/archive/widget_games.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/archive/widget_players.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/archive/widget_events.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/archive/widget_game_details.js') }}"></script>
+
+    <script>
+        var Color = [];
+        {% for i in range(COLOR|length) %}
+            Color[{{i}}] = Object();
+            Color[{{i}}].RGB = "{{COLOR[i]}}";
+            Color[{{i}}].Members = 0;
+            Color[{{i}}].Available = false;
+        {% endfor %}
+
+        var Team = [];
+        for (i = 0; i < Color.length - 1; i++) {
+            Team[i] = Object();
+            Team[i].ID = i;
+            Team[i].Name = "";
+            Team[i].Color = 0;
+            Team[i].Available = false;
+        }
+
+        var Player = [];
+        for (i = 0; i <{{MAX_PLAYERS}}; i++) {
+            Player[i] = new Object();
+            Player[i].ID = i;
+            Player[i].Name = "";
+            Player[i].Color = 0;
+            Player[i].Battery = 100;
+            Player[i].Role = "normal"
+            Player[i].Available = false;
+        }
+
+        $(document).ready(function () {
+            // podtrhne aktuální položku menu
+            MenuActiveUnderline("#archive");
+
+            // togglování widgetů
+            $(".widget h1").click(function () {
+                $(this).parents(".widget").children(".widget-pack").toggle(500);
+            });
+            $(".widget-sub h2").click(function () {
+                $(this).parents(".widget-sub").children(".widget-sub").toggle(500);
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+<div class="packaging">
+    {% include 'menu.html' %}
+    <div class="row">
+        <div class="col-1">
+					{% include 'archive/archive_games.html' %}
+				</div>
+
+        <div class="col-1">
+					{% include 'archive/archive_players.html' %}
+				</div>
+
+        <div class="col-1">
+					{% include 'archive/archive_events.html' %}
+				</div>
+
+        <div class="col-2">
+					{% include 'archive/archive_game_details.html' %}
+				</div>
+    </div>
+</div>
+</body>
+</html>

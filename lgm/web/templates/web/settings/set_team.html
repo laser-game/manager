@@ -1,0 +1,37 @@
+<div class="widget">
+    <h1>Nastavení teamu</h1>
+    <div class="widget-pack">
+        <table>
+            {% for i in range(DEFAULT_TEAM|length) %}
+                <tr>
+                    <td align="center" style="width: 4em;">
+                        <button class="color-erb" id="color-erb-{{ i+1}}">
+                            <svg viewBox="0 -7 90 107" style="height: 0.8em; fill: {{ COLOR[i+1]}};">
+                                <polygon points="0,0 90,0 85,80 45,100 5,80"/>
+                            </svg>
+                        </button>
+                    </td>
+                    <td align="center">
+                        <input type="text" id="team-name-{{ i+1}}" value="{{ DEFAULT_TEAM[i] }}" disabled>
+                    </td>
+                    <td align="center" style="width: 3em;">
+                        <button class="color-lock" id="color-lock-{{ i+1}}">
+                            <img src="/static/img/lock.svg" style="height: 0.8em;"></button>
+                    </td>
+                    <td align="right" style="width: 2em;">
+                        <span class="number" id="color-members-{{ i+1}}">0</span>
+                    </td>
+                </tr>
+            {% endfor %}
+
+            <tr>
+                <td colspan="3"></td>
+                <td align="right">
+                    <span class="number" id="color-members-all" style="border-top: 1pt solid #FEC30F; color: #FEC30F; font-size: 1.3em;">0</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <input type="button" value="ROZDĚLIT" id="split"></input>
+</div>

@@ -1,0 +1,21 @@
+<div class="widget">
+    <h1>Nastavení hráčů</h1>
+    <div class="widget-pack">
+        <table>
+            {% for i in range(MAX_PLAYERS) %}
+                <tr>
+                    <td align="right" class="number">{{ i+1 }}</td>
+                    <td align="center" style="width: 3em;">
+                        <button class="player-erb" id="player-erb-{{ i+1}}"></button>
+                    </td>
+                    <td align="center"><input type="text" class="player-name" id="player-name-{{ i+1 }}" value="Player{{ i+1}}"></td>
+                    <td align="right"><span class="number" id="player-bat-{{ i+1 }}">100%</span></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="row">
+        <input type="button" value="VYČISTIT" id="clear"></input>
+        <input type="button" value="ZAPNOUT VŠE" id="turn-vests"></input>
+    </div>
+</div>

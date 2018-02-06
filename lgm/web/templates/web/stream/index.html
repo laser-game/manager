@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="cs-CZ">
+<head>
+    <title>Laser Game Manager wykys 2016</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="author" content="wykys - Jan Vykydal">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/page.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gui.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favico.png') }}">
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.1.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/menu.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/gui.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/settings/widget_actual_game.js') }}"></script>
+
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/stream/widget_players.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/stream/widget_teams.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/stream/widget_events.js') }}"></script>
+
+    <script>
+        var Color = [];
+        {% for i in range(COLOR|length) %}
+            Color[{{i}}] = Object();
+            Color[{{i}}].RGB = "{{COLOR[i]}}";
+            Color[{{i}}].Members = 0;
+            Color[{{i}}].Available = false;
+        {% endfor %}
+
+
+        $(document).ready(function () {
+            // podtrhne aktuální položku menu
+            MenuActiveUnderline("#stream");
+
+            // togglování widgetů
+            $(".widget h1").click(function () {
+                $(this).parents(".widget").children(".widget-pack").toggle(500);
+            });
+            $(".widget-sub h2").click(function () {
+                $(this).parents(".widget-sub").children(".widget-sub").toggle(500);
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+<div class="packaging">
+    {% include 'menu.html' %}
+    <div class="row">
+        <div class="col-1">
+					{% include 'stream/state_players.html' %}
+				</div>
+
+        <div class="col-1">
+					{% include 'stream/state_teams.html' %}
+				</div>
+
+        <div class="col-1">
+					{% include 'stream/events.html' %}
+				</div>
+
+        <div class="col-2">
+					{% include 'stream/running_game.html' %}
+				</div>
+    </div>
+</div>
+</body>
+</html>
