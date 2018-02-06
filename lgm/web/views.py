@@ -5,6 +5,12 @@ from django.shortcuts import render
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
+def settings_game_types(request):
+    fr = open('lgm/web/game-types.json')
+    data = fr.readlines()
+    fr.close()
+    return HttpResponse(data)
+
 def settings(request):
     MAX_PLAYERS = 16
     DEFAULT_TEAM_NAMES = (
