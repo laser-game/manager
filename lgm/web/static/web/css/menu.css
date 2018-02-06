@@ -1,0 +1,98 @@
+nav {
+    font-size: 1.2em;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 0.1em 0.3em rgba(0, 0, 0, 0.12), 0 0.1em 0.2em rgba(0, 0, 0, 0.24);
+}
+
+nav a {
+    display: block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: #fff;
+    border-bottom: solid;
+    border-width: 0.2em;
+    border-color: #222222;
+
+}
+
+nav a:hover,
+nav a:focus {
+    background: #333333;
+    border-color: #333333;
+}
+
+nav a:active {
+    background: #444444;
+    border-color: #444444;
+}
+
+nav > ul {
+    background: #222222;
+}
+
+nav > ul > li {
+    float: left;
+    display: inline-block;
+}
+
+nav > ul > li > ul {
+    background: #0099FF;
+    box-shadow: 0 0.1em 0.3em rgba(0, 0, 0, 0.12), 0 0.1em 0.2em rgba(0, 0, 0, 0.24);
+    display: none;
+    position: absolute;
+}
+
+nav > ul > li:hover ul {
+    display: block;
+}
+
+.Menu {
+    width: 100%;
+    display: none;
+}
+
+.ShowMenu {
+    display: block;
+}
+
+.Active {
+    border-color: #0099FF;
+}
+
+.Active:hover,
+.Active:focus,
+.Active:active {
+    border-color: #0099FF;
+}
+
+nav img {
+    height: 1.2em;
+    position: relative;
+    top: 0.2em;
+}
+
+@media screen and (max-width: 970px) {
+    nav > ul > li {
+        float: none;
+        display: none;
+    }
+
+    nav > ul > li > ul > li > a:before {
+        content: "+ ";
+        color: transparent;
+    }
+
+    nav > ul > li > ul {
+        position: relative;
+    }
+
+    .Menu {
+        display: block;
+    }
+}

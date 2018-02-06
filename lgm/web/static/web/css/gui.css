@@ -1,0 +1,224 @@
+input, select, option {
+    border: none;
+    padding: 0.5em 1em 0.5em 1em;
+    height: 2em;
+    font-size: 1em;
+    color: black;
+    background: white;
+}
+
+input:disabled,
+select:disabled {
+    background: #737373;
+    color: #555;
+}
+
+input[type=text] {
+    width: 16em;
+}
+
+input[type=number] {
+    width: 5em;
+    text-align: right;
+}
+
+input[type=button] {
+    color: #fff;
+    font-size: 1.2em;
+    text-decoration: none;
+    background: #0099FF;
+    text-align: center;
+}
+
+input[type=button]:hover,
+input[type=button]:focus {
+    background: #00C2FF;
+}
+
+input[type=button]:active {
+    background: #00CCFF;
+}
+
+button {
+    background: transparent;
+    border-radius: 1em;
+    border-style: none;
+    margin: 0;
+    padding: 0;
+    width: 1em;
+}
+
+button:hover,
+button:focus {
+    background: #111111;
+}
+
+.checkbox, .radio {
+    font-size: 1.1em;
+    height: 1em;
+}
+
+@media only screen and (min-width: 1230px) {
+    .widget {
+        max-width: 27em;
+    }
+}
+
+.widget {
+    margin: 1em;
+    padding: 0;
+    background: #222222;
+    color: white;
+}
+
+.widget-sub {
+    margin: 0;
+    padding: 0;
+}
+
+.widget h1 {
+    color: #0099FF;
+    font-size: 2.2em;
+}
+
+.widget h2 {
+    color: #82C742;
+    font-size: 1.8em;
+
+}
+
+.widget h1:hover,
+.widget h2:hover {
+    background: #333333;
+}
+
+.widget h1:active,
+.widget h2:active {
+    background: #444444;
+}
+
+.widget h1,
+.widget h2 {
+    margin: 0;
+    padding: 0 0 0 0.3em;
+    font-weight: 200;
+}
+
+.widget-pack {
+    margin: 0;
+    padding: 0;
+}
+
+.widget-pack table {
+    width: 100%;
+    padding: 0.5em;
+}
+
+.player-erb,
+.color-erb,
+.color-lock {
+    font-size: 1.7em;
+}
+
+.number {
+    font-size: 1.1em;
+    font-weight: 200;
+}
+
+.actual-game-box {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.actual-game-title {
+    font-size: 1.5em;
+}
+
+.actual-game-data {
+    font-size: 2em;
+    font-weight: 200;
+}
+
+#actual-game-type {
+    color: #0099FF;
+    padding: 0.5em;
+}
+
+#actual-players {
+    color: #FEC30F;
+}
+
+#actual-start-time {
+    color: #E21E32;
+}
+
+#actual-time-to-end {
+    color: #82C742;
+}
+
+#refresh,
+#set-vests,
+#split {
+    width: 100%;
+}
+
+#start-game,
+#clear {
+    width: 50%;
+    float: left;
+}
+
+#end-game,
+#turn-vests {
+    width: 50%;
+    float: right;
+}
+
+#start-game {
+    background: #6EA938;
+}
+
+#start-game:hover,
+#start-game:focus {
+    background: #7CBD3F;
+}
+
+#start-game:active {
+    background: #82C742;
+}
+
+#end-game {
+    background: #E21E32;
+}
+
+#end-game:hover,
+#end-game:focus {
+    background: #EF101C;
+}
+
+#end-game:active {
+    background: #E3293C;
+}
+
+.state {
+    border-style: none;
+    border-spacing: 0;
+}
+
+.state th {
+    font-size: 1.1em;
+    font-weight: 400;
+}
+
+.state td {
+    font-size: 1.3em;
+    font-weight: 200;
+}
+
+.state tr:nth-child(even) {
+    background: #272727;
+}
+
+.state tr:hover {
+    background: #333333;
+}
