@@ -20,7 +20,7 @@ MAX_FN = 3
 
 MAX_EVENTS = 16
 
-DEFAULT_TEAM_NAME = (
+DEFAULT_TEAM_NAMES = (
     'Red team',
     'Orange team',
     'Yellow team',

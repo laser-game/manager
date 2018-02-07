@@ -17,7 +17,7 @@ def default_team_name(request):
 def default(request):
     context = {
         'COLOR': core_settings.COLOR,
-        'DEFAULT_TEAM_NAME': core_settings.DEFAULT_TEAM_NAME,
+        'DEFAULT_TEAM_NAMES': core_settings.DEFAULT_TEAM_NAMES,
         'MIN_PLAYERS': core_settings.MIN_PLAYERS,
         'MAX_PLAYERS': core_settings.MAX_PLAYERS,
         'MIN_NAME_LEN': core_settings.MIN_NAME_LEN,
