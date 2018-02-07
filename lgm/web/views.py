@@ -2,6 +2,8 @@ from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import render
 
+from core.conf import core_settings
+
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
@@ -12,100 +14,26 @@ def settings_game_types(request):
     return HttpResponse(data)
 
 def settings(request):
-    MAX_PLAYERS = 16
-    DEFAULT_TEAM_NAMES = (
-        "Red team",
-        "Orange team",
-        "Yellow team",
-        "Green team",
-        "Aqua team",
-        "Blue team",
-        "Purple team",
-        "Pink team"
-    )
-
-    COLOR = (
-        "#000000",  # black
-        "#FF0000",  # red
-        "#FFA500",  # orange
-        "#FFFF00",  # yellow
-        "#00FF00",  # green
-        "#00FFFF",  # aqua
-        "#0000FF",  # blue
-        "#FF00FF",  # purple
-        "#FFC0CB",  # pink
-    )
-
     context = {
-        'MAX_PLAYERS': MAX_PLAYERS,
-        'DEFAULT_TEAM_NAMES': DEFAULT_TEAM_NAMES,
-        'COLOR': COLOR,
+        'MAX_PLAYERS': core_settings.MAX_PLAYERS,
+        'DEFAULT_TEAM_NAMES': core_settings.DEFAULT_TEAM_NAMES,
+        'COLOR': core_settings.COLOR,
     }
 
     return render(request, 'web/settings/index.html', context)
 
 def stream(request):
-    MAX_PLAYERS = 16
-    DEFAULT_TEAM_NAMES = (
-        "Red team",
-        "Orange team",
-        "Yellow team",
-        "Green team",
-        "Aqua team",
-        "Blue team",
-        "Purple team",
-        "Pink team"
-    )
-
-    COLOR = (
-        "#000000",  # black
-        "#FF0000",  # red
-        "#FFA500",  # orange
-        "#FFFF00",  # yellow
-        "#00FF00",  # green
-        "#00FFFF",  # aqua
-        "#0000FF",  # blue
-        "#FF00FF",  # purple
-        "#FFC0CB",  # pink
-    )
-
     context = {
-        'MAX_PLAYERS': MAX_PLAYERS,
-        'DEFAULT_TEAM_NAMES': DEFAULT_TEAM_NAMES,
-        'COLOR': COLOR,
+        'MAX_PLAYERS': core_settings.MAX_PLAYERS,
+        'DEFAULT_TEAM_NAMES': core_settings.DEFAULT_TEAM_NAMES,
+        'COLOR': core_settings.COLOR,
     }
-
     return render(request, 'web/stream/index.html', context)
 
 def archive(request):
-    MAX_PLAYERS = 16
-    DEFAULT_TEAM_NAMES = (
-        "Red team",
-        "Orange team",
-        "Yellow team",
-        "Green team",
-        "Aqua team",
-        "Blue team",
-        "Purple team",
-        "Pink team"
-    )
-
-    COLOR = (
-        "#000000",  # black
-        "#FF0000",  # red
-        "#FFA500",  # orange
-        "#FFFF00",  # yellow
-        "#00FF00",  # green
-        "#00FFFF",  # aqua
-        "#0000FF",  # blue
-        "#FF00FF",  # purple
-        "#FFC0CB",  # pink
-    )
-
     context = {
-        'MAX_PLAYERS': MAX_PLAYERS,
-        'DEFAULT_TEAM_NAMES': DEFAULT_TEAM_NAMES,
-        'COLOR': COLOR,
+        'MAX_PLAYERS': core_settings.MAX_PLAYERS,
+        'DEFAULT_TEAM_NAMES': core_settings.DEFAULT_TEAM_NAMES,
+        'COLOR': core_settings.COLOR,
     }
-
     return render(request, 'web/archive/index.html', context)
