@@ -10,7 +10,7 @@ def index(request):
 def settings(request):
     context = {
         'MAX_PLAYERS': core_settings.MAX_PLAYERS,
-        'DEFAULT_TEAM_NAMES': core_settings.DEFAULT_TEAM_NAMES,
+        'DEFAULT_TEAM_NAME': core_settings.DEFAULT_TEAM_NAME,
         'COLOR': core_settings.COLOR,
     }
 
@@ -19,7 +19,7 @@ def settings(request):
 def stream(request):
     context = {
         'MAX_PLAYERS': core_settings.MAX_PLAYERS,
-        'DEFAULT_TEAM_NAMES': core_settings.DEFAULT_TEAM_NAMES,
+        'DEFAULT_TEAM_NAME': core_settings.DEFAULT_TEAM_NAME,
         'COLOR': core_settings.COLOR,
     }
     return render(request, 'web/stream/index.html', context)
@@ -27,7 +27,7 @@ def stream(request):
 def archive(request):
     context = {
         'MAX_PLAYERS': core_settings.MAX_PLAYERS,
-        'DEFAULT_TEAM_NAMES': core_settings.DEFAULT_TEAM_NAMES,
+        'DEFAULT_TEAM_NAME': core_settings.DEFAULT_TEAM_NAME,
         'COLOR': core_settings.COLOR,
     }
     return render(request, 'web/archive/index.html', context)
