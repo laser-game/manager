@@ -1,7 +1,5 @@
 from .utils.settings import Settings
 
-BOMB_MIN_ID = 128
-
 MIN_PLAYERS = 1
 MAX_PLAYERS = 16
 
@@ -22,7 +20,7 @@ MAX_FN = 3
 
 MAX_EVENTS = 16
 
-DEFAULT_TEAM_NAMES = (
+DEFAULT_TEAM_NAME = (
     'Red team',
     'Orange team',
     'Yellow team',
@@ -44,15 +42,6 @@ COLOR = (
     '#FF00FF',  # purple
     '#FFC0CB',  # pink
 )
-
-MIN_COLOR = 0
-MAX_COLOR = len(COLOR)
-
-MIN_TEAM = 1
-MAX_TEAM = len(COLOR) - 1
-
-MIN_BATTERY = 0
-MAX_BATTERY = 100
 
 # bodování hry
 SCORE_KILL_OPPONENTS = 100
