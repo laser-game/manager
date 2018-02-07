@@ -1,4 +1,4 @@
-from .core.utils import Settings
+from .utils.settings import Settings
 
 BOMB_MIN_ID = 128
 
@@ -58,4 +58,4 @@ MAX_BATTERY = 100
 SCORE_KILL_OPPONENTS = 100
 SCORE_KILL_PLAYMATE = -50
 
-core_settings = Settings(_name_, "CORE")
+core_settings = Settings(__name__, "CORE")
