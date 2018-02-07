@@ -1,11 +1,13 @@
 from django.urls import path
 
-from . import views
+from .views import index, json
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('settings', views.settings, name='settings'),
-    path('game-types', views.settings_game_types, name='settings game types'),
-    path('stream', views.stream, name='stream'),
-    path('archive', views.archive, name='archive'),
+    path('', index.index, name='index'),
+    path('settings', index.settings, name='settings'),
+    path('stream', index.stream, name='stream'),
+    path('archive', index.archive, name='archive'),
+
+    path('game-types', json.game_types, name='game-types'),
+    path('color', json.color, name='color'),
 ]
