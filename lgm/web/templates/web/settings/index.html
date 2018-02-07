@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="cs-CZ">
 <head>
-    <title>Laser Game Manager wykys 2016</title>
+    <title>LGM</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="author" content="wykys - Jan Vykydal">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +15,8 @@
     <link rel="shortcut icon" href="{% static 'web/img/favico.png' %}">
 
     <script type="text/javascript" src="{% static 'web/js/jquery-3.1.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'web/js/default.js' %}"></script>
+    <script type="text/javascript" src="{% static 'web/js/init_var.js' %}"></script>
     <script type="text/javascript" src="{% static 'web/js/menu.js' %}"></script>
     <script type="text/javascript" src="{% static 'web/js/gui.js' %}"></script>
     <script type="text/javascript" src="{% static 'web/js/settings/button.js' %}"></script>
@@ -24,32 +26,7 @@
     <script type="text/javascript" src="{% static 'web/js/settings/widget_set_game.js' %}"></script>
 
     <script>
-        var Color = [];
-        {% for color in COLOR %}
-            Color[{{ forloop.counter0 }}] = Object();
-            Color[{{ forloop.counter0 }}].RGB = "{{ color }}";
-            Color[{{ forloop.counter0 }}].Members = 0;
-            Color[{{ forloop.counter0 }}].Available = false;
-        {% endfor %}
-
-        var Team = [];
-        for (i = 0; i < Color.length - 1; i++) {
-            Team[i] = Object();
-            Team[i].ID = i;
-            Team[i].Name = "";
-            Team[i].Color = 0;
-            Team[i].Available = false;
-        }
-
-        var Player = [];
-        for (i = 0; i <{{MAX_PLAYERS}}; i++) {
-            Player[i] = new Object();
-            Player[i].ID = i;
-            Player[i].Name = "";
-            Player[i].Color = 0;
-            Player[i].Battery = 100;
-            Player[i].Available = false;
-        }
+        GetDefault();
 
         $(document).ready(function () {
             // podtrhne aktuální položku menu

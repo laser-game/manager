@@ -21,7 +21,23 @@ function PlayerSet() {
     }
 }
 
+function PlayerCreate() {
+    var line = '';
+    for (i=1; i<=DEFAULT.MAX_PLAYERS; i++) {
+        line +=        '<tr>';
+        line +=            '<td align="right" class="number">' + i + '</td>';
+        line +=            '<td align="center" style="width: 3em;">';
+        line +=                '<button class="player-erb" id="player-erb-' + i + '"></button>';
+        line +=            '</td>';
+        line +=            '<td align="center"><input type="text" class="player-name" id="player-name-' + i + '" value="Player' + i + '"></td>';
+        line +=            '<td align="right"><span class="number" id="player-bat-' + i + '">100%</span></td>';
+        line +=        '</tr>';
+    };
+    $('#player-table').html(line);
+}
+
 $(document).ready(function () {
+    PlayerCreate();
     // nastavení barev
     $(".player-erb").click(function () {
         PlayerGet();
