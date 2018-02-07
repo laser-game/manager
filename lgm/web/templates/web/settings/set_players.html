@@ -4,7 +4,18 @@
 <div class="widget">
     <h1>Nastavení hráčů</h1>
     <div class="widget-pack">
-        <table id="player-table"></table>
+        <table>
+            {% for i in MAX_PLAYERS|range %}
+                <tr>
+                    <td align="right" class="number">{{ forloop.counter }}</td>
+                    <td align="center" style="width: 3em;">
+                        <button class="player-erb" id="player-erb-{{ forloop.counter }}"></button>
+                    </td>
+                    <td align="center"><input type="text" class="player-name" id="player-name-{{ forloop.counter }}" value="Player{{ forloop.counter }}"></td>
+                    <td align="right"><span class="number" id="player-bat-{{ forloop.counter }}">100%</span></td>
+                </tr>
+            {% endfor %}
+        </table>
     </div>
     <div class="row">
         <input type="button" value="VYČISTIT" id="clear"></input>

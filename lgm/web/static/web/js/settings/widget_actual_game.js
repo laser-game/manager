@@ -10,6 +10,5 @@ $(document).ready(function () {
 
         setTimeout(GetActualGame, 1000);
     }
-
     //setTimeout(GetActualGame, 1000);
 });
