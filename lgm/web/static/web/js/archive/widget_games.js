@@ -1,6 +1,6 @@
 // načteme informace odehraných hrách
 function GetHistoryGames() {
-    $.getJSON("/archive-games", function (Game) {
+    $.getJSON("/api/archive-games", function (Game) {
         HTML_code = '<tr>';
         HTML_code += '<th> DATUM </th>';
         HTML_code += '<th> TYP HRY </th>';
@@ -29,13 +29,13 @@ function GetHistoryGames() {
         $(".archive-game").click(function () {
             var id = parseInt($(this).attr("id").split("-")[2]);
             // načtene informace o hráčích
-            $.getJSON("/archive-players/" + id.toString(), function (Players) {
+            $.getJSON("/api/archive-players/" + id.toString(), function (Players) {
                 SetHistoryPlayers(Players);
             });
-            $.getJSON("/archive-events/" + id.toString(), function (Events) {
+            $.getJSON("/api/archive-events/" + id.toString(), function (Events) {
                 SetHistoryEvents(Events);
             });
-            $.getJSON("/archive-game-details/" + id.toString(), function (data) {
+            $.getJSON("/api/archive-game-details/" + id.toString(), function (data) {
                 GetHistoryGameDetails(data)
             });
         });

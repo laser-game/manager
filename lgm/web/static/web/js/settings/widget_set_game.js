@@ -2,7 +2,7 @@ var SetGame;
 var GameTypes = [];
 // načteme informace o možných typech her
 function GetGameTypes() {
-    $.getJSON("/game-types", function (data) {
+    $.getJSON("/api/game-types", function (data) {
         for (i = 0; i < data.length; i++) {
             GameTypes[i] = data[i];
         }
