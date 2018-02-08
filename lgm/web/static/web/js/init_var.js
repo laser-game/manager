@@ -10,7 +10,7 @@ function InitVariables() {
         Color[i].Available = false;
     }
 
-    for (i in DEFAULT.DEFAULT_TEAM_NAME) {
+    for (i in DEFAULT.DEFAULT_TEAM_NAMES) {
         Team[i] = Object();
         Team[i].ID = i;
         Team[i].Name = "";
