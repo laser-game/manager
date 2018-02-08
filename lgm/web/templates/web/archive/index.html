@@ -12,19 +12,9 @@
         <script type="text/javascript" src="{% static 'web/js/archive/widget_game_details.js' %}"></script>
 
         <script>
-            GetDefault();
-
             $(document).ready(function () {
-                // podtrhne aktuální položku menu
+                // underline the active menu item
                 MenuActiveUnderline("#archive");
-
-                // togglování widgetů
-                $(".widget h1").click(function () {
-                    $(this).parents(".widget").children(".widget-pack").toggle(500);
-                });
-                $(".widget-sub h2").click(function () {
-                    $(this).parents(".widget-sub").children(".widget-sub").toggle(500);
-                });
             });
         </script>
     </head>

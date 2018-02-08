@@ -15,3 +15,17 @@
 <script type="text/javascript" src="{% static 'web/js/init_var.js' %}"></script>
 <script type="text/javascript" src="{% static 'web/js/menu.js' %}"></script>
 <script type="text/javascript" src="{% static 'web/js/gui.js' %}"></script>
+
+<script>
+    GetDefault();
+    $(document).ready(function () {
+        // widgets toggle
+        $(".widget h1").click(function () {
+            $(this).parents(".widget").children(".widget-pack").toggle(500);
+        });
+        // subwidgets toggle
+        $(".widget-sub h2").click(function () {
+            $(this).parents(".widget-sub").children(".widget-sub").toggle(500);
+        });
+    });
+</script>
