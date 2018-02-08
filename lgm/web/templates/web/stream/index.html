@@ -3,54 +3,49 @@
 
 <!DOCTYPE html>
 <html lang="cs-CZ">
-<head>
-    {% include 'web/header_common.html' %}
+    <head>
+        {% include 'web/header_common.html' %}
 
-    <script type="text/javascript" src="{% static 'web/js/settings/widget_actual_game.js' %}"></script>
+        <script type="text/javascript" src="{% static 'web/js/settings/widget_actual_game.js' %}"></script>
 
-    <script type="text/javascript" src="{% static 'web/js/stream/widget_players.js' %}"></script>
-    <script type="text/javascript" src="{% static 'web/js/stream/widget_teams.js' %}"></script>
-    <script type="text/javascript" src="{% static 'web/js/stream/widget_events.js' %}"></script>
+        <script type="text/javascript" src="{% static 'web/js/stream/widget_players.js' %}"></script>
+        <script type="text/javascript" src="{% static 'web/js/stream/widget_teams.js' %}"></script>
+        <script type="text/javascript" src="{% static 'web/js/stream/widget_events.js' %}"></script>
 
-    <script>
-        GetDefault();
+        <script>
+            GetDefault();
 
-        $(document).ready(function () {
-            // podtrhne aktuální položku menu
-            MenuActiveUnderline("#stream");
+            $(document).ready(function () {
+                // podtrhne aktuální položku menu
+                MenuActiveUnderline("#stream");
 
-            // togglování widgetů
-            $(".widget h1").click(function () {
-                $(this).parents(".widget").children(".widget-pack").toggle(500);
+                // togglování widgetů
+                $(".widget h1").click(function () {
+                    $(this).parents(".widget").children(".widget-pack").toggle(500);
+                });
+                $(".widget-sub h2").click(function () {
+                    $(this).parents(".widget-sub").children(".widget-sub").toggle(500);
+                });
             });
-            $(".widget-sub h2").click(function () {
-                $(this).parents(".widget-sub").children(".widget-sub").toggle(500);
-            });
-
-        });
-    </script>
-</head>
-
-<body>
-<div class="packaging">
-    {% include 'web/menu.html' %}
-    <div class="row">
-        <div class="col-1">
+        </script>
+    </head>
+    <body>
+        <div class="packaging">
+            {% include 'web/menu.html' %}
+            <div class="row">
+                <div class="col-1">
                     {% include 'web/stream/state_players.html' %}
                 </div>
-
-        <div class="col-1">
+                <div class="col-1">
                     {% include 'web/stream/state_teams.html' %}
                 </div>
-
-        <div class="col-1">
+                <div class="col-1">
                     {% include 'web/stream/events.html' %}
                 </div>
-
-        <div class="col-2">
+                <div class="col-2">
                     {% include 'web/stream/running_game.html' %}
                 </div>
-    </div>
-</div>
-</body>
+            </div>
+        </div>
+    </body>
 </html>

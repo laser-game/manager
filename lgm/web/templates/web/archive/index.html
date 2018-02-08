@@ -3,53 +3,48 @@
 
 <!DOCTYPE html>
 <html lang="cs-CZ">
-<head>
-    {% include 'web/header_common.html' %}
+    <head>
+        {% include 'web/header_common.html' %}
 
-    <script type="text/javascript" src="{% static 'web/js/archive/widget_games.js' %}"></script>
-    <script type="text/javascript" src="{% static 'web/js/archive/widget_players.js' %}"></script>
-    <script type="text/javascript" src="{% static 'web/js/archive/widget_events.js' %}"></script>
-    <script type="text/javascript" src="{% static 'web/js/archive/widget_game_details.js' %}"></script>
+        <script type="text/javascript" src="{% static 'web/js/archive/widget_games.js' %}"></script>
+        <script type="text/javascript" src="{% static 'web/js/archive/widget_players.js' %}"></script>
+        <script type="text/javascript" src="{% static 'web/js/archive/widget_events.js' %}"></script>
+        <script type="text/javascript" src="{% static 'web/js/archive/widget_game_details.js' %}"></script>
 
-    <script>
-        GetDefault();
+        <script>
+            GetDefault();
 
-        $(document).ready(function () {
-            // podtrhne aktuální položku menu
-            MenuActiveUnderline("#archive");
+            $(document).ready(function () {
+                // podtrhne aktuální položku menu
+                MenuActiveUnderline("#archive");
 
-            // togglování widgetů
-            $(".widget h1").click(function () {
-                $(this).parents(".widget").children(".widget-pack").toggle(500);
+                // togglování widgetů
+                $(".widget h1").click(function () {
+                    $(this).parents(".widget").children(".widget-pack").toggle(500);
+                });
+                $(".widget-sub h2").click(function () {
+                    $(this).parents(".widget-sub").children(".widget-sub").toggle(500);
+                });
             });
-            $(".widget-sub h2").click(function () {
-                $(this).parents(".widget-sub").children(".widget-sub").toggle(500);
-            });
-
-        });
-    </script>
-</head>
-
-<body>
-<div class="packaging">
-    {% include 'web/menu.html' %}
-    <div class="row">
-        <div class="col-1">
+        </script>
+    </head>
+    <body>
+        <div class="packaging">
+            {% include 'web/menu.html' %}
+            <div class="row">
+                <div class="col-1">
                     {% include 'web/archive/archive_games.html' %}
                 </div>
-
-        <div class="col-1">
+                <div class="col-1">
                     {% include 'web/archive/archive_players.html' %}
                 </div>
-
-        <div class="col-1">
+                <div class="col-1">
                     {% include 'web/archive/archive_events.html' %}
                 </div>
-
-        <div class="col-2">
+                <div class="col-2">
                     {% include 'web/archive/archive_game_details.html' %}
                 </div>
-    </div>
-</div>
-</body>
+            </div>
+        </div>
+    </body>
 </html>
