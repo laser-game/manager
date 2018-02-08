@@ -16,23 +16,19 @@
     <link rel="shortcut icon" href="{% static 'web/img/favico.png' %}">
 
     <script type="text/javascript" src="{% static 'web/js/jquery-3.1.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'web/js/default.js' %}"></script>
+    <script type="text/javascript" src="{% static 'web/js/init_var.js' %}"></script>
     <script type="text/javascript" src="{% static 'web/js/menu.js' %}"></script>
     <script type="text/javascript" src="{% static 'web/js/gui.js' %}"></script>
-    <script type="text/javascript" src="{% static 'web/js/settings/widget_actual_game.js' %}"></script>
 
+    <script type="text/javascript" src="{% static 'web/js/settings/widget_actual_game.js' %}"></script>
 
     <script type="text/javascript" src="{% static 'web/js/stream/widget_players.js' %}"></script>
     <script type="text/javascript" src="{% static 'web/js/stream/widget_teams.js' %}"></script>
     <script type="text/javascript" src="{% static 'web/js/stream/widget_events.js' %}"></script>
 
     <script>
-        var Color = [];
-        {% for color in COLOR %}
-            Color[{{ forloop.counter0 }}] = Object();
-            Color[{{ forloop.counter0 }}].RGB = "{{ color }}";
-            Color[{{ forloop.counter0 }}].Members = 0;
-            Color[{{ forloop.counter0 }}].Available = false;
-        {% endfor %}
+        GetDefault();
 
         $(document).ready(function () {
             // podtrhne aktuální položku menu
