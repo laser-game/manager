@@ -1,6 +1,6 @@
 // načteme informace týmech
 function GetActualTeam() {
-    $.getJSON("/actual-teams", function (Team) {
+    $.getJSON("/api/actual-teams", function (Team) {
         var order = [];
         var position;
         for (j = 0; j < Team.length; j++) {

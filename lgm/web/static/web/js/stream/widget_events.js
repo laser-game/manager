@@ -1,6 +1,6 @@
 // načteme poslední události
 function GetActualEvents() {
-    $.getJSON("/actual-events", function (Events) {
+    $.getJSON("/api/actual-events", function (Events) {
         HTML_code = '<tr>';
         HTML_code += '<th> ČAS </th>';
         HTML_code += '<th> JMÉNO </th>';

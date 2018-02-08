@@ -1,6 +1,6 @@
 // načteme informace hráčích
 function GetActualPlayers() {
-    $.getJSON("/actual-players", function (Players) {
+    $.getJSON("/api/actual-players", function (Players) {
         var order = [];
         var position;
         for (j = 0; j < Players.length; j++) {
