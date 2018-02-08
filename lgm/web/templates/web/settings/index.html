@@ -3,77 +3,46 @@
 
 <!DOCTYPE html>
 <html lang="cs-CZ">
-<head>
-    <title>LGM</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="author" content="wykys - Jan Vykydal">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'web/css/page.css' %}">
-    <link rel="stylesheet" href="{% static 'web/css/menu.css' %}">
-    <link rel="stylesheet" href="{% static 'web/css/gui.css' %}">
-    <link rel="stylesheet" href="{% static 'web/css/font.css' %}">
-    <link rel="shortcut icon" href="{% static 'web/img/favico.png' %}">
+    <head>
+        {% include 'web/header_common.html' %}
 
-    <script type="text/javascript" src="{% static 'web/js/jquery-3.1.1.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'web/js/default.js' %}"></script>
-    <script type="text/javascript" src="{% static 'web/js/init_var.js' %}"></script>
-    <script type="text/javascript" src="{% static 'web/js/menu.js' %}"></script>
-    <script type="text/javascript" src="{% static 'web/js/gui.js' %}"></script>
-    <script type="text/javascript" src="{% static 'web/js/settings/button.js' %}"></script>
-    <script type="text/javascript" src="{% static 'web/js/settings/widget_set_team.js' %}"></script>
-    <script type="text/javascript" src="{% static 'web/js/settings/widget_set_players.js' %}"></script>
-    <script type="text/javascript" src="{% static 'web/js/settings/widget_actual_game.js' %}"></script>
-    <script type="text/javascript" src="{% static 'web/js/settings/widget_set_game.js' %}"></script>
+        <script type="text/javascript" src="{% static 'web/js/settings/button.js' %}"></script>
+        <script type="text/javascript" src="{% static 'web/js/settings/widget_set_team.js' %}"></script>
+        <script type="text/javascript" src="{% static 'web/js/settings/widget_set_players.js' %}"></script>
+        <script type="text/javascript" src="{% static 'web/js/settings/widget_actual_game.js' %}"></script>
+        <script type="text/javascript" src="{% static 'web/js/settings/widget_set_game.js' %}"></script>
 
-    <script>
-        GetDefault();
-
-        $(document).ready(function () {
-            // podtrhne aktuální položku menu
-            MenuActiveUnderline("#settings");
-
-            // nastavý typy her
-            GetGameTypes();
-
-            // inicializuje strukturu s údaji o hráčích
-            PlayerGet();
-            PlayerSet();
-
-            // inicializuje údaje o týmech
-            GetTeam();
-
-            // togglování widgetů
-            $(".widget h1").click(function () {
-                $(this).parents(".widget").children(".widget-pack").toggle(500);
+        <script>
+            $(document).ready(function () {
+                // underline the active menu item
+                MenuActiveUnderline("#settings");
+                // downloads available game information
+                GetGameTypes();
+                // initializes the structure with player data
+                PlayerGet();
+                PlayerSet();
+                // initializes team data
+                GetTeam();
             });
-            $(".widget-sub h2").click(function () {
-                $(this).parents(".widget-sub").children(".widget-sub").toggle(500);
-            });
-
-        });
-    </script>
-</head>
-
-<body>
-<div class="packaging">
-    {% include 'web/menu.html' %}
-    <div class="row">
-        <div class="col-1">
+        </script>
+    </head>
+    <body>
+        <div class="packaging">
+            {% include 'web/menu.html' %}
+            <div class="row">
+                <div class="col-1">
                     {% include 'web/settings/set_game.html' %}
                 </div>
-
-        <div class="col-1">
+                <div class="col-1">
                     {% include 'web/settings/set_team.html' %}
                 </div>
-
-        <div class="col-1">
+                <div class="col-1">
                     {% include 'web/settings/set_players.html' %}
                 </div>
-
-        <div class="col-2">
+                <div class="col-2">
                     {% include 'web/settings/running_game.html' %}
                 </div>
-    </div>
-</div>
-</body>
+            </div>
+        </div>
+    </body>
 </html>
