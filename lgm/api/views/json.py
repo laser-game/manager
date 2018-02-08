@@ -1,18 +1,20 @@
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse, FileResponse
 
 from core.conf import core_settings
 
+
 def game_types(request):
-    fr = open('lgm/web/game-types.json')
-    data = fr.readlines()
-    fr.close()
-    return HttpResponse(data)
+    # TODO: refactor
+    return FileResponse(open('lgm/web/game-types.json'))
+
 
 def color(request):
     return JsonResponse(core_settings.COLOR, safe=False)
 
+
 def default_team_name(request):
     return JsonResponse(core_settings.DEFAULT_TEAM_NAME, safe=False)
+
 
 def default(request):
     context = {

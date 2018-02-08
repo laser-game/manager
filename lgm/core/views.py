@@ -1,6 +1,7 @@
 from django.http import HttpResponse, JsonResponse
 
-from core.conf import core_settings
+from .conf import core_settings
+
 
 def game_types(request):
     fr = open('lgm/web/game-types.json')
@@ -8,11 +9,14 @@ def game_types(request):
     fr.close()
     return HttpResponse(data)
 
+
 def color(request):
     return JsonResponse(core_settings.COLOR, safe=False)
 
+
 def default_team_name(request):
     return JsonResponse(core_settings.DEFAULT_TEAM_NAME, safe=False)
+
 
 def default(request):
     context = {
