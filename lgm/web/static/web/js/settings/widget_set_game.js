@@ -46,24 +46,10 @@ function GetGameSettings() {
 }
 
 $(document).ready(function () {
-    // checkbox nastavení hry
-    $("#SetGame-Sound").click(function () {
-        SetGame.Sound = !SetGame.Sound;
-        SetCheckBox(this, SetGame.Sound);
-    });
-    $("#SetGame-Immorality").click(function () {
-        SetGame.Immorality = !SetGame.Immorality;
-        SetCheckBox(this, SetGame.Immorality);
-    });
-    $("#SetGame-OffLED").click(function () {
-        SetGame.OffLED = !SetGame.OffLED;
-        SetCheckBox(this, SetGame.OffLED);
-    });
-
-    // Fn radio click
-    $(".SetGame-Fn").click(function () {
-        var id = parseInt($(this).attr("id").split("-")[2]);
-        SetGame.Fn = id;
-        SetRadio("SetGame-Fn", SetGame.Fn);
+    $('*').click(function () {
+        SetGame.Sound = GetCheckBox('SetGame-Sound')
+        SetGame.Immorality = GetCheckBox('SetGame-Immorality')
+        SetGame.OffLED = GetCheckBox('SetGame-OffLED')
+        SetGame.Fn = GetRadio('Fn');
     });
 });
