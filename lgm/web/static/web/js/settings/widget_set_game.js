@@ -31,11 +31,11 @@ function SetGameDefault() {
     $("#SetGame-DeathTime").val(SetGame.DeathTime);
     $("#SetGame-ShotsInBatch").val(SetGame.ShotsInBatch);
 
-    SetCheckBox("#SetGame-Sound", SetGame.Sound);
-    SetCheckBox("#SetGame-Immorality", SetGame.Immorality);
-    SetCheckBox("#SetGame-OffLED", SetGame.OffLED);
+    Check.set("SetGame-Sound", SetGame.Sound);
+    Check.set("SetGame-Immorality", SetGame.Immorality);
+    Check.set("SetGame-OffLED", SetGame.OffLED);
 
-    SetRadio("SetGame-Fn", SetGame.Fn);
+    Radio.set("Fn", SetGame.Fn);
 }
 
 // načtení nastavení hry
@@ -46,24 +46,10 @@ function GetGameSettings() {
 }
 
 $(document).ready(function () {
-    // checkbox nastavení hry
-    $("#SetGame-Sound").click(function () {
-        SetGame.Sound = !SetGame.Sound;
-        SetCheckBox(this, SetGame.Sound);
-    });
-    $("#SetGame-Immorality").click(function () {
-        SetGame.Immorality = !SetGame.Immorality;
-        SetCheckBox(this, SetGame.Immorality);
-    });
-    $("#SetGame-OffLED").click(function () {
-        SetGame.OffLED = !SetGame.OffLED;
-        SetCheckBox(this, SetGame.OffLED);
-    });
-
-    // Fn radio click
-    $(".SetGame-Fn").click(function () {
-        var id = parseInt($(this).attr("id").split("-")[2]);
-        SetGame.Fn = id;
-        SetRadio("SetGame-Fn", SetGame.Fn);
+    $('*').click(function () {
+        SetGame.Sound = Check.get('SetGame-Sound')
+        SetGame.Immorality = Check.get('SetGame-Immorality')
+        SetGame.OffLED = Check.get('SetGame-OffLED')
+        SetGame.Fn = Radio.get('Fn');
     });
 });
