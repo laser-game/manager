@@ -11,7 +11,7 @@ Check = {
     },
 
     set(checkbox, checked) {
-        var checkbox_id = '#' + 'CheckBox-' + checkbox;
+        var checkbox_id = '#' + 'Check-' + checkbox;
         if (checked || checked == 'checked') {
             Check._html($(checkbox_id), true);
         }
@@ -21,7 +21,7 @@ Check = {
     },
 
     get(checkbox) {
-        var checkbox_id = '#' + 'CheckBox-' + checkbox;
+        var checkbox_id = '#' + 'Check-' + checkbox;
         var value = false;
         if ($(checkbox_id).val() === 'true') {
             value = true;
@@ -64,12 +64,12 @@ Radio = {
 };
 
 $(document).ready(function () {
-    $("[id^='CheckBox']").each(function() {
+    $("[id^='Check']").each(function() {
         Check._html($(this), false);
     });
 
-    $("[id^='CheckBox']").click(function () {
-        var checkbox = $(this).attr('id').split('CheckBox-')[1];
+    $("[id^='Check']").click(function () {
+        var checkbox = $(this).attr('id').split('Check-')[1];
         Check.set(checkbox, !Check.get(checkbox));
     });
 
