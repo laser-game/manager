@@ -1,11 +1,12 @@
 from django.http import JsonResponse, FileResponse
 
+from api.conf import api_settings
 from core.conf import core_settings
 
 
 def game_types(request):
     # TODO: refactor
-    return FileResponse(open('lgm/web/game-types.json'))
+    return JsonResponse(api_settings.GAME_TYPES, safe=False)
 
 
 def color(request):

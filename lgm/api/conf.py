@@ -1,3 +1,11 @@
+# coding=utf-8
+
+
+import json
+
+from core.utils.settings import Settings
+
+GAME_TYPES = json.loads("""
 [
   {
     "DeathTime": 5, 
@@ -88,3 +96,6 @@
     "Sound": true
   }
 ]
+""")
+
+api_settings = Settings(__name__, 'API')
