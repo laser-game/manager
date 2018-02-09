@@ -33,9 +33,8 @@ function SetCheckBox(checkbox, checked) {
 function SetRadio(radio_group, value) {
     var radio_class = '.' + 'Radio-' + radio_group;
     var radio_active_id = '#' + 'Radio-' + radio_group + '-' + value;
-    if (value < $(radio_class).length)
-    {
-        $(radio_class).each(function(){RadioHTML($(this), false);});
+    $(radio_class).each(function(){RadioHTML($(this), false);});
+    if (value < $(radio_class).length) {
         RadioHTML($(radio_active_id), true);
     }
 }
@@ -54,8 +53,7 @@ function GetRadio(radio_group) {
     var value = false;
     $(radio_class).each(function() {
         if ($(this).val() === 'true') {
-            value = $(this).attr('id').split('-');
-            value = parseInt(value[value.length - 1]);
+            value = parseInt($(this).attr('id').split('Radio-' + radio_group + '-')[1]);
         }
     });
     return value;
