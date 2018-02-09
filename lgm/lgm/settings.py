@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'web',
     'api',
     'core',
+
+    'django_extensions',
 ]
 
 MIDDLEWARE = [

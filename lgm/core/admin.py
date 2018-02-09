@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import TypeGame
+
+
+@admin.register(TypeGame)
+class TypeGameAdmin(admin.ModelAdmin):
+    pass
