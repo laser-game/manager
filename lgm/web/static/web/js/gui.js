@@ -7,6 +7,7 @@ window.Check = {
             Check.set(checkbox, !Check.get(checkbox));
         });
     },
+
     _html(checkbox, checked) {
         if (checked) {
             checkbox.html('<img src="/static/web/img/checked.svg" class="checkbox">');
@@ -49,6 +50,7 @@ window.Radio = {
             Radio._html($(this), true);
         });
     },
+
     _html(radio, checked) {
         if (checked) {
             radio.html('<img src="/static/web/img/radio_on.svg" class="radio">');
