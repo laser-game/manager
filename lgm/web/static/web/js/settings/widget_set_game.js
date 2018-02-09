@@ -31,11 +31,11 @@ function SetGameDefault() {
     $("#SetGame-DeathTime").val(SetGame.DeathTime);
     $("#SetGame-ShotsInBatch").val(SetGame.ShotsInBatch);
 
-    SetCheckBox("#SetGame-Sound", SetGame.Sound);
-    SetCheckBox("#SetGame-Immorality", SetGame.Immorality);
-    SetCheckBox("#SetGame-OffLED", SetGame.OffLED);
+    SetCheckBox("SetGame-Sound", SetGame.Sound);
+    SetCheckBox("SetGame-Immorality", SetGame.Immorality);
+    SetCheckBox("SetGame-OffLED", SetGame.OffLED);
 
-    SetRadio("SetGame-Fn", SetGame.Fn);
+    SetRadio("Fn", SetGame.Fn);
 }
 
 // načtení nastavení hry
