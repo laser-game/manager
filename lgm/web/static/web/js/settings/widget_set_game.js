@@ -31,11 +31,11 @@ function SetGameDefault() {
     $("#SetGame-DeathTime").val(SetGame.DeathTime);
     $("#SetGame-ShotsInBatch").val(SetGame.ShotsInBatch);
 
-    SetCheckBox("SetGame-Sound", SetGame.Sound);
-    SetCheckBox("SetGame-Immorality", SetGame.Immorality);
-    SetCheckBox("SetGame-OffLED", SetGame.OffLED);
+    Check.set("SetGame-Sound", SetGame.Sound);
+    Check.set("SetGame-Immorality", SetGame.Immorality);
+    Check.set("SetGame-OffLED", SetGame.OffLED);
 
-    SetRadio("Fn", SetGame.Fn);
+    Radio.set("Fn", SetGame.Fn);
 }
 
 // načtení nastavení hry
@@ -47,9 +47,9 @@ function GetGameSettings() {
 
 $(document).ready(function () {
     $('*').click(function () {
-        SetGame.Sound = GetCheckBox('SetGame-Sound')
-        SetGame.Immorality = GetCheckBox('SetGame-Immorality')
-        SetGame.OffLED = GetCheckBox('SetGame-OffLED')
-        SetGame.Fn = GetRadio('Fn');
+        SetGame.Sound = Check.get('SetGame-Sound')
+        SetGame.Immorality = Check.get('SetGame-Immorality')
+        SetGame.OffLED = Check.get('SetGame-OffLED')
+        SetGame.Fn = Radio.get('Fn');
     });
 });
