@@ -7,22 +7,22 @@ class TypeGame(BaseModel):
     pass
 
 class Game(BaseModel):
-    type_game = models.ForeignKey(TypeGame, on_delete=models.RESTRICT)
-    team = models.ForeignKey(Team, on_delete=models.RESTRICT)
-    game_player = models.ForeignKey(GamePlayer, on_delete=models.RESTRICT)
-    action = models.ForeignKey(Action, on_delete=models.RESTRICT)
+    type_game = models.ForeignKey(TypeGame, on_delete=models.PROTECT)
+    team = models.ForeignKey(Team, on_delete=models.PROTECT)
+    game_player = models.ForeignKey(GamePlayer, on_delete=models.PROTECT)
+    action = models.ForeignKey(Action, on_delete=models.PROTECT)
 
 class TypeAction(BaseModel):
-    action = models.ForeignKey(Action, on_delete=models.RESTRICT)
+    action = models.ForeignKey(Action, on_delete=models.PROTECT)
 
 class Action(BaseModel):
     pass
 
 class GamePlayer(BaseModel):
-    team = models.ForeignKey(Team, on_delete=models.RESTRICT)
+    team = models.ForeignKey(Team, on_delete=models.PROTECT)
 
 class Player(BaseModel):
-    game_player = models.ForeignKey(GamePlayer, on_delete=models.RESTRICT)
+    game_player = models.ForeignKey(GamePlayer, on_delete=models.PROTECT)
 
 class Team(BaseModel):
     pass
