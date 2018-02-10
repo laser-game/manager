@@ -1,14 +1,17 @@
-from django.contrib.postgres.fields import JSONField
 from django.db import models
+from jsonfield import JSONField
+
 from .base import BaseModel
 
 
 class TypeColor(BaseModel):
     color = models.CharField(max_length=7)
 
+
 class Player(BaseModel):
     name = models.CharField(max_length=32)
     email = models.EmailField(blank=True)
+
 
 class Team(BaseModel):
     type_color = models.ForeignKey(TypeColor, related_name='team_type_color', on_delete=models.PROTECT)
