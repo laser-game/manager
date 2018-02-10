@@ -45,10 +45,10 @@ class TypeAction(BaseModel):
         ('T', 'trap'),
         ('B', 'bonus'),
     )
-    action = models.CharField(max_length=1, choices=TYPE_ACTION)
+    act = models.CharField(max_length=1, choices=TYPE_ACTION)
 
 
 class Action(BaseModel):
     time = models.CharField(max_length=8)
     game = models.ForeignKey(Game, on_delete=models.PROTECT)
-    type_action = models.ForeignKey(TypeAction, on_delete==models.PROTECT)
+    type_action = models.ForeignKey(TypeAction, on_delete=models.PROTECT)
