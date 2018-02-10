@@ -36,18 +36,18 @@ class GamePlayer(BaseModel):
     friendly_kills_count = models.PositiveSmallIntegerField()
 
 
-class TypeAction(BaseModel):
-    TYPE_ACTION = (
+class TypeEvent(BaseModel):
+    TYPE_EVENTS = (
         ('K', 'player kill player'),
         ('F', 'friendly_fire'),
         ('T', 'trap'),
         ('B', 'bonus'),
     )
-    act = models.CharField(max_length=1, choices=TYPE_ACTION)
+    identifier = models.CharField(max_length=1, choices=TYPE_EVENTS)
 
 
-class Action(BaseModel):
-    game = models.ForeignKey(Game, related_name='action_game', on_delete=models.PROTECT)
-    type_action = models.ForeignKey(TypeAction, related_name='action_type_action', on_delete=models.PROTECT)
+class Event(BaseModel):
+    game = models.ForeignKey(Game, related_name='event_game', on_delete=models.PROTECT)
+    type_event = models.ForeignKey(TypeEvent, related_name='event_type_event', on_delete=models.PROTECT)
 
     time = models.CharField(max_length=8)
