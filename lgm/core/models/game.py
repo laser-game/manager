@@ -34,7 +34,7 @@ class GamePlayer(BaseModel):
     score = models.IntegerField()
     friendly_fire = models.IntegerField()
     game = models.ForeignKey(Game, related_name='game_player_game', on_delete=models.PROTECT)
-    team = models.ForeignKey(Team, related_name='game_player_team', on_delete=models.PROTECT)
+    team = models.ForeignKey(Team, related_name='game_player_team', null=True on_delete=models.PROTECT)
     player = models.ForeignKey(Player, related_name='game_player_player', on_delete=models.PROTECT)
 
 
