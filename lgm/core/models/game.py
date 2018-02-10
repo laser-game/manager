@@ -3,11 +3,11 @@ from .base import BaseModel
 
 
 class Player(BaseModel):
-    name = models.CharField(max_length=16)
-    mail = models.CharField(max_length=30)
+    name = models.CharField(max_length=32)
+    email = models.EmailField(blank=True)
 
 class Team(BaseModel):
-    name = models.CharField(max_length=16)
+    name = models.CharField(max_length=32)
     kill = models.IntegerField()
     death = models.IntegerField()
     score = models.IntegerField()
@@ -34,7 +34,7 @@ class GamePlayer(BaseModel):
     score = models.IntegerField()
     friendly_fire = models.IntegerField()
     game = models.ForeignKey(Game, related_name='game_player_game', on_delete=models.PROTECT)
-    team = models.ForeignKey(Team, related_name='game_player_team', null=True on_delete=models.PROTECT)
+    team = models.ForeignKey(Team, related_name='game_player_team', null=True, on_delete=models.PROTECT)
     player = models.ForeignKey(Player, related_name='game_player_player', on_delete=models.PROTECT)
 
 
