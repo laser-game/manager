@@ -2,11 +2,16 @@ from django.db import models
 from .base import BaseModel
 
 
+class TypeColor(BaseModel):
+    color = models.CharField(max_length=7)
+
 class Player(BaseModel):
     name = models.CharField(max_length=32)
     email = models.EmailField(blank=True)
 
 class Team(BaseModel):
+    type_color = models.ForeignKey(TypeColor, related_name='team_type_color', on_delete=models.PROTECT)
+
     name = models.CharField(max_length=32)
 
 
@@ -31,6 +36,7 @@ class GamePlayer(BaseModel):
     game = models.ForeignKey(Game, related_name='game_player_game', on_delete=models.PROTECT)
     team = models.ForeignKey(Team, related_name='game_player_team', null=True, on_delete=models.PROTECT)
     player = models.ForeignKey(Player, related_name='game_player_player', on_delete=models.PROTECT)
+    type_color = models.ForeignKey(TypeColor, related_name='game_player_type_color', on_delete=models.PROTECT)
 
     points = models.IntegerField()
     kills_count = models.PositiveSmallIntegerField()
