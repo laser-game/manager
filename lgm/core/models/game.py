@@ -1,3 +1,4 @@
+from django.contrib.postgres.fields import JSONField
 from django.db import models
 from .base import BaseModel
 
@@ -16,7 +17,8 @@ class Team(BaseModel):
 
 
 class TypeGame(BaseModel):
-    pass
+    name = models.CharField(max_length=32)
+    configuration = JSONField()
 
 
 class Game(BaseModel):
