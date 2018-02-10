@@ -8,10 +8,6 @@ class Player(BaseModel):
 
 class Team(BaseModel):
     name = models.CharField(max_length=32)
-    kill = models.IntegerField()
-    death = models.IntegerField()
-    score = models.IntegerField()
-    friendly_fire = models.IntegerField()
 
 
 class TypeGame(BaseModel):
@@ -29,10 +25,10 @@ class Game(BaseModel):
 
 
 class GamePlayer(BaseModel):
-    kill = models.IntegerField()
-    death = models.IntegerField()
-    score = models.IntegerField()
-    friendly_fire = models.IntegerField()
+    kills_count = models.PositiveSmallIntegerField()
+    deaths_count = models.PositiveSmallIntegerField()
+    friendly_kills_count = models.PositiveSmallIntegerField()
+    points = models.IntegerField()
     game = models.ForeignKey(Game, related_name='game_player_game', on_delete=models.PROTECT)
     team = models.ForeignKey(Team, related_name='game_player_team', null=True, on_delete=models.PROTECT)
     player = models.ForeignKey(Player, related_name='game_player_player', on_delete=models.PROTECT)
