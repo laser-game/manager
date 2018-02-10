@@ -1,5 +1,3 @@
-import json
-
 from django.db import models
 from jsonfield import JSONField
 
@@ -22,8 +20,25 @@ class Team(BaseModel):
 
 
 class TypeGame(BaseModel):
+    GAME_MODE = (
+        ('S', 'solo'),
+        ('T', 'team'),
+    )
+    BUTTON_ACTION_MODE = (
+        ('D', 'disable'),
+        ('F', 'fuse'),
+        ('U', 'ultra violet flashlight'),
+        ('W', 'white flashlight'),
+    )
     name = models.CharField(max_length=32)
-    configuration = JSONField(default=json.dumps({}))
+    game_mode = models.CharField(max_length=1, choices=GAME_MODE)
+    button_action_mode = models.CharField(max_length=1, choices=BUTTON_ACTION_MODE)
+    game_duration = models.DurationField()
+    death_duration = models.DurationField()
+    enable_immorality = models.BooleanField()
+    vest_light_disabled = models.BooleanField()
+    enable_sound = models.BooleanField()
+    batch_shots_count = models.PositiveSmallIntegerField()
 
 
 class Game(BaseModel):
