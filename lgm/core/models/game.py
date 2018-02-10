@@ -15,23 +15,25 @@ class TypeGame(BaseModel):
 
 
 class Game(BaseModel):
+    type_game = models.ForeignKey(TypeGame, related_name='game_type_game', on_delete=models.PROTECT)
+
     GAME_STATE = (
         ('S', 'set'),
         ('P', 'play'),
         ('D', 'done'),
     )
     state = models.CharField(max_length=1, choices=GAME_STATE)
-    type_game = models.ForeignKey(TypeGame, related_name='game_type_game', on_delete=models.PROTECT)
 
 
 class GamePlayer(BaseModel):
-    kills_count = models.PositiveSmallIntegerField()
-    deaths_count = models.PositiveSmallIntegerField()
-    friendly_kills_count = models.PositiveSmallIntegerField()
-    points = models.IntegerField()
     game = models.ForeignKey(Game, related_name='game_player_game', on_delete=models.PROTECT)
     team = models.ForeignKey(Team, related_name='game_player_team', null=True, on_delete=models.PROTECT)
     player = models.ForeignKey(Player, related_name='game_player_player', on_delete=models.PROTECT)
+
+    points = models.IntegerField()
+    kills_count = models.PositiveSmallIntegerField()
+    deaths_count = models.PositiveSmallIntegerField()
+    friendly_kills_count = models.PositiveSmallIntegerField()
 
 
 class TypeAction(BaseModel):
@@ -45,6 +47,7 @@ class TypeAction(BaseModel):
 
 
 class Action(BaseModel):
-    time = models.CharField(max_length=8)
     game = models.ForeignKey(Game, related_name='action_game', on_delete=models.PROTECT)
     type_action = models.ForeignKey(TypeAction, related_name='action_type_action', on_delete=models.PROTECT)
+
+    time = models.CharField(max_length=8)
