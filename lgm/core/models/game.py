@@ -1,3 +1,5 @@
+import json
+
 from django.db import models
 from jsonfield import JSONField
 
@@ -21,7 +23,7 @@ class Team(BaseModel):
 
 class TypeGame(BaseModel):
     name = models.CharField(max_length=32)
-    configuration = JSONField()
+    configuration = JSONField(default=json.dumps({}))
 
 
 class Game(BaseModel):
