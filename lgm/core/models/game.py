@@ -20,9 +20,11 @@ class Game(BaseModel):
     GAME_STATE = (
         ('S', 'set'),
         ('P', 'play'),
+        ('B', 'break'),
         ('D', 'done'),
     )
     state = models.CharField(max_length=1, choices=GAME_STATE)
+    start = models.DateTimeField()
 
 
 class GamePlayer(BaseModel):
@@ -50,4 +52,4 @@ class Event(BaseModel):
     game = models.ForeignKey(Game, related_name='event_game', on_delete=models.PROTECT)
     type_event = models.ForeignKey(TypeEvent, related_name='event_type_event', on_delete=models.PROTECT)
 
-    time = models.CharField(max_length=8)
+    time = models.DurationField()
