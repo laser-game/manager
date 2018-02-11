@@ -1,6 +1,9 @@
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 from .base import BaseModel
+
+from core.conf import core_settings
 
 
 class TypeColor(BaseModel):
