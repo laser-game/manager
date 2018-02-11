@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-11 12:05+0000\n"
+"POT-Creation-Date: 2018-02-11 12:28+0000\n"
 "PO-Revision-Date: 2018-02-11 13:02+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -26,6 +26,10 @@ msgstr "vytvořeno"
 msgid "modified"
 msgstr "upraveno"
 
+#: models/game.py:11
+msgid "RGB code"
+msgstr ""
+
 #: models/game.py:17
 msgid "Type color"
 msgstr "Typ barvy"
@@ -33,6 +37,14 @@ msgstr "Typ barvy"
 #: models/game.py:18
 msgid "Types colors"
 msgstr "Typy barev"
+
+#: models/game.py:22 models/game.py:33 models/game.py:51
+msgid "Name"
+msgstr ""
+
+#: models/game.py:23
+msgid "Email for registered players"
+msgstr ""
 
 #: models/game.py:26
 msgid "Player"
@@ -74,72 +86,138 @@ msgstr ""
 msgid "ultra violet flashlight"
 msgstr ""
 
-#: models/game.py:80
+#: models/game.py:52
+#, fuzzy
+#| msgid "Game"
+msgid "Game mode"
+msgstr "Hra"
+
+#: models/game.py:53
+msgid "Mode of button action"
+msgstr ""
+
+#: models/game.py:55
+msgid "Time duration of game"
+msgstr ""
+
+#: models/game.py:62
+msgid "Time duration of death state"
+msgstr ""
+
+#: models/game.py:69
+msgid "Count of shots in batch"
+msgstr ""
+
+#: models/game.py:75
+msgid "Enable sound"
+msgstr ""
+
+#: models/game.py:76
+msgid "Enable vest light"
+msgstr ""
+
+#: models/game.py:77
+msgid "Enable immorality"
+msgstr ""
+
+#: models/game.py:83
 msgid "Type game"
 msgstr "Typ hry"
 
-#: models/game.py:81
+#: models/game.py:84
 msgid "Types games"
 msgstr "Typy her"
 
-#: models/game.py:88
+#: models/game.py:91
 msgid "set"
 msgstr ""
 
-#: models/game.py:89
+#: models/game.py:92
 msgid "play"
 msgstr ""
 
-#: models/game.py:90
+#: models/game.py:93
 msgid "break"
 msgstr ""
 
-#: models/game.py:91
+#: models/game.py:94
 msgid "done"
 msgstr ""
 
+#: models/game.py:96
+msgid "State of game"
+msgstr ""
+
 #: models/game.py:97
+msgid "Start of game"
+msgstr ""
+
+#: models/game.py:100
 msgid "Game"
 msgstr "Hra"
 
-#: models/game.py:98
+#: models/game.py:101
 msgid "Games"
 msgstr "Hry"
 
+#: models/game.py:110
+msgid "Total points"
+msgstr ""
+
+#: models/game.py:111
+msgid "Count of kills"
+msgstr ""
+
+#: models/game.py:112
+msgid "Count of deaths"
+msgstr ""
+
 #: models/game.py:113
+msgid "Count of friendly kills"
+msgstr ""
+
+#: models/game.py:116
 msgid "Game player"
 msgstr "Hráč ve hře"
 
-#: models/game.py:118
+#: models/game.py:121
 #, fuzzy
 #| msgid "Game player"
 msgid "player kill player"
 msgstr "Hráč ve hře"
 
-#: models/game.py:119
+#: models/game.py:122
 msgid "friendly fire"
 msgstr ""
 
-#: models/game.py:120
+#: models/game.py:123
 msgid "trap"
 msgstr ""
 
-#: models/game.py:121
+#: models/game.py:124
 msgid "bonus"
 msgstr ""
 
 #: models/game.py:126
+msgid "Identifier"
+msgstr ""
+
+#: models/game.py:129
 msgid "Type event"
 msgstr "Typ události"
 
-#: models/game.py:127
+#: models/game.py:130
 msgid "Types events"
 msgstr "Typy událostí"
 
-#: models/game.py:141
+#: models/game.py:137
+msgid "Time elapsed from start of game"
+msgstr ""
+
+#: models/game.py:144
 msgid "Event"
 msgstr "Událost"
 
-#: models/game.py:142
+#: models/game.py:145
 msgid "Events"
 msgstr "Události"
