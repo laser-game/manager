@@ -86,7 +86,7 @@ class GamePlayer(BaseModel):
 class TypeEvent(BaseModel):
     TYPE_EVENTS = (
         ('K', 'player kill player'),
-        ('F', 'friendly_fire'),
+        ('F', 'friendly fire'),
         ('T', 'trap'),
         ('B', 'bonus'),
     )
