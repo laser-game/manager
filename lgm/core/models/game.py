@@ -32,9 +32,24 @@ class TypeGame(BaseModel):
     name = models.CharField(max_length=32)
     game_mode = models.CharField(max_length=1, choices=GAME_MODE)
     button_action_mode = models.CharField(max_length=1, choices=BUTTON_ACTION_MODE)
-    game_duration = models.DurationField()
-    death_duration = models.DurationField()
-    batch_shots_count = models.PositiveSmallIntegerField()
+    game_duration = models.DurationField(
+        validators=[
+            MinValueValidator(core_settings.MIN_SHOTS_IN_BATCH),
+            MaxValueValidator(core_settings.MAX_SHOTS_IN_BATCH),
+        ]
+    )
+    death_duration = models.DurationField(
+        validators=[
+            MinValueValidator(core_settings.MIN_SHOTS_IN_BATCH),
+            MaxValueValidator(core_settings.MAX_SHOTS_IN_BATCH),
+        ]
+    )
+    batch_shots_count = models.PositiveSmallIntegerField(
+        validators=[
+            MinValueValidator(core_settings.MIN_SHOTS_IN_BATCH),
+            MaxValueValidator(core_settings.MAX_SHOTS_IN_BATCH),
+        ]
+    )
     enable_sound = models.BooleanField()
     enable_vest_light = models.BooleanField()
     enable_immorality = models.BooleanField()
