@@ -4,10 +4,6 @@ from django.shortcuts import render
 from core.conf import core_settings
 
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
-
-
 def settings(request):
     context = {
         'MAX_PLAYERS': core_settings.MAX_PLAYERS,
