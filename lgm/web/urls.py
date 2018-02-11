@@ -1,11 +1,13 @@
 from django.urls import path
 
+from .apps import WebConfig
 from .views import index
 
-
+app_name = WebConfig.name
 urlpatterns = [
-    path('', index.settings, name='settings'),
+    # first has higher priority
     path('settings', index.settings, name='settings'),
+    path('', index.settings, name='settings'),
     path('stream', index.stream, name='stream'),
     path('archive', index.archive, name='archive'),
 ]
