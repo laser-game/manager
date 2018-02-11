@@ -103,7 +103,7 @@ class Game(BaseModel):
 
 class GamePlayer(BaseModel):
     game = models.ForeignKey(Game, related_name='game_player_game', on_delete=models.PROTECT)
-    team = models.ForeignKey(Team, related_name='game_player_team', null=True, on_delete=models.PROTECT)
+    team = models.ForeignKey(Team, related_name='game_player_team', null=True, blank=True, on_delete=models.PROTECT)
     player = models.ForeignKey(Player, related_name='game_player_player', on_delete=models.PROTECT)
     type_color = models.ForeignKey(TypeColor, related_name='game_player_type_color', on_delete=models.PROTECT)
 
@@ -123,11 +123,15 @@ class TypeEvent(BaseModel):
         ('T', _('trap')),
         ('B', _('bonus')),
     )
+    TYPE_EVENTS_MAPPING = dict(TYPE_EVENTS)
     identifier = models.CharField(_('Identifier'), max_length=1, choices=TYPE_EVENTS)
 
     class Meta(object):
         verbose_name = _('Type event')
         verbose_name_plural = _('Types events')
+
+    def __str__(self):
+        return self.TYPE_EVENTS_MAPPING.get(self.identifier)
 
 
 class Event(BaseModel):

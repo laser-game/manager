@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from core.models.game import TypeEvent, TypeColor, Game, Player, Team, GamePlayer
+from core.models.game import TypeEvent, TypeColor, Game, Player, Team, GamePlayer, Event
 from .models import TypeGame
 
 
@@ -40,9 +40,13 @@ class GamePlayerInline(admin.TabularInline):
     model = GamePlayer
 
 
+class EventInline(admin.TabularInline):
+    model = Event
+
+
 @admin.register(Game)
 class GameAdmin(admin.ModelAdmin):
-    inlines = [GamePlayerInline]
+    inlines = [GamePlayerInline, EventInline]
 
 
 @admin.register(Player)

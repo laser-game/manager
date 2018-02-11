@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-11 12:28+0000\n"
-"PO-Revision-Date: 2018-02-11 13:02+0100\n"
+"POT-Creation-Date: 2018-02-11 14:44+0000\n"
+"PO-Revision-Date: 2018-02-11 15:44+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: cs\n"
@@ -210,14 +210,14 @@ msgstr "Typ události"
 msgid "Types events"
 msgstr "Typy událostí"
 
-#: models/game.py:137
+#: models/game.py:140
 msgid "Time elapsed from start of game"
 msgstr ""
 
-#: models/game.py:144
+#: models/game.py:147
 msgid "Event"
 msgstr "Událost"
 
-#: models/game.py:145
+#: models/game.py:148
 msgid "Events"
 msgstr "Události"
