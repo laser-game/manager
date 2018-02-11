@@ -1,0 +1,145 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-11 12:05+0000\n"
+"PO-Revision-Date: 2018-02-11 13:02+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#: models/base.py:11
+msgid "created"
+msgstr "vytvořeno"
+
+#: models/base.py:12
+msgid "modified"
+msgstr "upraveno"
+
+#: models/game.py:17
+msgid "Type color"
+msgstr "Typ barvy"
+
+#: models/game.py:18
+msgid "Types colors"
+msgstr "Typy barev"
+
+#: models/game.py:26
+msgid "Player"
+msgstr "Hráč"
+
+#: models/game.py:27
+msgid "Players"
+msgstr "Hráči"
+
+#: models/game.py:36
+msgid "Team"
+msgstr "Tým"
+
+#: models/game.py:37
+msgid "Teams"
+msgstr "Týmy"
+
+#: models/game.py:42
+msgid "solo"
+msgstr ""
+
+#: models/game.py:43
+msgid "team"
+msgstr ""
+
+#: models/game.py:46
+msgid "disable"
+msgstr ""
+
+#: models/game.py:47
+msgid "fuse"
+msgstr ""
+
+#: models/game.py:48
+msgid "white flashlight"
+msgstr ""
+
+#: models/game.py:49
+msgid "ultra violet flashlight"
+msgstr ""
+
+#: models/game.py:80
+msgid "Type game"
+msgstr "Typ hry"
+
+#: models/game.py:81
+msgid "Types games"
+msgstr "Typy her"
+
+#: models/game.py:88
+msgid "set"
+msgstr ""
+
+#: models/game.py:89
+msgid "play"
+msgstr ""
+
+#: models/game.py:90
+msgid "break"
+msgstr ""
+
+#: models/game.py:91
+msgid "done"
+msgstr ""
+
+#: models/game.py:97
+msgid "Game"
+msgstr "Hra"
+
+#: models/game.py:98
+msgid "Games"
+msgstr "Hry"
+
+#: models/game.py:113
+msgid "Game player"
+msgstr "Hráč ve hře"
+
+#: models/game.py:118
+#, fuzzy
+#| msgid "Game player"
+msgid "player kill player"
+msgstr "Hráč ve hře"
+
+#: models/game.py:119
+msgid "friendly fire"
+msgstr ""
+
+#: models/game.py:120
+msgid "trap"
+msgstr ""
+
+#: models/game.py:121
+msgid "bonus"
+msgstr ""
+
+#: models/game.py:126
+msgid "Type event"
+msgstr "Typ události"
+
+#: models/game.py:127
+msgid "Types events"
+msgstr "Typy událostí"
+
+#: models/game.py:141
+msgid "Event"
+msgstr "Událost"
+
+#: models/game.py:142
+msgid "Events"
+msgstr "Události"

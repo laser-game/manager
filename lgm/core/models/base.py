@@ -6,7 +6,7 @@ from django_extensions.db.fields import CreationDateTimeField, ModificationDateT
 
 
 class BaseModel(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     x_created = CreationDateTimeField(_('created'))
     x_modified = ModificationDateTimeField(_('modified'))

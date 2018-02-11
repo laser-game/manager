@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.html import format_html
 
 from core.models.game import TypeEvent, TypeColor, Game, Player, Team, GamePlayer
 from .models import TypeGame
@@ -25,7 +26,14 @@ class TypeEventAdmin(admin.ModelAdmin):
 
 @admin.register(TypeColor)
 class TypeColorAdmin(admin.ModelAdmin):
-    list_display = ('color',)
+    @staticmethod
+    def color_display(obj: TypeColor):
+        return format_html(
+            '<div style="background-color: {}; height: 100%; width: 30px; border-radius: 100%;">&nbsp;</div>',
+            obj.color
+        )
+
+    list_display = ('color', 'color_display')
 
 
 class GamePlayerInline(admin.TabularInline):
