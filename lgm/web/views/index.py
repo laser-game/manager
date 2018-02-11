@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 
 from core.conf import core_settings
 
@@ -10,7 +10,6 @@ def settings(request):
         'DEFAULT_TEAM_NAMES': core_settings.DEFAULT_TEAM_NAMES,
         'COLOR': core_settings.COLOR,
     }
-
     return render(request, 'web/settings/index.html', context)
 
 
@@ -30,3 +29,6 @@ def archive(request):
         'COLOR': core_settings.COLOR,
     }
     return render(request, 'web/archive/index.html', context)
+
+def index(request):
+    return redirect(reverse('web:settings'), permanent=True)

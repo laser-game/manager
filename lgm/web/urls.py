@@ -7,7 +7,7 @@ app_name = WebConfig.name
 urlpatterns = [
     # first has higher priority
     path('settings', index.settings, name='settings'),
-    path('', index.settings, name='settings'),
     path('stream', index.stream, name='stream'),
     path('archive', index.archive, name='archive'),
+    path('', index.index, name='index'),
 ]
