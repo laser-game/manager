@@ -36,9 +36,9 @@ class TypeGame(BaseModel):
     game_duration = models.DurationField()
     death_duration = models.DurationField()
     batch_shots_count = models.PositiveSmallIntegerField()
-    enable_immorality = models.BooleanField()
-    vest_light_disabled = models.BooleanField()
+    vest_light = models.BooleanField()
     enable_sound = models.BooleanField()
+    enable_immorality = models.BooleanField()
 
 
 class Game(BaseModel):
