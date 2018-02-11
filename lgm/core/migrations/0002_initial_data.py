@@ -1,116 +1,132 @@
-from core.models.game import TypeGame, TypeColor, TypeEvent
-from core.conf import core_settings
+from datetime import timedelta
+
 from django.db import migrations
+from django.db.migrations import RunPython
+
+from core.conf import core_settings
+from core.models.game import TypeGame, TypeColor, TypeEvent
+
 
 def insert_type_colors(schema, apps):
-    model = TypeColor()
     for color in core_settings.COLOR:
-        model.color = color
-        model.save()
+        type_color = TypeColor()
+        type_color.color = color
+        type_color.save()
+
 
 def insert_type_event(schema, apps):
-    model = TypeEvent()
     for event in TypeEvent.TYPE_EVENTS:
-        model.identifier = event[0]
-        model.save()
+        type_event = TypeEvent()
+        type_event.identifier = event[0]
+        type_event.save()
+
 
 def insert_type_game(schema, apps):
-    model = TypeGame()
+    type_game = TypeGame()
 
-    model.name = 'Solo'
-    model.game_mode = 'S'
-    model.button_action_mode = 'F'
-    model.game_duration = 15*60
-    model.death_duration = 5
-    model.batch_shots_count = 1
-    model.enable_sound = True
-    model.enable_vest_light = True
-    model.enable_immorality = True
-    model.save()
+    type_game.name = 'Solo'
+    type_game.game_mode = 'S'
+    type_game.button_action_mode = 'F'
+    type_game.game_duration = timedelta(seconds=15 * 60)
+    type_game.death_duration = timedelta(seconds=5)
+    type_game.batch_shots_count = 1
+    type_game.enable_sound = True
+    type_game.enable_vest_light = True
+    type_game.enable_immorality = True
+    type_game.save()
 
-    model.name = 'Team Game'
-    model.game_mode = 'T'
-    model.button_action_mode = 'F'
-    model.game_duration = 15*60
-    model.death_duration = 5
-    model.batch_shots_count = 1
-    model.enable_sound = True
-    model.enable_vest_light = True
-    model.enable_immorality = True
-    model.save()
+    type_game = TypeGame()
+    type_game.name = 'Team Game'
+    type_game.game_mode = 'T'
+    type_game.button_action_mode = 'F'
+    type_game.game_duration = timedelta(seconds=15 * 60)
+    type_game.death_duration = timedelta(seconds=5)
+    type_game.batch_shots_count = 1
+    type_game.enable_sound = True
+    type_game.enable_vest_light = True
+    type_game.enable_immorality = True
+    type_game.save()
 
-    model.name = 'Invisible'
-    model.game_mode = 'S'
-    model.button_action_mode = 'F'
-    model.game_duration = 15*60
-    model.death_duration = 5
-    model.batch_shots_count = 1
-    model.enable_sound = True
-    model.enable_vest_light = False
-    model.enable_immorality = True
-    model.save()
+    type_game = TypeGame()
+    type_game.name = 'Invisible'
+    type_game.game_mode = 'S'
+    type_game.button_action_mode = 'F'
+    type_game.game_duration = timedelta(seconds=15 * 60)
+    type_game.death_duration = timedelta(seconds=5)
+    type_game.batch_shots_count = 1
+    type_game.enable_sound = True
+    type_game.enable_vest_light = False
+    type_game.enable_immorality = True
+    type_game.save()
 
-    model.name = 'Invisible Team'
-    model.game_mode = 'T'
-    model.button_action_mode = 'F'
-    model.game_duration = 15*60
-    model.death_duration = 5
-    model.batch_shots_count = 1
-    model.enable_sound = True
-    model.enable_vest_light = False
-    model.enable_immorality = True
-    model.save()
+    type_game = TypeGame()
+    type_game.name = 'Invisible Team'
+    type_game.game_mode = 'T'
+    type_game.button_action_mode = 'F'
+    type_game.game_duration = timedelta(seconds=15 * 60)
+    type_game.death_duration = timedelta(seconds=5)
+    type_game.batch_shots_count = 1
+    type_game.enable_sound = True
+    type_game.enable_vest_light = False
+    type_game.enable_immorality = True
+    type_game.save()
 
-    model.name = 'S.W.A.T. - Light'
-    model.game_mode = 'S'
-    model.button_action_mode = 'W'
-    model.game_duration = 15*60
-    model.death_duration = 5
-    model.batch_shots_count = 1
-    model.enable_sound = True
-    model.enable_vest_light = False
-    model.enable_immorality = True
-    model.save()
+    type_game = TypeGame()
+    type_game.name = 'S.W.A.T. - Light'
+    type_game.game_mode = 'S'
+    type_game.button_action_mode = 'W'
+    type_game.game_duration = timedelta(seconds=15 * 60)
+    type_game.death_duration = timedelta(seconds=5)
+    type_game.batch_shots_count = 1
+    type_game.enable_sound = True
+    type_game.enable_vest_light = False
+    type_game.enable_immorality = True
+    type_game.save()
 
-    model.name = 'S.W.A.T. - Light Team'
-    model.game_mode = 'T'
-    model.button_action_mode = 'W'
-    model.game_duration = 15*60
-    model.death_duration = 5
-    model.batch_shots_count = 1
-    model.enable_sound = True
-    model.enable_vest_light = False
-    model.enable_immorality = True
-    model.save()
+    type_game = TypeGame()
+    type_game.name = 'S.W.A.T. - Light Team'
+    type_game.game_mode = 'T'
+    type_game.button_action_mode = 'W'
+    type_game.game_duration = timedelta(seconds=15 * 60)
+    type_game.death_duration = timedelta(seconds=5)
+    type_game.batch_shots_count = 1
+    type_game.enable_sound = True
+    type_game.enable_vest_light = False
+    type_game.enable_immorality = True
+    type_game.save()
 
-    model.name = 'S.W.A.T. - UV'
-    model.game_mode = 'S'
-    model.button_action_mode = 'U'
-    model.game_duration = 15*60
-    model.death_duration = 5
-    model.batch_shots_count = 1
-    model.enable_sound = True
-    model.enable_vest_light = False
-    model.enable_immorality = True
-    model.save()
+    type_game = TypeGame()
+    type_game.name = 'S.W.A.T. - UV'
+    type_game.game_mode = 'S'
+    type_game.button_action_mode = 'U'
+    type_game.game_duration = timedelta(seconds=15 * 60)
+    type_game.death_duration = timedelta(seconds=5)
+    type_game.batch_shots_count = 1
+    type_game.enable_sound = True
+    type_game.enable_vest_light = False
+    type_game.enable_immorality = True
+    type_game.save()
 
-    model.name = 'S.W.A.T. - UV Team'
-    model.game_mode = 'T'
-    model.button_action_mode = 'U'
-    model.game_duration = 15*60
-    model.death_duration = 5
-    model.batch_shots_count = 1
-    model.enable_sound = True
-    model.enable_vest_light = False
-    model.enable_immorality = True
-    model.save()
+    type_game = TypeGame()
+    type_game.name = 'S.W.A.T. - UV Team'
+    type_game.game_mode = 'T'
+    type_game.button_action_mode = 'U'
+    type_game.game_duration = timedelta(seconds=15 * 60)
+    type_game.death_duration = timedelta(seconds=5)
+    type_game.batch_shots_count = 1
+    type_game.enable_sound = True
+    type_game.enable_vest_light = False
+    type_game.enable_immorality = True
+    type_game.save()
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('core', '0001_initial'),
     ]
 
     operations = [
+        RunPython(insert_type_colors),
+        RunPython(insert_type_event),
+        RunPython(insert_type_game),
     ]
