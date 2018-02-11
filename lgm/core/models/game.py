@@ -1,34 +1,100 @@
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+
 from .base import BaseModel
 
-
-class TypeAction(BaseModel):
-    pass
+from core.conf import core_settings
 
 
-class Action(BaseModel):
-    type_action = models.ForeignKey(TypeAction, on_delete=models.PROTECT)
+class TypeColor(BaseModel):
+    color = models.CharField(max_length=7)
 
 
 class Player(BaseModel):
-    pass
+    name = models.CharField(max_length=32)
+    email = models.EmailField(blank=True)
 
 
 class Team(BaseModel):
-    pass
+    type_color = models.ForeignKey(TypeColor, related_name='team_type_color', on_delete=models.PROTECT)
 
-
-class GamePlayer(BaseModel):
-    team = models.ForeignKey(Team, on_delete=models.PROTECT)
-    game_player = models.ForeignKey(GamePlayer, on_delete=models.PROTECT)
+    name = models.CharField(max_length=32)
 
 
 class TypeGame(BaseModel):
-    pass
+    GAME_MODE = (
+        ('S', 'solo'),
+        ('T', 'team'),
+    )
+    BUTTON_ACTION_MODE = (
+        ('D', 'disable'),
+        ('F', 'fuse'),
+        ('W', 'white flashlight'),
+        ('U', 'ultra violet flashlight'),
+    )
+    name = models.CharField(max_length=32)
+    game_mode = models.CharField(max_length=1, choices=GAME_MODE)
+    button_action_mode = models.CharField(max_length=1, choices=BUTTON_ACTION_MODE)
+    game_duration = models.DurationField(
+        validators=[
+            MinValueValidator(core_settings.MIN_SHOTS_IN_BATCH),
+            MaxValueValidator(core_settings.MAX_SHOTS_IN_BATCH),
+        ]
+    )
+    death_duration = models.DurationField(
+        validators=[
+            MinValueValidator(core_settings.MIN_SHOTS_IN_BATCH),
+            MaxValueValidator(core_settings.MAX_SHOTS_IN_BATCH),
+        ]
+    )
+    batch_shots_count = models.PositiveSmallIntegerField(
+        validators=[
+            MinValueValidator(core_settings.MIN_SHOTS_IN_BATCH),
+            MaxValueValidator(core_settings.MAX_SHOTS_IN_BATCH),
+        ]
+    )
+    enable_sound = models.BooleanField()
+    enable_vest_light = models.BooleanField()
+    enable_immorality = models.BooleanField()
 
 
 class Game(BaseModel):
-    type_game = models.ForeignKey(TypeGame, on_delete=models.PROTECT)
-    team = models.ForeignKey(Team, on_delete=models.PROTECT)
-    game_player = models.ForeignKey(GamePlayer, on_delete=models.PROTECT)
-    action = models.ForeignKey(Action, on_delete=models.PROTECT)
+    type_game = models.ForeignKey(TypeGame, related_name='game_type_game', on_delete=models.PROTECT)
+
+    GAME_STATE = (
+        ('S', 'set'),
+        ('P', 'play'),
+        ('B', 'break'),
+        ('D', 'done'),
+    )
+    state = models.CharField(max_length=1, choices=GAME_STATE)
+    start = models.DateTimeField()
+
+
+class GamePlayer(BaseModel):
+    game = models.ForeignKey(Game, related_name='game_player_game', on_delete=models.PROTECT)
+    team = models.ForeignKey(Team, related_name='game_player_team', null=True, on_delete=models.PROTECT)
+    player = models.ForeignKey(Player, related_name='game_player_player', on_delete=models.PROTECT)
+    type_color = models.ForeignKey(TypeColor, related_name='game_player_type_color', on_delete=models.PROTECT)
+
+    points = models.IntegerField()
+    kills_count = models.PositiveSmallIntegerField()
+    deaths_count = models.PositiveSmallIntegerField()
+    friendly_kills_count = models.PositiveSmallIntegerField()
+
+
+class TypeEvent(BaseModel):
+    TYPE_EVENTS = (
+        ('K', 'player kill player'),
+        ('F', 'friendly fire'),
+        ('T', 'trap'),
+        ('B', 'bonus'),
+    )
+    identifier = models.CharField(max_length=1, choices=TYPE_EVENTS)
+
+
+class Event(BaseModel):
+    game = models.ForeignKey(Game, related_name='event_game', on_delete=models.PROTECT)
+    type_event = models.ForeignKey(TypeEvent, related_name='event_type_event', on_delete=models.PROTECT)
+
+    time = models.DurationField()
