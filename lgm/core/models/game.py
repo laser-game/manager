@@ -27,8 +27,8 @@ class TypeGame(BaseModel):
     BUTTON_ACTION_MODE = (
         ('D', 'disable'),
         ('F', 'fuse'),
-        ('U', 'ultra violet flashlight'),
         ('W', 'white flashlight'),
+        ('U', 'ultra violet flashlight'),
     )
     name = models.CharField(max_length=32)
     game_mode = models.CharField(max_length=1, choices=GAME_MODE)
@@ -36,8 +36,8 @@ class TypeGame(BaseModel):
     game_duration = models.DurationField()
     death_duration = models.DurationField()
     batch_shots_count = models.PositiveSmallIntegerField()
-    vest_light = models.BooleanField()
     enable_sound = models.BooleanField()
+    enable_vest_light = models.BooleanField()
     enable_immorality = models.BooleanField()
 
 
