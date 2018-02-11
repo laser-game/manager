@@ -2,6 +2,7 @@ from django.http import JsonResponse, FileResponse, HttpResponse
 
 from api.conf import api_settings
 from core.conf import core_settings
+from core.models.game import TypeGame, TypeColor, TypeEvent
 
 
 def game_types(request):
@@ -35,4 +36,8 @@ def default(request):
     return JsonResponse(context, safe=False)
 
 def test(request):
-    return HttpResponse('Ahoj')
+    game_types = TypeGame.objects.all()
+    buf = ''
+    for i in game_types:
+        buf += i.name + '\n'
+    return HttpResponse(buf)
