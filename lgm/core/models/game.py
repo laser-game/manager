@@ -35,10 +35,10 @@ class TypeGame(BaseModel):
     button_action_mode = models.CharField(max_length=1, choices=BUTTON_ACTION_MODE)
     game_duration = models.DurationField()
     death_duration = models.DurationField()
+    batch_shots_count = models.PositiveSmallIntegerField()
     enable_immorality = models.BooleanField()
     vest_light_disabled = models.BooleanField()
     enable_sound = models.BooleanField()
-    batch_shots_count = models.PositiveSmallIntegerField()
 
 
 class Game(BaseModel):
