@@ -85,7 +85,7 @@ def insert_type_game(schema, apps):
 
     model.name = 'S.W.A.T. - UV'
     model.game_mode = 'S'
-    model.button_action_mode = 'W'
+    model.button_action_mode = 'U'
     model.game_duration = 15*60
     model.death_duration = 5
     model.batch_shots_count = 1
@@ -96,7 +96,7 @@ def insert_type_game(schema, apps):
 
     model.name = 'S.W.A.T. - UV Team'
     model.game_mode = 'T'
-    model.button_action_mode = 'W'
+    model.button_action_mode = 'U'
     model.game_duration = 15*60
     model.death_duration = 5
     model.batch_shots_count = 1
