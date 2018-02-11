@@ -1,4 +1,4 @@
-from django.http import JsonResponse, FileResponse
+from django.http import JsonResponse, FileResponse, HttpResponse
 
 from api.conf import api_settings
 from core.conf import core_settings
@@ -33,3 +33,6 @@ def default(request):
         'MAX_SHOTS_IN_BATCH': core_settings.MAX_SHOTS_IN_BATCH,
     }
     return JsonResponse(context, safe=False)
+
+def test(request):
+    return HttpResponse('Ahoj')
