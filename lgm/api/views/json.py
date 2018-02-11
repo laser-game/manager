@@ -4,6 +4,7 @@ from api.conf import api_settings
 from core.conf import core_settings
 from core.models.game import TypeGame, TypeColor, TypeEvent
 
+import json
 
 def game_types(request):
     # TODO: refactor
@@ -36,8 +37,20 @@ def default(request):
     return JsonResponse(context, safe=False)
 
 def test(request):
-    game_types = TypeGame.objects.all()
-    buf = ''
-    for i in game_types:
-        buf += i.name + '\n'
-    return HttpResponse(buf)
+    context = []
+    type_game = TypeGame.objects.all()
+    for tg in type_game:
+        context.append(
+            {
+                'name': tg.name,
+                'game_mode': tg.game_mode,
+                'button_action_mode': tg.button_action_mode,
+                'game_duration': int(tg.game_duration.total_seconds()),
+                'death_duration': int(tg.death_duration.total_seconds()),
+                'batch_shots_count': tg.batch_shots_count,
+                'enable_sound': tg.enable_sound,
+                'enable_vest_light': tg.enable_vest_light,
+                'enable_immorality': tg.enable_immorality,
+            }
+        )
+    return JsonResponse(context, safe=False)
