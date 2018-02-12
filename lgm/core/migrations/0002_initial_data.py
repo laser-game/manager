@@ -32,7 +32,7 @@ def insert_type_game(schema, apps):
     type_game.batch_shots_count = 1
     type_game.enable_sound = True
     type_game.enable_vest_light = True
-    type_game.enable_immorality = True
+    type_game.enable_immorality = False
     type_game.save()
 
     type_game = TypeGame()
@@ -44,7 +44,7 @@ def insert_type_game(schema, apps):
     type_game.batch_shots_count = 1
     type_game.enable_sound = True
     type_game.enable_vest_light = True
-    type_game.enable_immorality = True
+    type_game.enable_immorality = False
     type_game.save()
 
     type_game = TypeGame()
@@ -56,7 +56,7 @@ def insert_type_game(schema, apps):
     type_game.batch_shots_count = 1
     type_game.enable_sound = True
     type_game.enable_vest_light = False
-    type_game.enable_immorality = True
+    type_game.enable_immorality = False
     type_game.save()
 
     type_game = TypeGame()
@@ -68,7 +68,7 @@ def insert_type_game(schema, apps):
     type_game.batch_shots_count = 1
     type_game.enable_sound = True
     type_game.enable_vest_light = False
-    type_game.enable_immorality = True
+    type_game.enable_immorality = False
     type_game.save()
 
     type_game = TypeGame()
@@ -80,7 +80,7 @@ def insert_type_game(schema, apps):
     type_game.batch_shots_count = 1
     type_game.enable_sound = True
     type_game.enable_vest_light = False
-    type_game.enable_immorality = True
+    type_game.enable_immorality = False
     type_game.save()
 
     type_game = TypeGame()
@@ -92,7 +92,7 @@ def insert_type_game(schema, apps):
     type_game.batch_shots_count = 1
     type_game.enable_sound = True
     type_game.enable_vest_light = False
-    type_game.enable_immorality = True
+    type_game.enable_immorality = False
     type_game.save()
 
     type_game = TypeGame()
@@ -104,7 +104,7 @@ def insert_type_game(schema, apps):
     type_game.batch_shots_count = 1
     type_game.enable_sound = True
     type_game.enable_vest_light = False
-    type_game.enable_immorality = True
+    type_game.enable_immorality = False
     type_game.save()
 
     type_game = TypeGame()
@@ -116,7 +116,7 @@ def insert_type_game(schema, apps):
     type_game.batch_shots_count = 1
     type_game.enable_sound = True
     type_game.enable_vest_light = False
-    type_game.enable_immorality = True
+    type_game.enable_immorality = False
     type_game.save()
 
 
