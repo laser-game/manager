@@ -5,29 +5,29 @@
 
 <nav>
     <ul class="MainMenu">
-        <li class="Menu"><a><img src="{% static 'web/img/lop.svg' %}">&nbsp;&nbsp;Menu</a>
+        <li class="Menu"><a><img src="{% static 'web/img/lop.svg' %}">Menu</a>
         <li>
             <a id="settings" href="{% url 'web:settings' %}">
                 <img src="{% static 'web/img/settings.svg' %}">
-                {% trans "Game settings" %}
+                {% trans 'Game settings' %}
             </a>
         </li>
         <li>
-            <a id="stream" href="/stream">
+            <a id="stream" href="{% url 'web:stream' %}">
                 <img src="{% static 'web/img/live.svg' %}">
-                Probíhající hra
+                {% trans 'Stream' %}
             </a>
         </li>
         <li>
-            <a id="archive" href="/archive">
+            <a id="archive" href="{% url 'web:archive' %}">
                 <img src="{% static 'web/img/archive.svg' %}">
-                Archiv
+                {% trans 'Archive' %}
             </a>
         </li>
         <li>
             <a id="administrace" href="/admin">
                 <img src="{% static 'web/img/settings.svg' %}">
-                Administrace
+                {% trans 'Administration' %}
             </a>
         </li>
     </ul>
