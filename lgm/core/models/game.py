@@ -6,7 +6,6 @@ from .base import BaseModel
 from ..conf import core_settings
 from ..utils.validators import MinDurationValidator, MaxDurationValidator
 
-
 class TypeColor(BaseModel):
     color = models.CharField(_('RGB code'), max_length=7)
 
@@ -28,7 +27,7 @@ class Player(BaseModel):
 
 
 class Team(BaseModel):
-    type_color = models.ForeignKey(TypeColor, related_name='team_type_color', on_delete=models.PROTECT)
+    type_color = models.ForeignKey('core.TypeColor', related_name='team_type_color', on_delete=models.PROTECT)
 
     name = models.CharField(_('Name'), max_length=32)
 
@@ -85,7 +84,7 @@ class TypeGame(BaseModel):
 
 
 class Game(BaseModel):
-    type_game = models.ForeignKey(TypeGame, related_name='game_type_game', on_delete=models.PROTECT)
+    type_game = models.ForeignKey('core.TypeGame', related_name='game_type_game', on_delete=models.PROTECT)
 
     GAME_STATE = (
         ('S', _('set')),
@@ -102,10 +101,10 @@ class Game(BaseModel):
 
 
 class GamePlayer(BaseModel):
-    game = models.ForeignKey(Game, related_name='game_player_game', on_delete=models.PROTECT)
-    team = models.ForeignKey(Team, related_name='game_player_team', null=True, blank=True, on_delete=models.PROTECT)
-    player = models.ForeignKey(Player, related_name='game_player_player', on_delete=models.PROTECT)
-    type_color = models.ForeignKey(TypeColor, related_name='game_player_type_color', on_delete=models.PROTECT)
+    game = models.ForeignKey('core.Game', related_name='game_player_game', on_delete=models.PROTECT)
+    team = models.ForeignKey('core.Team', related_name='game_player_team', null=True, blank=True, on_delete=models.PROTECT)
+    player = models.ForeignKey('core.Player', related_name='game_player_player', on_delete=models.PROTECT)
+    type_color = models.ForeignKey('core.TypeColor', related_name='game_player_type_color', on_delete=models.PROTECT)
 
     points = models.IntegerField(_('Total points'))
     kills_count = models.PositiveSmallIntegerField(_('Count of kills'))
@@ -135,8 +134,8 @@ class TypeEvent(BaseModel):
 
 
 class Event(BaseModel):
-    game = models.ForeignKey(Game, related_name='event_game', on_delete=models.PROTECT)
-    type_event = models.ForeignKey(TypeEvent, related_name='event_type_event', on_delete=models.PROTECT)
+    game = models.ForeignKey('core.Game', related_name='event_game', on_delete=models.PROTECT)
+    type_event = models.ForeignKey('core.TypeEvent', related_name='event_type_event', on_delete=models.PROTECT)
 
     time = models.DurationField(_('Time elapsed from start of game'))
 
