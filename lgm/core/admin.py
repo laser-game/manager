@@ -28,8 +28,10 @@ class TypeEventAdmin(admin.ModelAdmin):
 class TypeColorAdmin(admin.ModelAdmin):
     @staticmethod
     def color_display(obj: TypeColor):
-        return format_html(
-            '<div style="background-color: {}; height: 100%; width: 30px; border-radius: 100%;">&nbsp;</div>',
+        return format_html("""
+            <svg viewBox="0 -7 90 107" style="height: 1em; fill: {};">
+                <polygon points="0,0 90,0 85,80 45,100 5,80"/>
+            </svg>""",
             obj.color
         )
 
