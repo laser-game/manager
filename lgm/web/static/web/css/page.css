@@ -33,22 +33,26 @@ body {
     background-size: 50em 50em;
 }
 
-@media only screen and (min-width: 700px) {
-    .col-1 {
+@media only screen and (min-width: 740px) {
+    [class*="col-"] {
         width: 50%;
     }
 
-    .col-2 {
-        width: 50%;
+    .col-3 {
+        float: right;
     }
 }
 
 @media only screen and (min-width: 1230px) {
-    .col-1 {
+    [class*="col-"] {
         width: 27%;
     }
 
-    .col-2 {
+    .col-3 {
+        float: left;
+    }
+
+    .col-4 {
         width: 19%;
     }
 }
