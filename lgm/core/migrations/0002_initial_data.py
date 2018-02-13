@@ -8,9 +8,12 @@ from core.models import TypeColor, TypeEvent, TypeGame
 
 
 def insert_type_colors(schema, apps):
-    for color in core_settings.COLOR:
+    for color in core_settings.DEFAULT_COLORS:
         type_color = TypeColor()
-        type_color.color = color
+        type_color.name = color['name']
+        type_color.index = color['index']
+        type_color.css = color['css']
+        type_color.hw = color['hw']
         type_color.save()
 
 
