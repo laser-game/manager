@@ -34,7 +34,7 @@ class TypeColorAdmin(admin.ModelAdmin):
             obj.css
         )
 
-    list_display = ('name', 'color_display')
+    list_display = ('name', 'index', 'hw', 'css', 'color_display')
 
 
 class GamePlayerInline(admin.TabularInline):
