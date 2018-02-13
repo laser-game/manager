@@ -1,8 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from core.models.game import TypeEvent, TypeColor, Game, Player, Team, GamePlayer, Event
-from .models import TypeGame
+from core.models import TypeColor, TypeEvent, Event, TypeGame, Game, Player, GamePlayer, Team
 
 
 @admin.register(TypeGame)
