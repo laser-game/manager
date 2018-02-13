@@ -1,8 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from core.models.game import TypeEvent, TypeColor, Game, Player, Team, GamePlayer, Event
-from .models import TypeGame
+from core.models import TypeColor, TypeEvent, Event, TypeGame, Game, Player, GamePlayer, Team
 
 
 @admin.register(TypeGame)
@@ -32,10 +31,10 @@ class TypeColorAdmin(admin.ModelAdmin):
             <svg viewBox="0 -7 90 107" style="height: 1em; fill: {};">
                 <polygon points="0,0 90,0 85,80 45,100 5,80"/>
             </svg>""",
-            obj.color
+            obj.css
         )
 
-    list_display = ('color', 'color_display')
+    list_display = ('name', 'index', 'hw', 'css', 'color_display')
 
 
 class GamePlayerInline(admin.TabularInline):

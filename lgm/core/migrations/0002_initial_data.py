@@ -4,13 +4,16 @@ from django.db import migrations
 from django.db.migrations import RunPython
 
 from core.conf import core_settings
-from core.models.game import TypeGame, TypeColor, TypeEvent
+from core.models import TypeColor, TypeEvent, TypeGame
 
 
 def insert_type_colors(schema, apps):
-    for color in core_settings.COLOR:
+    for color in core_settings.DEFAULT_COLORS:
         type_color = TypeColor()
-        type_color.color = color
+        type_color.name = color['name']
+        type_color.index = color['index']
+        type_color.css = color['css']
+        type_color.hw = color['hw']
         type_color.save()
 
 
