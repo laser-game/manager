@@ -1,6 +1,17 @@
-<div class="widget">
-    <h1>Archiv her</h1>
-    <div class="widget-pack">
-        <table id="history-games" class="state"></table>
-    </div>
-</div>
+{% extends 'web/widget.html' %}
+{% load static %}
+{% load utils %}
+
+
+{% block name %}
+    Archiv her
+{% endblock %}
+
+
+{% block content %}
+    <table id="history-games" class="state"></table>
+{% endblock %}
+
+
+{% block button %}
+{% endblock %}
