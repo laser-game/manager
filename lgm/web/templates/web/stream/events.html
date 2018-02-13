@@ -1,6 +1,17 @@
-<div class="widget">
-    <h1>Poslední události</h1>
-    <div class="widget-pack">
-        <table id="events" class="state"></table>
-    </div>
-</div>
+{% extends 'web/widget.html' %}
+{% load static %}
+{% load utils %}
+
+
+{% block name %}
+    Poslední události
+{% endblock %}
+
+
+{% block content %}
+    <table id="events" class="state"></table>
+{% endblock %}
+
+
+{% block button %}
+{% endblock %}
