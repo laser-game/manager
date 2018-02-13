@@ -1,6 +1,17 @@
-<div class="widget">
-    <h1>Výsledky teamů</h1>
-    <div class="widget-pack">
-        <table id="state-teams" class="state"></table>
-    </div>
-</div>
+{% extends 'web/widget.html' %}
+{% load static %}
+{% load utils %}
+
+
+{% block name %}
+    Výsledky teamů
+{% endblock %}
+
+
+{% block content %}
+    <table id="state-teams" class="state"></table>
+{% endblock %}
+
+
+{% block button %}
+{% endblock %}

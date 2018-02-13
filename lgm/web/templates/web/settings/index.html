@@ -1,48 +1,46 @@
+{% extends 'web/base.html' %}
 {% load static %}
 {% load utils %}
 
-<!DOCTYPE html>
-<html lang="cs-CZ">
-    <head>
-        {% include 'web/header_common.html' %}
 
-        <script type="text/javascript" src="{% static 'web/js/settings/button.js' %}"></script>
-        <script type="text/javascript" src="{% static 'web/js/settings/widget_set_team.js' %}"></script>
-        <script type="text/javascript" src="{% static 'web/js/settings/widget_set_players.js' %}"></script>
-        <script type="text/javascript" src="{% static 'web/js/settings/widget_actual_game.js' %}"></script>
-        <script type="text/javascript" src="{% static 'web/js/settings/widget_set_game.js' %}"></script>
+{% block inc %}
+    <script type="text/javascript" src="{% static 'web/js/settings/button.js' %}"></script>
+    <script type="text/javascript" src="{% static 'web/js/settings/widget_set_team.js' %}"></script>
+    <script type="text/javascript" src="{% static 'web/js/settings/widget_set_players.js' %}"></script>
+    <script type="text/javascript" src="{% static 'web/js/settings/widget_actual_game.js' %}"></script>
+    <script type="text/javascript" src="{% static 'web/js/settings/widget_set_game.js' %}"></script>
 
-        <script>
-            $(document).ready(function () {
-                // underline the active menu item
-                MenuActiveUnderline("#settings");
-                // downloads available game information
-                GetGameTypes();
-                // initializes the structure with player data
-                PlayerGet();
-                PlayerSet();
-                // initializes team data
-                GetTeam();
-            });
-        </script>
-    </head>
-    <body>
-        <div class="packaging">
-            {% include 'web/menu.html' %}
-            <div class="row">
-                <div class="col-1">
-                    {% include 'web/settings/set_game.html' %}
-                </div>
-                <div class="col-2">
-                    {% include 'web/settings/set_team.html' %}
-                </div>
-                <div class="col-3">
-                    {% include 'web/settings/set_players.html' %}
-                </div>
-                <div class="col-4">
-                    {% include 'web/settings/running_game.html' %}
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+    <script>
+        $(document).ready(function () {
+            // underline the active menu item
+            MenuActiveUnderline("#settings");
+            // downloads available game information
+            GetGameTypes();
+            // initializes the structure with player data
+            PlayerGet();
+            PlayerSet();
+            // initializes team data
+            GetTeam();
+        });
+    </script>
+{% endblock %}
+
+
+{% block col-1 %}
+    {% include 'web/settings/set_game.html' %}
+{% endblock %}
+
+
+{% block col-2 %}
+    {% include 'web/settings/set_team.html' %}
+{% endblock %}
+
+
+{% block col-3 %}
+    {% include 'web/settings/set_players.html' %}
+{% endblock %}
+
+
+{% block col-4 %}
+    {% include 'web/settings/running_game.html' %}
+{% endblock %}
