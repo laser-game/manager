@@ -4,9 +4,14 @@
 <!DOCTYPE html>
 <html lang="cs-CZ">
     <head>
-        {% include 'web/header_common.html' %}
+        {% include 'web/header.html' %}
         {% block inc %}
         {% endblock %}
+        <script>
+            $(document).ready(function () {
+                MenuActiveUnderline('#{% block menu %}archive{% endblock %}');
+            });
+        </script>
     </head>
     <body>
         <div class="packaging">
