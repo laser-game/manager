@@ -4,7 +4,7 @@ from django.db import migrations
 from django.db.migrations import RunPython
 
 from core.conf import core_settings
-from core.models import TypeColor, TypeEvent, TypeGame
+from core.models import TypeColor, TypeEvent, TypeGame, Vest
 
 
 def insert_type_colors(schema, apps):
@@ -26,7 +26,6 @@ def insert_type_event(schema, apps):
 
 def insert_type_game(schema, apps):
     type_game = TypeGame()
-
     type_game.name = 'Solo'
     type_game.game_mode = 'S'
     type_game.button_action_mode = 'F'
@@ -123,6 +122,18 @@ def insert_type_game(schema, apps):
     type_game.save()
 
 
+def insert_vest(schema, apps):
+    for i in range(16):
+        vest = Vest()
+        vest.state = 'O'
+        vest.index = i
+        vest.address = i
+        vest.battery = 0
+        vest.enable = True
+        vest.online = False
+        vest.save()
+
+
 class Migration(migrations.Migration):
     dependencies = [
         ('core', '0001_initial'),
@@ -132,4 +143,5 @@ class Migration(migrations.Migration):
         RunPython(insert_type_colors),
         RunPython(insert_type_event),
         RunPython(insert_type_game),
+        RunPython(insert_vest),
     ]

@@ -5,7 +5,7 @@ from .base import BaseModel
 
 
 class Vest(BaseModel):
-    MODE = (
+    VEST_STATE = (
         ('O', _('ok')),
         ('B', _('break wire')),
     )
@@ -14,7 +14,7 @@ class Vest(BaseModel):
     battery = models.PositiveSmallIntegerField(_('Battery'))
     enable = models.BooleanField(_('Enable vest'))
     online = models.BooleanField(_('Online vest'))
-    mode = models.CharField(_('State'), max_length=1, choices=MODE)
+    state = models.CharField(_('State'), max_length=1, choices=VEST_STATE)
 
     def __str__(self):
         return str(self.index)

@@ -6,11 +6,34 @@ from core.models import (
     Game,
     GamePlayer,
     Player,
+    TypeSwitch,
+    Switch,
     Team,
     TypeColor,
     TypeEvent,
     TypeGame,
+    Vest
 )
+
+
+@admin.register(Vest)
+class TypeGameAdmin(admin.ModelAdmin):
+    list_display = (
+        'index',
+        'state',
+        'enable',
+        'online',
+        'battery',
+    )
+
+
+@admin.register(TypeSwitch)
+class TypeGameAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'index',
+        'enable',
+    )
 
 
 @admin.register(TypeGame)
