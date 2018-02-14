@@ -2,7 +2,10 @@ import uuid
 
 from django.db import models
 from django.utils.translation import ugettext as _
-from django_extensions.db.fields import CreationDateTimeField, ModificationDateTimeField
+from django_extensions.db.fields import (
+    CreationDateTimeField,
+    ModificationDateTimeField,
+)
 
 
 class BaseModel(models.Model):

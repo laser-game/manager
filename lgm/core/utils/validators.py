@@ -1,7 +1,7 @@
 # coding=utf-8
 from datetime import timedelta
 
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class MinDurationValidator(MinValueValidator):

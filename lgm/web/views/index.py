@@ -1,5 +1,4 @@
-from django.http import HttpResponse
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import redirect, render, reverse
 
 from core.conf import core_settings
 
