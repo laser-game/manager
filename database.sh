@@ -6,7 +6,7 @@ echo "activate venv"
 . .venv/bin/activate
 
 cd lgm
-rm db.sqlite3 db.sqlite3_old -f
+rm db.sqlite3_old -f
 mv db.sqlite3 db.sqlite3_old
 mv core/migrations/0002_initial_data.py ./
 ./manage.py migrate
