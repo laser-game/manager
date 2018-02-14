@@ -33,4 +33,5 @@ def default(request):
         'MIN_SHOTS_IN_BATCH': core_settings.MIN_SHOTS_IN_BATCH,
         'MAX_SHOTS_IN_BATCH': core_settings.MAX_SHOTS_IN_BATCH,
     }
+
     return JsonResponse(context, safe=False)

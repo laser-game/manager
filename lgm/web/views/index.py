@@ -1,7 +1,13 @@
-from django.http import HttpResponse
+from uuid import uuid4
+
+from django.http import JsonResponse
 from django.shortcuts import render, redirect, reverse
+from django.views.generic.base import View
+from lgba.messages.game import GameStart
+from pika.adapters.blocking_connection import BlockingChannel
 
 from core.conf import core_settings
+from core.messages.connection import connection
 
 
 def settings(request):
@@ -30,5 +36,21 @@ def archive(request):
     }
     return render(request, 'web/archive/index.html', context)
 
+
 def index(request):
     return redirect(reverse('web:settings'), permanent=True)
+
+
+class GameStartView(View):
+    def get(self, request, *args, **kwargs):
+        with connection() as channel:  # type: BlockingChannel
+            # TODO: refactor to composite architecture
+            channel.queue_declare(queue='commands')
+
+            success = channel.basic_publish(
+                exchange='',
+                routing_key='commands',
+                body=GameStart(uuid4()).serialize()
+            )
+
+        return JsonResponse(data=dict(success=success))
