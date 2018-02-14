@@ -1,41 +1,35 @@
+{% extends 'web/base.html' %}
 {% load static %}
 {% load utils %}
 
-<!DOCTYPE html>
-<html lang="cs-CZ">
-    <head>
-        {% include 'web/header_common.html' %}
 
-        <script type="text/javascript" src="{% static 'web/js/settings/widget_actual_game.js' %}"></script>
+{% block inc %}
+    <script type="text/javascript" src="{% static 'web/js/settings/widget_actual_game.js' %}"></script>
 
-        <script type="text/javascript" src="{% static 'web/js/stream/widget_players.js' %}"></script>
-        <script type="text/javascript" src="{% static 'web/js/stream/widget_teams.js' %}"></script>
-        <script type="text/javascript" src="{% static 'web/js/stream/widget_events.js' %}"></script>
+    <script type="text/javascript" src="{% static 'web/js/stream/widget_players.js' %}"></script>
+    <script type="text/javascript" src="{% static 'web/js/stream/widget_teams.js' %}"></script>
+    <script type="text/javascript" src="{% static 'web/js/stream/widget_events.js' %}"></script>
+{% endblock %}
 
-        <script>
-            $(document).ready(function () {
-                // underline the active menu item
-                MenuActiveUnderline("#stream");
-            });
-        </script>
-    </head>
-    <body>
-        <div class="packaging">
-            {% include 'web/menu.html' %}
-            <div class="row">
-                <div class="col-1">
-                    {% include 'web/stream/state_players.html' %}
-                </div>
-                <div class="col-2">
-                    {% include 'web/stream/state_teams.html' %}
-                </div>
-                <div class="col-3">
-                    {% include 'web/stream/events.html' %}
-                </div>
-                <div class="col-4">
-                    {% include 'web/stream/running_game.html' %}
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+
+{% block menu %}stream{% endblock %}
+
+
+{% block col-1 %}
+    {% include 'web/stream/state_players.html' %}
+{% endblock %}
+
+
+{% block col-2 %}
+    {% include 'web/stream/state_teams.html' %}
+{% endblock %}
+
+
+{% block col-3 %}
+    {% include 'web/stream/events.html' %}
+{% endblock %}
+
+
+{% block col-4 %}
+    {% include 'web/stream/running_game.html' %}
+{% endblock %}

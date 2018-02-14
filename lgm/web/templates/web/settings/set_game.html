@@ -1,98 +1,109 @@
-<div class="widget">
-    <h1>Nastavení hry</h1>
-    <div class="widget-pack">
+{% extends 'web/widget.html' %}
+{% load static %}
+{% load utils %}
+
+
+{% block name %}
+    Nastavení hry
+{% endblock %}
+
+
+{% block content %}
+    <div class="widget-sub">
+        <table>
+            <tr>
+                <td align="left">Jméno hry</td>
+                <td align="right"><select id="SetGame-Name"></select></td>
+            </tr>
+            <tr>
+                <td>Herní čas v mimutách</td>
+                <td align="right"><input type="number" min="1" max="30" value="" id="SetGame-GameTime"></td>
+            </tr>
+            <tr>
+                <td>Doba smrti v sekundách</td>
+                <td align="right"><input type="number" min="1" max="30" value="" id="SetGame-DeathTime"></td>
+            </tr>
+            <tr>
+                <td>Počet výstřelů v dávce</td>
+                <td align="right"><input type="number" min="1" max="30" value="" id="SetGame-ShotsInBatch"></td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td align="left">Všichni proti všem</td>
+                <td align="right">
+                    <button class="Radio-GameType" id="Radio-GameType-0"></button>
+                </td>
+            </tr>
+            <tr>
+                <td align="left">Teamová hra</td>
+                <td align="right">
+                    <button class="Radio-GameType" id="Radio-GameType-1"></button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="widget-sub">
+        <h2>Pokročilá nastavení</h2>
         <div class="widget-sub">
             <table>
                 <tr>
-                    <td align="left">Jméno hry</td>
-                    <td align="right"><select id="SetGame-Name"></select></td>
-                </tr>
-                <tr>
-                    <td>Herní čas v mimutách</td>
-                    <td align="right"><input type="number" min="1" max="30" value="" id="SetGame-GameTime"></td>
-                </tr>
-                <tr>
-                    <td>Doba smrti v sekundách</td>
-                    <td align="right"><input type="number" min="1" max="30" value="" id="SetGame-DeathTime"></td>
-                </tr>
-                <tr>
-                    <td>Počet výstřelů v dávce</td>
-                    <td align="right"><input type="number" min="1" max="30" value="" id="SetGame-ShotsInBatch"></td>
-                </tr>
-            </table>
-            <table>
-                <tr>
-                    <td align="left">Všichni proti všem</td>
+                    <td align="left">Zvukové efekty</td>
                     <td align="right">
-                        <button class="Radio-GameType" id="Radio-GameType-0"></button>
+                        <button id="Check-SetGame-Sound"></button>
                     </td>
                 </tr>
                 <tr>
-                    <td align="left">Teamová hra</td>
+                    <td align="left">Nesmrtelnost (1 s)</td>
                     <td align="right">
-                        <button class="Radio-GameType" id="Radio-GameType-1"></button>
+                        <button id="Check-SetGame-Immorality"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left">Po začátku hry vypnout LED</td>
+                    <td align="right">
+                        <button id="Check-SetGame-OffLED"></button>
                     </td>
                 </tr>
             </table>
-        </div>
-
-        <div class="widget-sub">
-            <h2>Pokročilá nastavení</h2>
-            <div class="widget-sub">
-                <table>
-                    <tr>
-                        <td align="left">Zvukové efekty</td>
-                        <td align="right">
-                            <button id="Check-SetGame-Sound"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="left">Nesmrtelnost (1 s)</td>
-                        <td align="right">
-                            <button id="Check-SetGame-Immorality"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="left">Po začátku hry vypnout LED</td>
-                        <td align="right">
-                            <button id="Check-SetGame-OffLED"></button>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-
-        <div class="widget-sub">
-            <h2>Fn tlačítko</h2>
-            <div class="widget-sub">
-                <table>
-                    <tr>
-                        <td align="left">Pojistka palby</td>
-                        <td align="right">
-                            <button class="Radio-Fn" id="Radio-Fn-0"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="left">Svítilna</td>
-                        <td align="right">
-                            <button class="Radio-Fn" id="Radio-Fn-1"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="left">Svítilna UV</td>
-                        <td align="right">
-                            <button class="Radio-Fn" id="Radio-Fn-2"></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td align="left">Deaktivovat</td>
-                        <td align="right">
-                            <button class="Radio-Fn" id="Radio-Fn-3"></button>
-                        </td>
-                    </tr>
-                </table>
-            </div>
         </div>
     </div>
+
+    <div class="widget-sub">
+        <h2>Fn tlačítko</h2>
+        <div class="widget-sub">
+            <table>
+                <tr>
+                    <td align="left">Pojistka palby</td>
+                    <td align="right">
+                        <button class="Radio-Fn" id="Radio-Fn-0"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left">Svítilna</td>
+                    <td align="right">
+                        <button class="Radio-Fn" id="Radio-Fn-1"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left">Svítilna UV</td>
+                    <td align="right">
+                        <button class="Radio-Fn" id="Radio-Fn-2"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left">Deaktivovat</td>
+                    <td align="right">
+                        <button class="Radio-Fn" id="Radio-Fn-3"></button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block button %}
     <input type="button" value="OBNOVIT" id="refresh"></input>
-</div>
+{% endblock %}

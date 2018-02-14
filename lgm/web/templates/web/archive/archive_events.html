@@ -1,6 +1,17 @@
-<div class="widget">
-    <h1>Události hry</h1>
-    <div class="widget-pack">
-        <table id="archive-events" class="state"></table>
-    </div>
-</div>
+{% extends 'web/widget.html' %}
+{% load static %}
+{% load utils %}
+
+
+{% block name %}
+    Události hry
+{% endblock %}
+
+
+{% block content %}
+    <table id="archive-events" class="state"></table>
+{% endblock %}
+
+
+{% block button %}
+{% endblock %}

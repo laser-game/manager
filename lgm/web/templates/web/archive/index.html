@@ -1,40 +1,34 @@
+{% extends 'web/base.html' %}
 {% load static %}
 {% load utils %}
 
-<!DOCTYPE html>
-<html lang="cs-CZ">
-    <head>
-        {% include 'web/header_common.html' %}
 
-        <script type="text/javascript" src="{% static 'web/js/archive/widget_games.js' %}"></script>
-        <script type="text/javascript" src="{% static 'web/js/archive/widget_players.js' %}"></script>
-        <script type="text/javascript" src="{% static 'web/js/archive/widget_events.js' %}"></script>
-        <script type="text/javascript" src="{% static 'web/js/archive/widget_game_details.js' %}"></script>
+{% block inc %}
+    <script type="text/javascript" src="{% static 'web/js/archive/widget_games.js' %}"></script>
+    <script type="text/javascript" src="{% static 'web/js/archive/widget_players.js' %}"></script>
+    <script type="text/javascript" src="{% static 'web/js/archive/widget_events.js' %}"></script>
+    <script type="text/javascript" src="{% static 'web/js/archive/widget_game_details.js' %}"></script>
+{% endblock %}
 
-        <script>
-            $(document).ready(function () {
-                // underline the active menu item
-                MenuActiveUnderline("#archive");
-            });
-        </script>
-    </head>
-    <body>
-        <div class="packaging">
-            {% include 'web/menu.html' %}
-            <div class="row">
-                <div class="col-1">
-                    {% include 'web/archive/archive_games.html' %}
-                </div>
-                <div class="col-2">
-                    {% include 'web/archive/archive_players.html' %}
-                </div>
-                <div class="col-3">
-                    {% include 'web/archive/archive_events.html' %}
-                </div>
-                <div class="col-4">
-                    {% include 'web/archive/archive_game_details.html' %}
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+
+{% block menu %}archive{% endblock %}
+
+
+{% block col-1 %}
+    {% include 'web/archive/archive_games.html' %}
+{% endblock %}
+
+
+{% block col-2 %}
+    {% include 'web/archive/archive_players.html' %}
+{% endblock %}
+
+
+{% block col-3 %}
+    {% include 'web/archive/archive_events.html' %}
+{% endblock %}
+
+
+{% block col-4 %}
+    {% include 'web/archive/archive_game_details.html' %}
+{% endblock %}

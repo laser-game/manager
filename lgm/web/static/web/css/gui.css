@@ -128,6 +128,7 @@ button:focus {
 .actual-game-box {
     padding-top: 1em;
     padding-bottom: 1em;
+    text-align: center;
 }
 
 .actual-game-title {
