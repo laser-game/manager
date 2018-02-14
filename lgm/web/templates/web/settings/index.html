@@ -12,8 +12,6 @@
 
     <script>
         $(document).ready(function () {
-            // underline the active menu item
-            MenuActiveUnderline("#settings");
             // downloads available game information
             GetGameTypes();
             // initializes the structure with player data
@@ -24,6 +22,9 @@
         });
     </script>
 {% endblock %}
+
+
+{% block menu %}settings{% endblock %}
 
 
 {% block col-1 %}

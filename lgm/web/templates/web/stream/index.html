@@ -9,14 +9,10 @@
     <script type="text/javascript" src="{% static 'web/js/stream/widget_players.js' %}"></script>
     <script type="text/javascript" src="{% static 'web/js/stream/widget_teams.js' %}"></script>
     <script type="text/javascript" src="{% static 'web/js/stream/widget_events.js' %}"></script>
-
-    <script>
-        $(document).ready(function () {
-            // underline the active menu item
-            MenuActiveUnderline("#stream");
-        });
-    </script>
 {% endblock %}
+
+
+{% block menu %}stream{% endblock %}
 
 
 {% block col-1 %}

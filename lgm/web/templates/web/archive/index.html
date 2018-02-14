@@ -8,14 +8,10 @@
     <script type="text/javascript" src="{% static 'web/js/archive/widget_players.js' %}"></script>
     <script type="text/javascript" src="{% static 'web/js/archive/widget_events.js' %}"></script>
     <script type="text/javascript" src="{% static 'web/js/archive/widget_game_details.js' %}"></script>
-
-    <script>
-        $(document).ready(function () {
-            // underline the active menu item
-            MenuActiveUnderline("#archive");
-        });
-    </script>
 {% endblock %}
+
+
+{% block menu %}archive{% endblock %}
 
 
 {% block col-1 %}
