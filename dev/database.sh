@@ -2,6 +2,8 @@
 # created and init databese
 # wykys 2018
 
+cd ..
+
 echo "activate venv"
 . .venv/bin/activate
 
