@@ -16,6 +16,7 @@ class TypeSwitch(BaseModel):
         verbose_name = _('Type switch')
         verbose_name_plural = _('Type switches')
 
+
 class TypeGameSwitch(BaseModel):
     switch = models.ForeignKey('core.Switch', related_name='type_game_switch_switch', on_delete=models.PROTECT)
     type_game = models.ForeignKey('core.TypeGame', related_name='type_game_switch_type_game', on_delete=models.PROTECT)
@@ -23,6 +24,7 @@ class TypeGameSwitch(BaseModel):
     class Meta(object):
         verbose_name = _('Type Game Switch')
         verbose_name_plural = _('Type Game Switches')
+
 
 class Switch(BaseModel):
     type_switch = models.ForeignKey('core.TypeSwitch', related_name='switch_type_switch', on_delete=models.PROTECT)
@@ -38,6 +40,11 @@ class Switch(BaseModel):
 
     def __str__(self):
         return self.type_switch.name + ' | ' + str(self.event) + ' | ' + str(self.time_on)
+
+    def is_enabled(self) -> bool:
+        return self.type_switch.enable
+
+    is_enabled.boolean = True
 
     class Meta(object):
         verbose_name = _('Switch')

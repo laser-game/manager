@@ -39,11 +39,12 @@ class TypeSwitchAdmin(admin.ModelAdmin):
 
 @admin.register(Switch)
 class SwitchAdmin(admin.ModelAdmin):
+
     list_display = (
         'type_switch',
         'event',
         'time_on',
-        #'type_switch__enable',
+        'is_enabled',
     )
 
 
@@ -75,7 +76,8 @@ class TypeEventAdmin(admin.ModelAdmin):
 class TypeColorAdmin(admin.ModelAdmin):
     @staticmethod
     def color_display(obj: TypeColor):
-        return format_html("""
+        return format_html(
+            """
             <svg viewBox="0 -7 90 107" style="height: 1em; fill: {};">
                 <polygon points="0,0 90,0 85,80 45,100 5,80"/>
             </svg>""",
