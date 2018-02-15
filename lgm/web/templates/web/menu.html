@@ -24,11 +24,21 @@
                 {% trans 'Archive' %}
             </a>
         </li>
-        <li>
-            <a id="administrace" href="{% url 'admin:index' %}">
-                <img src="{% static 'web/img/settings.svg' %}">
-                {% trans 'Administration' %}
-            </a>
+
+        {% if request.user.is_staff %}
+            <li>
+                <a id="administrace" href="{% url 'admin:index' %}">
+                    <img src="{% static 'web/img/settings.svg' %}">
+                    {% trans 'Administration' %}
+                </a>
+            </li>
+        {% endif %}
+
+        <li class="Logout">
+            <a href="{% url "web:logout" %}">{% trans "Logout" %}</a>
+        </li>
+        <li class="User">
+            <a>{{ request.user.username }}</a>
         </li>
     </ul>
 </nav>

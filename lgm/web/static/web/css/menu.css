@@ -97,3 +97,9 @@ nav img {
         display: block;
     }
 }
+
+.User, .Logout {
+    float: right;
+    color: white;
+    // padding: 0.3em 1em;
+}

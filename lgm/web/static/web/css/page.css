@@ -56,3 +56,10 @@ body {
         width: 19%;
     }
 }
+
+.login-form {
+    width: 35vw;
+    margin: 20vh auto 0;
+    background-color: rgba(170, 170, 170, 0.7);
+    padding: 5vh 5vw;
+}
