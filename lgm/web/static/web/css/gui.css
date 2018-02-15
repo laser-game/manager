@@ -13,7 +13,8 @@ select:disabled {
     color: #555;
 }
 
-input[type=text] {
+input[type=text],
+input[type=password] {
     width: 16em;
 }
 
@@ -22,7 +23,8 @@ input[type=number] {
     text-align: right;
 }
 
-input[type=button] {
+input[type=button],
+input[type=submit] {
     color: #fff;
     font-size: 1.2em;
     text-decoration: none;
@@ -31,11 +33,14 @@ input[type=button] {
 }
 
 input[type=button]:hover,
-input[type=button]:focus {
+input[type=button]:focus,
+input[type=submit]:hover,
+input[type=submit]:focus {
     background: #00C2FF;
 }
 
-input[type=button]:active {
+input[type=button]:active,
+input[type=submit]:active {
     background: #00CCFF;
 }
 
