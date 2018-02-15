@@ -1,7 +1,49 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from core.models import TypeColor, TypeEvent, Event, TypeGame, Game, Player, GamePlayer, Team
+from core.models import (
+    Event,
+    Game,
+    GamePlayer,
+    Player,
+    Switch,
+    Team,
+    TypeColor,
+    TypeEvent,
+    TypeGame,
+    TypeGameSwitch,
+    TypeSwitch,
+    Vest,
+)
+
+
+@admin.register(Vest)
+class TypeGameAdmin(admin.ModelAdmin):
+    list_display = (
+        'index',
+        'state',
+        'enable',
+        'online',
+        'battery',
+    )
+
+
+@admin.register(TypeSwitch)
+class TypeSwitchAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'index',
+        'enable',
+    )
+
+
+class SwitchInline(admin.TabularInline):
+    model = Switch
+
+
+@admin.register(TypeGameSwitch)
+class TypeGameSwitchAdmin(admin.ModelAdmin):
+    inlines = [SwitchInline]
 
 
 @admin.register(TypeGame)

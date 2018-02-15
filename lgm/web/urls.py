@@ -4,6 +4,7 @@ from django.urls import path
 from .apps import WebConfig
 from .views import index
 
+
 app_name = WebConfig.name
 urlpatterns = [
     # first has higher priority
