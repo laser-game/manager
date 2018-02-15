@@ -18,7 +18,6 @@ class TypeSwitch(BaseModel):
 
 class TypeGameSwitch(BaseModel):
     name = models.CharField(_('Name'), max_length=32)
-    #type_game = models.ForeignKey('core.TypeGame', related_name='game_type_game', on_delete=models.PROTECT)
 
     def __str__(self):
         return self.name
