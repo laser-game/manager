@@ -43,6 +43,7 @@ class SwitchAdmin(admin.ModelAdmin):
         'type_switch',
         'event',
         'time_on',
+        #'type_switch__enable',
     )
 
 
