@@ -1,6 +1,7 @@
 from django.urls import path
 
-from .views import color, type_game, default_team_name, default
+from .views import color, default, default_team_name, type_game
+
 
 urlpatterns = [
     path('type-game', type_game, name='type-game'),

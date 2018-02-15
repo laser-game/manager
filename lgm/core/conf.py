@@ -1,5 +1,6 @@
 from .utils.settings import Settings
 
+
 MIN_PLAYERS = 1
 MAX_PLAYERS = 16
 

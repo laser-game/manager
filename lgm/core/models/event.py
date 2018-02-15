@@ -1,10 +1,7 @@
-from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.utils.translation import ugettext as _
 
 from .base import BaseModel
-from ..conf import core_settings
-from ..utils.validators import MinDurationValidator, MaxDurationValidator
 
 
 class TypeEvent(BaseModel):
@@ -14,7 +11,6 @@ class TypeEvent(BaseModel):
         ('T', _('trap')),
         ('B', _('bonus')),
     )
-    TYPE_EVENTS_MAPPING = dict(TYPE_EVENTS)
     identifier = models.CharField(_('Identifier'), max_length=1, choices=TYPE_EVENTS)
 
     class Meta(object):
@@ -22,12 +18,14 @@ class TypeEvent(BaseModel):
         verbose_name_plural = _('Types events')
 
     def __str__(self):
-        return self.TYPE_EVENTS_MAPPING.get(self.identifier)
+        return self.get_identifier_display()
 
 
 class Event(BaseModel):
     game = models.ForeignKey('core.Game', related_name='event_game', on_delete=models.PROTECT)
     type_event = models.ForeignKey('core.TypeEvent', related_name='event_type_event', on_delete=models.PROTECT)
+    player1 = models.ForeignKey('core.Player', related_name='event_type_player1', on_delete=models.PROTECT, null=True, blank=True)
+    player2 = models.ForeignKey('core.Player', related_name='event_type_player2', on_delete=models.PROTECT, null=True, blank=True)
 
     time = models.DurationField(_('Time elapsed from start of game'))
 

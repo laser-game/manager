@@ -1,10 +1,7 @@
-from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.utils.translation import ugettext as _
 
 from .base import BaseModel
-from ..conf import core_settings
-from ..utils.validators import MinDurationValidator, MaxDurationValidator
 
 
 class TypeColor(BaseModel):
