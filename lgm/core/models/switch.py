@@ -36,6 +36,8 @@ class Switch(BaseModel):
     time_on = models.DurationField(_('Time of switch'))
     event = models.CharField(_('Switch event'), max_length=1, choices=SWITCH_EVENT)
 
+    def __str__(self):
+        return self.type_switch.name + ' | ' + str(self.event) + ' | ' + str(self.time_on)
 
     class Meta(object):
         verbose_name = _('Switch')
