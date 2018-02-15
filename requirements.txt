@@ -1,6 +1,7 @@
+importanize
 Django~=2.0
 django-extensions
 psycopg2-binary
 jsonfield
 pika
-importanize
+../laser-game-bridge-api/

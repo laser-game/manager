@@ -42,7 +42,7 @@ def archive(request):
 def index(request):
     return redirect(reverse('web:settings'), permanent=True)
 
-
+@login_required
 class GameStartView(View):
     def get(self, request, *args, **kwargs):
         with connection() as channel:  # type: BlockingChannel
