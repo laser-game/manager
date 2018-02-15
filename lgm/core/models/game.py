@@ -8,7 +8,7 @@ from ..utils.validators import MaxDurationValidator, MinDurationValidator
 
 
 class TypeGame(BaseModel):
-    switch = models.ForeignKey('core.Switch', related_name='type_game_switch', null=True, blank=True, on_delete=models.PROTECT)
+    type_game_switch = models.ForeignKey('core.TypeGameSwitch', related_name='type_game_type_game_switch', null=True, blank=True, on_delete=models.PROTECT)
 
     GAME_MODE = (
         ('S', _('solo')),

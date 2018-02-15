@@ -7,6 +7,7 @@ from core.models import (
     GamePlayer,
     Player,
     TypeSwitch,
+    TypeGameSwitch,
     Switch,
     Team,
     TypeColor,
@@ -28,12 +29,21 @@ class TypeGameAdmin(admin.ModelAdmin):
 
 
 @admin.register(TypeSwitch)
-class TypeGameAdmin(admin.ModelAdmin):
+class TypeSwitchAdmin(admin.ModelAdmin):
     list_display = (
         'name',
         'index',
         'enable',
     )
+
+
+class SwitchInline(admin.TabularInline):
+    model = Switch
+
+
+@admin.register(TypeGameSwitch)
+class TypeGameSwitchAdmin(admin.ModelAdmin):
+    inlines = [SwitchInline]
 
 
 @admin.register(TypeGame)
