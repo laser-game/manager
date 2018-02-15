@@ -37,13 +37,17 @@ class TypeSwitchAdmin(admin.ModelAdmin):
     )
 
 
-class SwitchInline(admin.TabularInline):
-    model = Switch
+@admin.register(Switch)
+class SwitchAdmin(admin.ModelAdmin):
+    list_display = (
+        'type_switch',
+        'event',
+        'time_on',
+    )
 
 
-@admin.register(TypeGameSwitch)
-class TypeGameSwitchAdmin(admin.ModelAdmin):
-    inlines = [SwitchInline]
+class TypeGameSwitchInline(admin.TabularInline):
+    model = TypeGameSwitch
 
 
 @admin.register(TypeGame)
@@ -58,6 +62,7 @@ class TypeGameAdmin(admin.ModelAdmin):
         'enable_immorality',
         'enable_sound',
     )
+    inlines = [TypeGameSwitchInline]
 
 
 @admin.register(TypeEvent)
