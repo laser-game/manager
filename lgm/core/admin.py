@@ -37,13 +37,19 @@ class TypeSwitchAdmin(admin.ModelAdmin):
     )
 
 
-class SwitchInline(admin.TabularInline):
-    model = Switch
+@admin.register(Switch)
+class SwitchAdmin(admin.ModelAdmin):
+
+    list_display = (
+        'type_switch',
+        'event',
+        'time_on',
+        'is_enabled',
+    )
 
 
-@admin.register(TypeGameSwitch)
-class TypeGameSwitchAdmin(admin.ModelAdmin):
-    inlines = [SwitchInline]
+class TypeGameSwitchInline(admin.TabularInline):
+    model = TypeGameSwitch
 
 
 @admin.register(TypeGame)
@@ -58,6 +64,7 @@ class TypeGameAdmin(admin.ModelAdmin):
         'enable_immorality',
         'enable_sound',
     )
+    inlines = [TypeGameSwitchInline]
 
 
 @admin.register(TypeEvent)
@@ -69,7 +76,8 @@ class TypeEventAdmin(admin.ModelAdmin):
 class TypeColorAdmin(admin.ModelAdmin):
     @staticmethod
     def color_display(obj: TypeColor):
-        return format_html("""
+        return format_html(
+            """
             <svg viewBox="0 -7 90 107" style="height: 1em; fill: {};">
                 <polygon points="0,0 90,0 85,80 45,100 5,80"/>
             </svg>""",
