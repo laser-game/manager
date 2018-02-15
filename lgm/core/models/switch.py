@@ -39,7 +39,7 @@ class Switch(BaseModel):
     event = models.CharField(_('Switch event'), max_length=1, choices=SWITCH_EVENT)
 
     def __str__(self):
-        return '{} | {} | {}'.format(self.type_switch.name, self.event, self.time_on)
+        return '{} | {} | {}'.format(self.type_switch.name, self.get_event_display(), self.time_on)
 
     def is_enabled(self) -> bool:
         return self.type_switch.enable

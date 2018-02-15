@@ -8,8 +8,6 @@ from .base import BaseModel
 
 
 class TypeGame(BaseModel):
-    #type_game_switch = models.ForeignKey('core.TypeGameSwitch', related_name='type_game_type_game_switch', null=True, blank=True, on_delete=models.PROTECT)
-
     GAME_MODE = (
         ('S', _('solo')),
         ('T', _('team')),

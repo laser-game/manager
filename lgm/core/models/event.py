@@ -11,7 +11,6 @@ class TypeEvent(BaseModel):
         ('T', _('trap')),
         ('B', _('bonus')),
     )
-    TYPE_EVENTS_MAPPING = dict(TYPE_EVENTS)
     identifier = models.CharField(_('Identifier'), max_length=1, choices=TYPE_EVENTS)
 
     class Meta(object):
@@ -19,7 +18,7 @@ class TypeEvent(BaseModel):
         verbose_name_plural = _('Types events')
 
     def __str__(self):
-        return self.TYPE_EVENTS_MAPPING.get(self.identifier)
+        return self.get_identifier_display()
 
 
 class Event(BaseModel):
