@@ -2,6 +2,8 @@
 # create and install python enviroment
 # wykys 2018
 
+cd ..
+
 echo "remove old venv"
 rm .venv -rf
 

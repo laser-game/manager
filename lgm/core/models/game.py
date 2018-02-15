@@ -1,13 +1,15 @@
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils.translation import ugettext as _
 
 from .base import BaseModel
 from ..conf import core_settings
-from ..utils.validators import MinDurationValidator, MaxDurationValidator
+from ..utils.validators import MaxDurationValidator, MinDurationValidator
 
 
 class TypeGame(BaseModel):
+    type_game_switch = models.ForeignKey('core.TypeGameSwitch', related_name='type_game_type_game_switch', null=True, blank=True, on_delete=models.PROTECT)
+
     GAME_MODE = (
         ('S', _('solo')),
         ('T', _('team')),
