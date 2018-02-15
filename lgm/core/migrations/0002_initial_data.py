@@ -4,7 +4,7 @@ from django.db import migrations
 from django.db.migrations import RunPython
 
 from core.conf import core_settings
-from core.models import TypeColor, TypeEvent, TypeGame, Vest, TypeSwitch
+from core.models import TypeColor, TypeEvent, TypeGame, TypeSwitch, Vest
 
 
 def insert_type_colors(schema, apps):

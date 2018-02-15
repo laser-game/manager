@@ -6,14 +6,14 @@ from core.models import (
     Game,
     GamePlayer,
     Player,
-    TypeSwitch,
-    TypeGameSwitch,
     Switch,
     Team,
     TypeColor,
     TypeEvent,
     TypeGame,
-    Vest
+    TypeGameSwitch,
+    TypeSwitch,
+    Vest,
 )
 
 
