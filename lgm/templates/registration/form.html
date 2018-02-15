@@ -9,6 +9,12 @@
 
 
 {% block content %}
+    <style type='text/css'>
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+        }
+   </style>
     <form method="post" action="{% url 'web:login' %}">
         {% csrf_token %}
         <table>
