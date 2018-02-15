@@ -1,0 +1,47 @@
+{% extends 'web/widget.html' %}
+{% load static %}
+{% load utils %}
+{% load i18n %}
+
+{% block name %}
+    {% trans "Login" %}
+{% endblock %}
+
+
+{% block content %}
+    <form method="post" action="{% url 'web:login' %}">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td align="left">{{ form.username.label_tag }}</td>
+                <td align="right">{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td align="left">{{ form.password.label_tag }}</td>
+                <td align="right">{{ form.password }}</td>
+            </tr>
+        </table>
+        <table>
+            <tr><td>
+                {% if form.errors %}
+                    <p>Your username and password didn't match. Please try again.</p>
+                {% endif %}
+
+                {% if next %}
+                    {% if user.is_authenticated %}
+                        <p>Your account doesn't have access to this page. To proceed,
+                            please login with an account that has access.</p>
+                    {% else %}
+                        <p>Please login to see this page.</p>
+                    {% endif %}
+                {% endif %}
+            </td></tr>
+            <tr><td>
+                {# Assumes you setup the password_reset view in your URLconf <p><a href="{% url 'password_reset' %}">Lost password?</a></p> #}
+            </td></tr>
+        </table>
+
+        <input type="submit" value="LOGIN" style="width: 100%;"/>
+        <input type="hidden" name="next" value="{{ next }}"/>
+    </form>
+{% endblock %}
