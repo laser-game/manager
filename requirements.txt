@@ -4,4 +4,4 @@ django-extensions
 psycopg2-binary
 jsonfield
 pika
-../laser-game-bridge-api/
+../bridge-api
