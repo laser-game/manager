@@ -19,9 +19,8 @@ class TypeGame(BaseModel):
         ('U', _('ultra violet flashlight')),
     )
     SOUND_SET_TYPE = (
-        ('M', _('male')),
-        ('F', _('female')),
-        ('E', _('english')),
+        ('CZ', _('czech')),
+        ('EN', _('english')),
     )
     name = models.CharField(_('Name'), max_length=32)
     game_mode = models.CharField(_('Game mode'), max_length=1, choices=GAME_MODE)

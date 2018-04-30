@@ -29,7 +29,7 @@ def insert_type_game(schema, apps):
     type_game.name = 'Solo'
     type_game.game_mode = 'S'
     type_game.button_action_mode = 'F'
-    type_game.sound_set_type = 'M'
+    type_game.sound_set_type = 'CZ'
     type_game.game_duration = timedelta(seconds=15 * 60)
     type_game.death_duration = timedelta(seconds=5)
     type_game.batch_shots_count = 1
@@ -42,7 +42,7 @@ def insert_type_game(schema, apps):
     type_game.name = 'Team Game'
     type_game.game_mode = 'T'
     type_game.button_action_mode = 'F'
-    type_game.sound_set_type = 'M'
+    type_game.sound_set_type = 'CZ'
     type_game.game_duration = timedelta(seconds=15 * 60)
     type_game.death_duration = timedelta(seconds=5)
     type_game.batch_shots_count = 1
@@ -55,7 +55,7 @@ def insert_type_game(schema, apps):
     type_game.name = 'Invisible'
     type_game.game_mode = 'S'
     type_game.button_action_mode = 'F'
-    type_game.sound_set_type = 'M'
+    type_game.sound_set_type = 'CZ'
     type_game.game_duration = timedelta(seconds=15 * 60)
     type_game.death_duration = timedelta(seconds=5)
     type_game.batch_shots_count = 1
@@ -68,7 +68,7 @@ def insert_type_game(schema, apps):
     type_game.name = 'Invisible Team'
     type_game.game_mode = 'T'
     type_game.button_action_mode = 'F'
-    type_game.sound_set_type = 'M'
+    type_game.sound_set_type = 'CZ'
     type_game.game_duration = timedelta(seconds=15 * 60)
     type_game.death_duration = timedelta(seconds=5)
     type_game.batch_shots_count = 1
@@ -81,7 +81,7 @@ def insert_type_game(schema, apps):
     type_game.name = 'S.W.A.T. - Light'
     type_game.game_mode = 'S'
     type_game.button_action_mode = 'W'
-    type_game.sound_set_type = 'M'
+    type_game.sound_set_type = 'CZ'
     type_game.game_duration = timedelta(seconds=15 * 60)
     type_game.death_duration = timedelta(seconds=5)
     type_game.batch_shots_count = 1
@@ -94,7 +94,7 @@ def insert_type_game(schema, apps):
     type_game.name = 'S.W.A.T. - Light Team'
     type_game.game_mode = 'T'
     type_game.button_action_mode = 'W'
-    type_game.sound_set_type = 'M'
+    type_game.sound_set_type = 'CZ'
     type_game.game_duration = timedelta(seconds=15 * 60)
     type_game.death_duration = timedelta(seconds=5)
     type_game.batch_shots_count = 1
@@ -107,7 +107,7 @@ def insert_type_game(schema, apps):
     type_game.name = 'S.W.A.T. - UV'
     type_game.game_mode = 'S'
     type_game.button_action_mode = 'U'
-    type_game.sound_set_type = 'M'
+    type_game.sound_set_type = 'CZ'
     type_game.game_duration = timedelta(seconds=15 * 60)
     type_game.death_duration = timedelta(seconds=5)
     type_game.batch_shots_count = 1
@@ -120,7 +120,7 @@ def insert_type_game(schema, apps):
     type_game.name = 'S.W.A.T. - UV Team'
     type_game.game_mode = 'T'
     type_game.button_action_mode = 'U'
-    type_game.sound_set_type = 'M'
+    type_game.sound_set_type = 'CZ'
     type_game.game_duration = timedelta(seconds=15 * 60)
     type_game.death_duration = timedelta(seconds=5)
     type_game.batch_shots_count = 1
