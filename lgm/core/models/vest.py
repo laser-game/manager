@@ -5,16 +5,11 @@ from .base import BaseModel
 
 
 class Vest(BaseModel):
-    VEST_STATE = (
-        ('O', _('ok')),
-        ('B', _('break wire')),
-    )
-    index = models.PositiveSmallIntegerField(_('Index of vest'))
     address = models.PositiveSmallIntegerField(_('Address of vest'))
     battery = models.PositiveSmallIntegerField(_('Battery'))
     enable = models.BooleanField(_('Enable vest'))
     online = models.BooleanField(_('Online vest'))
-    state = models.CharField(_('State'), max_length=1, choices=VEST_STATE)
+    has_failure = models.BooleanField(_('Has failure'))
 
     def __str__(self):
         return str(self.index)

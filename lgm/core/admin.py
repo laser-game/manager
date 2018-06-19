@@ -20,11 +20,11 @@ from core.models import (
 @admin.register(Vest)
 class TypeGameAdmin(admin.ModelAdmin):
     list_display = (
-        'index',
-        'state',
+        'address',
         'enable',
         'online',
         'battery',
+        'has_failure',
     )
 
 

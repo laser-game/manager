@@ -142,12 +142,11 @@ def insert_type_switch(schema, apps):
 def insert_vest(schema, apps):
     for i in range(16):
         vest = Vest()
-        vest.state = 'O'
-        vest.index = i
         vest.address = i
         vest.battery = 0
         vest.enable = True
         vest.online = False
+        vest.has_failure = False
         vest.save()
 
 
