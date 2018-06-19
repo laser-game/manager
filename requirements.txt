@@ -1,4 +1,6 @@
+importanize
 Django~=2.0
 django-extensions
 jsonfield
-importanize
+pika
+../bridge-api

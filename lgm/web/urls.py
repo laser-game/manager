@@ -15,4 +15,6 @@ urlpatterns = [
     path('stream', index.stream, name='stream'),
     path('archive', index.archive, name='archive'),
     path('', index.index, name='index'),
+
+    path('game-start', index.GameStartView.as_view(), name='game_start'),
 ]
