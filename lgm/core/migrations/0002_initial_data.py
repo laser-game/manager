@@ -3,18 +3,65 @@ from datetime import timedelta
 from django.db import migrations
 from django.db.migrations import RunPython
 
-from core.conf import core_settings
 from core.models import TypeColor, TypeEvent, TypeGame, TypeSwitch, Vest
 
 
 def insert_type_colors(schema, apps):
-    for color in core_settings.DEFAULT_COLORS:
-        type_color = TypeColor()
-        type_color.name = color['name']
-        type_color.index = color['index']
-        type_color.css = color['css']
-        type_color.hw = color['hw']
-        type_color.save()
+    type_color = TypeColor()
+    type_color.index = 0
+    type_color.name = 'red'
+    type_color.css = '#FF0000'
+    type_color.hw = '#FF0000'
+    type_color.save()
+
+    type_color = TypeColor()
+    type_color.index = 1
+    type_color.name = 'orange'
+    type_color.css = '#FFA500'
+    type_color.hw = '#FFA500'
+    type_color.save()
+
+    type_color = TypeColor()
+    type_color.index = 2
+    type_color.name = 'yellow'
+    type_color.css = '#FFFF00'
+    type_color.hw = '#FFFF00'
+    type_color.save()
+
+    type_color = TypeColor()
+    type_color.index = 3
+    type_color.name = 'green'
+    type_color.css = '#00FF00'
+    type_color.hw = '#00FF00'
+    type_color.save()
+
+    type_color = TypeColor()
+    type_color.index = 4
+    type_color.name = 'aqua'
+    type_color.css = '#00FFFF'
+    type_color.hw = '#00FFFF'
+    type_color.save()
+
+    type_color = TypeColor()
+    type_color.index = 5
+    type_color.name = 'blue'
+    type_color.css = '#0000FF'
+    type_color.hw = '#0000FF'
+    type_color.save()
+
+    type_color = TypeColor()
+    type_color.index = 6
+    type_color.name = 'purple'
+    type_color.css = '#FF00FF'
+    type_color.hw = '#FF00FF'
+    type_color.save()
+
+    type_color = TypeColor()
+    type_color.index = 7
+    type_color.name = 'pink'
+    type_color.css = '#FFC0CB'
+    type_color.hw = '#FFC0CB'
+    type_color.save()
 
 
 def insert_type_event(schema, apps):
