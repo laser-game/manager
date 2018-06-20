@@ -72,7 +72,7 @@ function GetGameSettings() {
 $(document).ready(function () {
     $('*').click(function () {
         SetGame.enable_sound = Check.get('SetGame-Sound')
-        SetGame.enable_immorality = !Check.get('SetGame-Immorality')
+        SetGame.enable_immorality = Check.get('SetGame-Immorality')
         SetGame.enable_vest_light = !Check.get('SetGame-OffLED')
 
         var fn;
