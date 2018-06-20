@@ -5,7 +5,7 @@ function ColorCounter() {
         Color[i].members = 0;
     }
     for (i = 0; i < Player.length; i++) {
-        if (Player[i].anable) {
+        if (Player[i].enable) {
             Color[Player[i].color_index].members++;
             members++;
         }
@@ -23,8 +23,8 @@ function GetTeam() {
         Team[i].name = $("#team-name-" + i.toString()).val();
         Team[i].color_index = i;
         for (j = 0; j < Player.length; j++) {
-            if (Player[j].anable && Player[j].color_index == Team[i].color_index) {
-                Team[i].anable = true;
+            if (Player[j].enable && Player[j].color_index == Team[i].color_index) {
+                Team[i].enable = true;
             }
         }
     }
@@ -34,8 +34,8 @@ $(document).ready(function () {
     // click na color erb nebo color lock
     $(".color-erb, .color-lock").click(function () {
         var id = parseInt($(this).attr("id").split("-")[2]);
-        Color[id].anable = !Color[id].anable;
-        $("#team-name-" + id.toString()).prop("disabled", !Color[id].anable);
+        Color[id].enable = !Color[id].enable;
+        $("#team-name-" + id.toString()).prop("disabled", !Color[id].enable);
         $("#color-lock-" + id.toString()).toggle(100);
     });
 });

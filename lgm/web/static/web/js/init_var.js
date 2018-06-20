@@ -7,7 +7,7 @@ function InitVariables() {
         Color[i] = Object();
         Color[i].rgb = DEFAULT.COLOR[i];
         Color[i].members = 0;
-        Color[i].anable = false;
+        Color[i].enable = false;
     }
 
     for (i in DEFAULT.DEFAULT_TEAM_NAMES) {
@@ -15,7 +15,7 @@ function InitVariables() {
         Team[i].id = i;
         Team[i].name = "";
         Team[i].color_index = 0;
-        Team[i].anable = false;
+        Team[i].enable = false;
     }
 
     for (i = 0; i < DEFAULT.MAX_PLAYERS; i++) {
@@ -24,6 +24,6 @@ function InitVariables() {
         Player[i].name = "";
         Player[i].color_index = -1;
         Player[i].battery = 100;
-        Player[i].anable = false;
+        Player[i].enable = false;
     }
 }

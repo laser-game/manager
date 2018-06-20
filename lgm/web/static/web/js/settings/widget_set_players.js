@@ -7,8 +7,8 @@ function PlayerGet() {
 function PlayerSet() {
     for (i = 0; i < Player.length; i++) {
         $("#player-name-" + i.toString()).val(Player[i].name);
-        $("#player-name-" + i.toString()).prop("disabled", !Player[i].anable);
-        if (Player[i].anable) {
+        $("#player-name-" + i.toString()).prop("disabled", !Player[i].enable);
+        if (Player[i].enable) {
             var code = "";
             code += '<svg viewBox="0 -7 90 107" style="height: 0.8em; fill: ' + Color[Player[i].color_index].rgb + ';">';
             code += '<polygon points="0,0 90,0 85,80 45,100 5,80"/></svg>';
@@ -29,9 +29,9 @@ $(document).ready(function () {
         var color_is_enable = false;
 
         for (i = Player[id].color_index + 1; i < Color.length; i++) {
-            if (Color[i].anable) {
+            if (Color[i].enable) {
                 Player[id].color_index = i;
-                Player[id].anable = true;
+                Player[id].enable = true;
                 color_is_enable = true;
                 break;
             }
@@ -39,7 +39,7 @@ $(document).ready(function () {
 
         if (!color_is_enable) {
             Player[id].color_index = -1;
-            Player[id].anable = false;
+            Player[id].enable = false;
         }
 
         PlayerSet();

@@ -6,7 +6,7 @@ function GetActualTeam() {
         for (j = 0; j < Team.length; j++) {
             position = Team.length + 1;
             for (i = 0; i < Team.length; i++) {
-                if (Team[i].Position < position && Team[i].anable) {
+                if (Team[i].Position < position && Team[i].enable) {
                     var order_test = true;
                     if (order.length) {
                         for (k = 0; k < order.length; k++) {

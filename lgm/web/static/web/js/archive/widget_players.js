@@ -5,7 +5,7 @@ function SetHistoryPlayers(Players) {
     for (j = 0; j < Players.length; j++) {
         position = Players.length + 1;
         for (i = 0; i < Players.length; i++) {
-            if (Players[i].Position < position && Players[i].anable) {
+            if (Players[i].Position < position && Players[i].enable) {
                 var order_test = true;
                 if (order.length) {
                     for (k = 0; k < order.length; k++) {
