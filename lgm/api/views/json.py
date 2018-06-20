@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 
 from core.conf import core_settings
-from core.models.game import TypeGame
+from core.models import TypeGame, TypeColor
 
 
 def type_game(request):
@@ -25,17 +25,17 @@ def type_game(request):
 
 
 def color(request):
-    return JsonResponse(core_settings.COLOR, safe=False)
+    return JsonResponse([color.css for color in TypeColor.objects.all()], safe=False)
 
 
 def default_team_name(request):
-    return JsonResponse(core_settings.DEFAULT_TEAM_NAME, safe=False)
+    return JsonResponse([color.name for color in TypeColor.objects.all()], safe=False)
 
 
 def default(request):
     context = {
-        'COLOR': core_settings.COLOR,
-        'DEFAULT_TEAM_NAMES': core_settings.DEFAULT_TEAM_NAMES,
+        'COLOR': [color.css for color in TypeColor.objects.all()],
+        'DEFAULT_TEAM_NAMES': [color.name for color in TypeColor.objects.all()],
         'MIN_PLAYERS': core_settings.MIN_PLAYERS,
         'MAX_PLAYERS': core_settings.MAX_PLAYERS,
         'MIN_NAME_LEN': core_settings.MIN_NAME_LEN,

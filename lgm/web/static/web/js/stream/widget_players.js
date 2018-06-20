@@ -6,7 +6,7 @@ function GetActualPlayers() {
         for (j = 0; j < Players.length; j++) {
             position = Players.length + 1;
             for (i = 0; i < Players.length; i++) {
-                if (Players[i].Position < position && Players[i].Available) {
+                if (Players[i].Position < position && Players[i].anable) {
                     var order_test = true;
                     if (order.length) {
                         for (k = 0; k < order.length; k++) {
@@ -41,7 +41,7 @@ function GetActualPlayers() {
             HTML_code += '</td>';
 
             HTML_code += '<td align="center">';
-            HTML_code += '<span style="color: ' + Color[Players[i].Color].RGB + '; font-weight: 400;">' + Players[i].Name + '</span>' + '<br>';
+            HTML_code += '<span style="color: ' + Color[Players[i].Color].rgb + '; font-weight: 400;">' + Players[i].Name + '</span>' + '<br>';
             HTML_code += '</td>';
 
             HTML_code += '<td align="center">';

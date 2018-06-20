@@ -6,6 +6,7 @@ from pika.adapters.blocking_connection import BlockingChannel
 
 from core.conf import core_settings
 from core.messages.connection import connection
+from core.models import TypeColor
 
 from uuid import uuid4
 from django.http import JsonResponse
@@ -14,8 +15,8 @@ from django.http import JsonResponse
 def settings(request):
     context = {
         'MAX_PLAYERS': core_settings.MAX_PLAYERS,
-        'DEFAULT_TEAM_NAMES': core_settings.DEFAULT_TEAM_NAMES,
-        'COLOR': core_settings.COLOR,
+        'DEFAULT_TEAM_NAMES': [color.name for color in TypeColor.objects.all()],
+        'COLOR': [color.css for color in TypeColor.objects.all()],
     }
     return render(request, 'web/settings/index.html', context)
 
@@ -24,8 +25,8 @@ def settings(request):
 def stream(request):
     context = {
         'MAX_PLAYERS': core_settings.MAX_PLAYERS,
-        'DEFAULT_TEAM_NAMES': core_settings.DEFAULT_TEAM_NAMES,
-        'COLOR': core_settings.COLOR,
+        'DEFAULT_TEAM_NAMES': [color.name for color in TypeColor.objects.all()],
+        'COLOR': [color.css for color in TypeColor.objects.all()],
     }
     return render(request, 'web/stream/index.html', context)
 
@@ -35,7 +36,7 @@ def archive(request):
     context = {
         'MAX_PLAYERS': core_settings.MAX_PLAYERS,
         'DEFAULT_TEAM_NAMES': core_settings.DEFAULT_TEAM_NAMES,
-        'COLOR': core_settings.COLOR,
+        'COLOR': [color.css for color in TypeColor.objects.all()],
     }
     return render(request, 'web/archive/index.html', context)
 

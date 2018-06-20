@@ -17,7 +17,7 @@ function SetHistoryEvents(Events) {
         HTML_code += '</td>';
 
         HTML_code += '<td align="center">';
-        HTML_code += '<span style="color: ' + Color[Events[i].Color1].RGB + '; font-weight: 400;">' + Events[i].Name1 + '</span>' + '<br>';
+        HTML_code += '<span style="color: ' + Color[Events[i].Color1].rgb + '; font-weight: 400;">' + Events[i].Name1 + '</span>' + '<br>';
         HTML_code += '</td>';
 
         HTML_code += '<td align="center">';
@@ -25,7 +25,7 @@ function SetHistoryEvents(Events) {
         HTML_code += '</td>';
 
         HTML_code += '<td align="center">';
-        HTML_code += '<span style="color: ' + Color[Events[i].Color2].RGB + '; font-weight: 400;">' + Events[i].Name2 + '</span>' + '<br>';
+        HTML_code += '<span style="color: ' + Color[Events[i].Color2].rgb + '; font-weight: 400;">' + Events[i].Name2 + '</span>' + '<br>';
         HTML_code += '</td>';
 
         HTML_code += '</tr>';

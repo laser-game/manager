@@ -6,11 +6,11 @@ function GetActualTeam() {
         for (j = 0; j < Team.length; j++) {
             position = Team.length + 1;
             for (i = 0; i < Team.length; i++) {
-                if (Team[i].Position < position && Team[i].Available) {
+                if (Team[i].Position < position && Team[i].anable) {
                     var order_test = true;
                     if (order.length) {
                         for (k = 0; k < order.length; k++) {
-                            if (order[k] == Team[i].ID) {
+                            if (order[k] == Team[i].id) {
                                 order_test = false;
                                 break;
                             }
@@ -18,7 +18,7 @@ function GetActualTeam() {
                     }
                     if (order_test) {
                         position = Team[i].Position;
-                        order[j] = Team[i].ID;
+                        order[j] = Team[i].id;
                     }
                 }
             }
@@ -41,7 +41,7 @@ function GetActualTeam() {
             HTML_code += '</td>';
 
             HTML_code += '<td align="center">';
-            HTML_code += '<span style="color: ' + Color[Team[i].Color].RGB + '; font-weight: 400;">' + Team[i].Name + '</span>' + '<br>';
+            HTML_code += '<span style="color: ' + Color[Team[i].color_index].rgb + '; font-weight: 400;">' + Team[i].name + '</span>' + '<br>';
             HTML_code += '</td>';
 
             HTML_code += '<td align="center">';

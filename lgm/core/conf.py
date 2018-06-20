@@ -35,62 +35,56 @@ DEFAULT_TEAM_NAMES = (
 DEFAULT_COLORS = (
     {
         'index': 0,
-        'name': 'black',
-        'css': '#000000',
-        'hw': '#000000',
-    },
-    {
-        'index': 1,
         'name': 'red',
         'css': '#FF0000',
         'hw': '#FF0000',
     },
     {
-        'index': 2,
+        'index': 1,
         'name': 'orange',
         'css': '#FFA500',
         'hw': '#FFA500',
     },
     {
-        'index': 3,
+        'index': 2,
         'name': 'yellow',
         'css': '#FFFF00',
         'hw': '#FFFF00',
     },
     {
-        'index': 4,
+        'index': 3,
         'name': 'green',
         'css': '#00FF00',
         'hw': '#00FF00',
     },
     {
-        'index': 5,
+        'index': 4,
         'name': 'aqua',
         'css': '#00FFFF',
         'hw': '#00FFFF',
     },
     {
-        'index': 6,
+        'index': 5,
         'name': 'blue',
         'css': '#0000FF',
         'hw': '#0000FF',
     },
     {
-        'index': 7,
+        'index': 6,
         'name': 'purple',
         'css': '#FF00FF',
         'hw': '#FF00FF',
     },
     {
-        'index': 8,
+        'index': 7,
         'name': 'pink',
         'css': '#FFC0CB',
         'hw': '#FFC0CB',
     },
 )
 
+"""
 COLOR = (
-    '#000000',  # black
     '#FF0000',  # red
     '#FFA500',  # orange
     '#FFFF00',  # yellow
@@ -99,7 +93,7 @@ COLOR = (
     '#0000FF',  # blue
     '#FF00FF',  # purple
     '#FFC0CB',  # pink
-)
+)"""
 
 # bodování hry
 SCORE_KILL_OPPONENTS = 100

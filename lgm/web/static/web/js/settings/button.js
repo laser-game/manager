@@ -8,9 +8,9 @@ $(document).ready(function () {
     // clicknutí na tlačítko vyčistit
     $("#clear").click(function () {
         for (i = 0; i < Player.length; i++) {
-            Player[i].Name = "";
-            Player[i].Color = 0;
-            Player[i].Available = false;
+            Player[i].name = "";
+            Player[i].color_index = 0;
+            Player[i].anable = false;
         }
         PlayerSet();
         ColorCounter();
@@ -20,21 +20,23 @@ $(document).ready(function () {
     $("#turn-vests").click(function () {
         PlayerGet();
 
-        var ColorReady = 0;
-        for (i = 1; i < Color.length; i++) {
-            if (Color[i].Available) {
-                ColorReady = i;
+        var color_ready = 0;
+        var color_is_enable = false;
+        for (i = 0; i < Color.length; i++) {
+            if (Color[i].anable) {
+                color_ready = i;
+                color_is_enable = true;
                 break;
             }
 
         }
-        if (ColorReady) {
+        if (color_is_enable) {
             for (i = 0; i < Player.length; i++) {
-                if (Player[i].Name == "") {
-                    Player[i].Name = "Player" + (i + 1).toString();
+                if (Player[i].name == "") {
+                    Player[i].name = "Player" + (i + 1).toString();
                 }
-                Player[i].Color = ColorReady;
-                Player[i].Available = true;
+                Player[i].color_index = color_ready;
+                Player[i].anable = true;
             }
         }
 
@@ -44,37 +46,37 @@ $(document).ready(function () {
 
     // rozdělení teamů
     $("#split").click(function () {
-        var PlayerReady = [];
-        var ColorReady = [];
+        var player_ready = [];
+        var color_ready = [];
 
         for (i = 0; i < Player.length; i++) {
-            if (Player[i].Available) {
-                PlayerReady.push(i);
+            if (Player[i].anable) {
+                player_ready.push(i);
             }
         }
 
-        for (i = 1; i < Color.length; i++) {
-            if (Color[i].Available) {
-                ColorReady.push(i);
+        for (i = 0; i < Color.length; i++) {
+            if (Color[i].anable) {
+                color_ready.push(i);
             }
         }
 
         // pokud není vybrána žádná barva nebo žádný hráč
-        if (ColorReady.length == 0 || PlayerReady.length == 0) {
+        if (color_ready.length == 0 || player_ready.length == 0) {
             for (i = 0; i < Player.length; i++) {
-                Player[i].Color = 0;
+                Player[i].anable = false;
             }
         }
         // vytvořme teamy
         else {
-            var TeamMembers = parseInt(PlayerReady.length / ColorReady.length);
-            if (ColorReady.length > PlayerReady.length) {
+            var TeamMembers = parseInt(player_ready.length / color_ready.length);
+            if (color_ready.length > player_ready.length) {
                 TeamMembers = 1;
             }
 
-            for (i = 0, c = 0; i < PlayerReady.length; i++) {
-                Player[PlayerReady[i]].Color = ColorReady[c];
-                if ((i + 1) % TeamMembers == 0 && c + 1 < ColorReady.length) {
+            for (i = 0, c = 0; i < player_ready.length; i++) {
+                Player[player_ready[i]].color_index = color_ready[c];
+                if ((i + 1) % TeamMembers == 0 && c + 1 < color_ready.length) {
                     ++c;
                 }
             }
