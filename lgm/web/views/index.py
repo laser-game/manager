@@ -7,6 +7,8 @@ from pika.adapters.blocking_connection import BlockingChannel
 from core.conf import core_settings
 from core.messages.connection import connection
 
+from uuid import uuid4
+from django.http import JsonResponse
 
 @login_required
 def settings(request):
