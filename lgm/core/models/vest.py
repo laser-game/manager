@@ -12,7 +12,7 @@ class Vest(BaseModel):
     has_failure = models.BooleanField(_('Has failure'))
 
     def __str__(self):
-        return str(self.index)
+        return str(self.address)
 
     class Meta(object):
         verbose_name = _('Vest')
