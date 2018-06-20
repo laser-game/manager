@@ -96,7 +96,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: 'POST',
-            url: '/game-config',
+            url: '/api/game-config',
             data: JSON.stringify(config),
             success: function (data) {
                 console.log(data.state);
