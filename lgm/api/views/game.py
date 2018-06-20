@@ -1,12 +1,11 @@
 from django.http import HttpResponse
+import json
 
 
 def game_config(request):
     if request.method == "POST" and request.is_ajax():
-        for key in request.POST:
-            print(key)
-            value = request.POST[key]
-            print(value)
+        config = json.loads(request.body)
+        print(config['SetGame'])
 
         print('OK')
         return HttpResponse('ok')
