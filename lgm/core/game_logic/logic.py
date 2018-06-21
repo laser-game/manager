@@ -27,8 +27,6 @@ def set_game(config):
     dat_game.start = datetime.today()
     dat_game.save()
 
-
-
     for player in players:
         if player['enable']:
             print(player)
@@ -36,7 +34,8 @@ def set_game(config):
             dat_player.name = player['name']
             dat_player.save()
 
-            color = TypeColor.objects.all().filter(index=player['color_index'])[0]
+            color = TypeColor.objects.all().filter(
+                index=player['color_index'])[0]
             vest = Vest.objects.all().filter(address=player['address'])[0]
 
             dat_game_player = GamePlayer()
