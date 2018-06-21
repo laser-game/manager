@@ -21,8 +21,7 @@ def set_game(config):
     print(teams)
 
     dat_game = Game()
-    dat_game.game_type_game = TypeGame.objects.all()[0]
-    dat_game.type_game_id = TypeGame.objects.all()[0].id
+    dat_game.type_game = TypeGame.objects.all()[0]
     dat_game.state = 'S'
     dat_game.start = datetime.today()
     dat_game.save()
