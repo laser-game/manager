@@ -3,6 +3,7 @@ from datetime import timedelta
 from django.db import migrations
 from django.db.migrations import RunPython
 
+from core.conf import core_settings
 from core.models import TypeColor, TypeEvent, TypeGame, TypeSwitch, Vest
 
 
@@ -187,7 +188,7 @@ def insert_type_switch(schema, apps):
 
 
 def insert_vest(schema, apps):
-    for i in range(16):
+    for i in range(core_settings.MIN_PLAYERS, core_settings.MAX_PLAYERS + 1):
         vest = Vest()
         vest.address = i
         vest.battery = 0
