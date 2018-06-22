@@ -1,6 +1,6 @@
 from ..models import TypeColor, Event, TypeEvent, Game, TypeGame, GamePlayer, Player, Switch, TypeGameSwitch, TypeSwitch, Team, Vest
 
-from datetime import datetime
+from django.utils import timezone
 
 
 def set_game(config):
@@ -23,7 +23,7 @@ def set_game(config):
     dat_game = Game()
     dat_game.type_game = TypeGame.objects.all()[0]
     dat_game.state = 'S'
-    dat_game.start = datetime.today()
+    dat_game.start = timezone.now()
     dat_game.save()
 
     for player in players:
