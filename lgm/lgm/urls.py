@@ -17,7 +17,10 @@ from django.contrib import admin
 from django.urls import include, path
 
 
+from web.views.favicon import favicon
+
 urlpatterns = [
+    path('favicon.ico', favicon, name='favicon'),
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
     path('', include('web.urls')),
