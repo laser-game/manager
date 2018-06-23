@@ -2,12 +2,12 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils.translation import ugettext as _
 
+from .base import BaseModel
 from ..conf import core_settings
 from ..utils.validators import MaxDurationValidator, MinDurationValidator
-from .base import BaseModel
 
 
-class GameConfigurationFieldsMixin(object):
+class GameConfigurationBaseModel(BaseModel):
     GAME_MODE_SOLO = 'S'
     GAME_MODE_TEAM = 'T'
     GAME_MODE = (
@@ -62,8 +62,11 @@ class GameConfigurationFieldsMixin(object):
     enable_vest_light = models.BooleanField(_('Enable vest light'))
     enable_immorality = models.BooleanField(_('Enable immorality'))
 
+    class Meta(object):
+        abstract = True
 
-class TypeGame(BaseModel, GameConfigurationFieldsMixin):
+
+class TypeGame(GameConfigurationBaseModel):
     def __str__(self):
         return self.name
 
@@ -72,7 +75,7 @@ class TypeGame(BaseModel, GameConfigurationFieldsMixin):
         verbose_name_plural = _('Types games')
 
 
-class Game(BaseModel, GameConfigurationFieldsMixin):
+class Game(GameConfigurationBaseModel):
     STATE_SET = 'S'
     STATE_PLAY = 'P'
     STATE_BREAK = 'B'
