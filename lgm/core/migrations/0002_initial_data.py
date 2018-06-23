@@ -193,7 +193,7 @@ def insert_vest(schema, apps):
         vest.address = i
         vest.battery = 0
         vest.enable = True
-        vest.online = False
+        vest.online = True
         vest.has_failure = False
         vest.save()
 

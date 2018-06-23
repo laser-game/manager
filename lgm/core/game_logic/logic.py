@@ -1,4 +1,5 @@
 from django.utils import timezone
+from datetime import timedelta
 
 from ..models import (
     TypeColor,
@@ -19,9 +20,19 @@ def set_game(config):
         return 'error'
 
     dat_game = Game()
-    dat_game.type_game = TypeGame.objects.filter(name=game_config['name']).first()
     dat_game.state = Game.STATE_SET
-    dat_game.start = timezone.now()
+    dat_game.created_time = timezone.now()
+
+    dat_game.name = game_config['name']
+    dat_game.game_mode = game_config['game_mode']
+    dat_game.button_action_mode = game_config['button_action_mode']
+    dat_game.sound_set_type = TypeGame.SOUND_SET_TYPE_CZ
+    dat_game.game_duration = timedelta(seconds=game_config['game_duration'] * 60)
+    dat_game.death_duration = timedelta(seconds=game_config['death_duration'])
+    dat_game.batch_shots_count = game_config['batch_shots_count']
+    dat_game.enable_sound = game_config['enable_sound']
+    dat_game.enable_vest_light = game_config['enable_vest_light']
+    dat_game.enable_immorality = game_config['enable_immorality']
     dat_game.save()
 
     teams_names = []
@@ -69,19 +80,19 @@ def set_game(config):
 
 
 def start_game():
-    dat_game = Game.objects.filter(state=Game.STATE_SET).order_by('-start')
+    dat_game = Game.objects.filter(state=Game.STATE_SET).order_by('-started_time')
     if not dat_game.exists() or Game.objects.filter(state='P').exists():
         return 'error'
 
     dat_game = dat_game.first()
     dat_game.state = Game.STATE_PLAY
-    dat_game.start = timezone.now()
+    dat_game.started_time = timezone.now()
     dat_game.save()
     return 'ok'
 
 
 def stop_game():
-    dat_game = Game.objects.filter(state=Game.STATE_PLAY).order_by('-start')
+    dat_game = Game.objects.filter(state=Game.STATE_PLAY).order_by('-started_time')
     if not dat_game.exists():
         return 'error'
 

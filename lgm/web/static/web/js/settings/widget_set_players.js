@@ -39,8 +39,6 @@ $(document).ready(function () {
         var index = player_address_to_index(id);
         var color_is_enable = false;
 
-
-
         for (i = Player[index].color_index + 1; i < Color.length; i++) {
             if (Color[i].enable) {
                 Player[index].color_index = i;

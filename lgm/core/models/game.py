@@ -14,16 +14,25 @@ class TypeGame(BaseModel):
         (GAME_MODE_SOLO, _('solo')),
         (GAME_MODE_TEAM, _('team')),
     )
+
+    BUTTON_ACTION_DISABLE = 'D'
+    BUTTON_ACTION_FUSE = 'F'
+    BUTTON_ACTION_FLASHLIGHT_WH = 'W'
+    BUTTON_ACTION_FLASHLIGHT_UV = 'U'
     BUTTON_ACTION_MODE = (
-        ('D', _('disable')),
-        ('F', _('fuse')),
-        ('W', _('white flashlight')),
-        ('U', _('ultra violet flashlight')),
+        (BUTTON_ACTION_DISABLE, _('disable')),
+        (BUTTON_ACTION_FUSE, _('fuse')),
+        (BUTTON_ACTION_FLASHLIGHT_WH, _('white flashlight')),
+        (BUTTON_ACTION_FLASHLIGHT_UV, _('ultra violet flashlight')),
     )
+
+    SOUND_SET_TYPE_CZ = 'CZ'
+    SOUND_SET_TYPE_EN = 'EN'
     SOUND_SET_TYPE = (
-        ('CZ', _('czech')),
-        ('EN', _('english')),
+        (SOUND_SET_TYPE_CZ, _('czech')),
+        (SOUND_SET_TYPE_EN, _('english')),
     )
+
     name = models.CharField(_('Name'), max_length=32)
     game_mode = models.CharField(_('Game mode'), max_length=1, choices=GAME_MODE)
     button_action_mode = models.CharField(_('Mode of button action'), max_length=1, choices=BUTTON_ACTION_MODE)
@@ -61,9 +70,7 @@ class TypeGame(BaseModel):
         verbose_name_plural = _('Types games')
 
 
-class Game(BaseModel):
-    type_game = models.ForeignKey('core.TypeGame', related_name='game_type_game', on_delete=models.PROTECT)
-
+class Game(TypeGame):
     STATE_SET = 'S'
     STATE_PLAY = 'P'
     STATE_BREAK = 'B'
@@ -75,11 +82,14 @@ class Game(BaseModel):
         (STATE_BREAK, _('break')),
         (STATE_DONE, _('done')),
     )
+
     state = models.CharField(_('State of game'), max_length=1, choices=GAME_STATE)
-    start = models.DateTimeField(_('Start of game'))
+    created_time = models.DateTimeField(_('Created time'))
+    started_time = models.DateTimeField(_('Started time'), null=True, blank=True)
+    elapsed_time = models.DurationField(_('Elapsed time'), null=True, blank=True)
 
     def __str__(self):
-        return self.type_game.name + ' ' + str(self.start)
+        return self.name + ' ' + str(self.created_time)
 
     class Meta(object):
         verbose_name = _('Game')

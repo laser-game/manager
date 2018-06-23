@@ -98,8 +98,8 @@ class EventInline(admin.TabularInline):
 
 @admin.register(Game)
 class GameAdmin(admin.ModelAdmin):
-    ordering = ('-start',)
-    list_display = ('type_game', 'state', 'start')
+    ordering = ('-started_time',)
+    list_display = ('state', 'started_time')
     inlines = [GamePlayerInline, EventInline]
 
 
