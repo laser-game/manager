@@ -25,17 +25,17 @@ def type_game(request):
 
 
 def color(request):
-    return JsonResponse(list(TypeColor.objects.all().values_list('css', flat=True), safe=False))
+    return JsonResponse(list(TypeColor.objects.all().order_by('index').values_list('css', flat=True), safe=False))
 
 
 def default_team_name(request):
-    return JsonResponse(list(TypeColor.objects.all().values_list('name', flat=True), safe=False))
+    return JsonResponse(list(TypeColor.objects.all().order_by('index').values_list('name', flat=True), safe=False))
 
 
 def default(request):
     context = {
-        'COLOR': list(TypeColor.objects.all().values_list('css', flat=True)),
-        'DEFAULT_TEAM_NAMES': list(TypeColor.objects.all().values_list('name', flat=True)),
+        'COLOR': list(TypeColor.objects.all().order_by('index').values_list('css', flat=True)),
+        'DEFAULT_TEAM_NAMES': list(TypeColor.objects.all().order_by('index').values_list('name', flat=True)),
         'MIN_PLAYERS': core_settings.MIN_PLAYERS,
         'MAX_PLAYERS': core_settings.MAX_PLAYERS,
         'MIN_NAME_LEN': core_settings.MIN_NAME_LEN,
