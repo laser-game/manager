@@ -91,6 +91,10 @@ class Game(TypeGame):
     def __str__(self):
         return self.name + ' ' + str(self.created_time)
 
+    @property
+    def player_count(self):
+        return str(len(self.game_player_game.all()))
+
     class Meta(object):
         verbose_name = _('Game')
         verbose_name_plural = _('Games')
