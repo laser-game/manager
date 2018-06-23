@@ -8,9 +8,11 @@ from .base import BaseModel
 
 
 class TypeGame(BaseModel):
+    GAME_MODE_SOLO = 'S'
+    GAME_MODE_TEAM = 'T'
     GAME_MODE = (
-        ('S', _('solo')),
-        ('T', _('team')),
+        (GAME_MODE_SOLO, _('solo')),
+        (GAME_MODE_TEAM, _('team')),
     )
     BUTTON_ACTION_MODE = (
         ('D', _('disable')),
@@ -62,11 +64,16 @@ class TypeGame(BaseModel):
 class Game(BaseModel):
     type_game = models.ForeignKey('core.TypeGame', related_name='game_type_game', on_delete=models.PROTECT)
 
+    STATE_SET = 'S'
+    STATE_PLAY = 'P'
+    STATE_BREAK = 'B'
+    STATE_DONE = 'D'
+
     GAME_STATE = (
-        ('S', _('set')),
-        ('P', _('play')),
-        ('B', _('break')),
-        ('D', _('done')),
+        (STATE_SET, _('set')),
+        (STATE_PLAY, _('play')),
+        (STATE_BREAK, _('break')),
+        (STATE_DONE, _('done')),
     )
     state = models.CharField(_('State of game'), max_length=1, choices=GAME_STATE)
     start = models.DateTimeField(_('Start of game'))
