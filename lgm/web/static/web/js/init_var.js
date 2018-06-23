@@ -18,9 +18,9 @@ function InitVariables() {
         Team[i].enable = false;
     }
 
-    for (i = 0; i < DEFAULT.MAX_PLAYERS; i++) {
+    for (i = 0; i < DEFAULT.VEST.length; i++) {
         Player[i] = new Object();
-        Player[i].address = i;
+        Player[i].address = DEFAULT.VEST[i];
         Player[i].name = "";
         Player[i].color_index = -1;
         Player[i].battery = 100;

@@ -10,14 +10,14 @@
 
 {% block content %}
     <table>
-        {% for i in MAX_PLAYERS|range %}
+        {% for address in VEST %}
             <tr>
-                <td align="right" class="number">{{ forloop.counter }}</td>
+                <td align="right" class="number">{{ address }}</td>
                 <td align="center" style="width: 3em;">
-                    <button class="player-erb" id="player-erb-{{ forloop.counter0 }}"></button>
+                    <button class="player-erb" id="player-erb-{{ address }}"></button>
                 </td>
-                <td align="center"><input type="text" class="player-name" id="player-name-{{ forloop.counter0 }}" value="Player{{ forloop.counter }}"></td>
-                <td align="right"><span class="number" id="player-bat-{{ forloop.counter0 }}">100%</span></td>
+                <td align="center"><input type="text" class="player-name" id="player-name-{{ address }}" value="Player{{ address }}"></td>
+                <td align="right"><span class="number" id="player-bat-{{ address }}">100%</span></td>
             </tr>
         {% endfor %}
     </table>
