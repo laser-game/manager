@@ -9,6 +9,9 @@ class Team(BaseModel):
 
     name = models.CharField(_('Name'), max_length=32)
 
+    def __str__(self):
+        return self.name
+
     class Meta(object):
         verbose_name = _('Team')
         verbose_name_plural = _('Teams')

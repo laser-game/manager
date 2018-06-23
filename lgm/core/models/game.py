@@ -71,6 +71,9 @@ class Game(BaseModel):
     state = models.CharField(_('State of game'), max_length=1, choices=GAME_STATE)
     start = models.DateTimeField(_('Start of game'))
 
+    def __str__(self):
+        return self.type_game.name + ' ' + str(self.start)
+
     class Meta(object):
         verbose_name = _('Game')
         verbose_name_plural = _('Games')
