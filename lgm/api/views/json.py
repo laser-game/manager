@@ -27,7 +27,7 @@ def type_game(request):
 def color(request):
     return JsonResponse(
         tuple(
-            TypeColor.objects.all().order_by('index').values_list('css', flat=True)
+            TypeColor.objects.order_by('index').values_list('css', flat=True)
         ),
         safe=False
     )
