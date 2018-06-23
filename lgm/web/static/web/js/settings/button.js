@@ -111,11 +111,11 @@ $(document).ready(function () {
     // start hry
     $("#start-game").click(function () {
         config = Object();
-        config.Play = true;
+        config.play = true;
 
         $.ajax({
             type: 'POST',
-            url: '/game-cmd',
+            url: '/api/game-cmd',
             data: JSON.stringify(config),
             success: function (data) {
                 console.log(data.state);
@@ -128,11 +128,11 @@ $(document).ready(function () {
     // konec hry
     $("#end-game").click(function () {
         config = Object();
-        config.Play = false;
+        config.play = false;
 
         $.ajax({
             type: 'POST',
-            url: '/game-cmd',
+            url: '/api/game-cmd',
             data: JSON.stringify(config),
             success: function (data) {
                 console.log(data.state);
