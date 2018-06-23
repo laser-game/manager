@@ -7,7 +7,7 @@ from ..utils.validators import MaxDurationValidator, MinDurationValidator
 from .base import BaseModel
 
 
-class TypeGame(BaseModel):
+class GameConfigurationFieldsMixin(object):
     GAME_MODE_SOLO = 'S'
     GAME_MODE_TEAM = 'T'
     GAME_MODE = (
@@ -62,6 +62,8 @@ class TypeGame(BaseModel):
     enable_vest_light = models.BooleanField(_('Enable vest light'))
     enable_immorality = models.BooleanField(_('Enable immorality'))
 
+
+class TypeGame(BaseModel, GameConfigurationFieldsMixin):
     def __str__(self):
         return self.name
 
@@ -70,7 +72,7 @@ class TypeGame(BaseModel):
         verbose_name_plural = _('Types games')
 
 
-class Game(TypeGame):
+class Game(BaseModel, GameConfigurationFieldsMixin):
     STATE_SET = 'S'
     STATE_PLAY = 'P'
     STATE_BREAK = 'B'
@@ -93,7 +95,7 @@ class Game(TypeGame):
 
     @property
     def player_count(self):
-        return str(len(self.game_player_game.all()))
+        return len(self.game_player_game.all())
 
     class Meta(object):
         verbose_name = _('Game')

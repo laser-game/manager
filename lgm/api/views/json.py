@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 
 from core.conf import core_settings
-from core.models import TypeGame, TypeColor, Vest
+from core.models import TypeGame, TypeColor, Vest, Game
 
 
 def type_game(request):
@@ -49,6 +49,28 @@ def vest(request):
         ),
         safe=False
     )
+
+
+def actual_game(request):
+    context = {
+        'name': '-',
+        'player_count': '-',
+        'started_time': '-',
+        'elapsed_time': '-',
+    }
+    dat_game = Game.objects.all().filter(state=Game.STATE_PLAY)
+    if len(dat_game) == 0:
+        dat_game = Game.objects.all().filter(state=Game.STATE_SET)
+        if len(dat_game) == 0:
+            return JsonResponse(context, safe=False)
+    dat_game = dat_game.first()
+    context['name'] = dat_game.name
+    context['player_count'] = str(dat_game.player_count)
+    if dat_game.started_time is not None:
+        context['started_time'] = dat_game.started_time.strftime('%H:%M')
+
+    context['elapsed_time'] = str(dat_game.elapsed_time)
+    return JsonResponse(context, safe=False)
 
 
 def default(request):
