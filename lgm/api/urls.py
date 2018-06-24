@@ -6,8 +6,8 @@ from .views import (
     default,
     default_team_name,
     type_game,
-    game_config,
-    game_cmd,
+    GameConfig,
+    GameCMD,
     actual_game
 )
 
@@ -18,7 +18,7 @@ urlpatterns = [
     path('vest', vest, name='vest'),
     path('default-team-name', default_team_name, name='default_team_name'),
     path('default', default, name='default'),
-    path('game-config', game_config, name='game_config'),
-    path('game-cmd', game_cmd, name='game_cmd'),
+    path('game-config', GameConfig.as_view(), name='game_config'),
+    path('game-cmd', GameCMD.as_view(), name='game_cmd'),
     path('actual-game', actual_game, name='actual_game'),
 ]
