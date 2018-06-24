@@ -1,2 +1,2 @@
-from .json import *
-from .game import *
+from .settings import *
+from .stream import *

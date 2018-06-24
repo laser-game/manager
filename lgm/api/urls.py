@@ -9,7 +9,8 @@ from .views import (
     GameConfig,
     GameCMD,
     actual_game,
-    actual_players
+    actual_players,
+    actual_teams
 )
 
 
@@ -23,4 +24,5 @@ urlpatterns = [
     path('game-cmd', GameCMD.as_view(), name='game_cmd'),
     path('actual-game', actual_game, name='actual_game'),
     path('actual-players', actual_players, name='actual_players'),
+    path('actual-teams', actual_teams, name='actual_teams'),
 ]

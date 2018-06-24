@@ -12,6 +12,7 @@ function GetActualTeam() {
 
         for (i in Teams) {
             Team = Teams[i]
+
             HTML_code += '<tr>';
 
             HTML_code += '<td align="center">';
