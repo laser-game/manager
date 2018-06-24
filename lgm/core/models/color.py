@@ -10,7 +10,6 @@ class TypeColor(BaseModel):
     css = models.CharField(_('RGB code for CSS'), max_length=7)
     index = models.PositiveSmallIntegerField(_('Index of color'))
 
-
     def __str__(self):
         return self.name
 

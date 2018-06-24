@@ -35,31 +35,35 @@ function SetGameDefault() {
     Check.set("SetGame-Immorality", SetGame.enable_immorality);
     Check.set("SetGame-OffLED", !SetGame.enable_vest_light);
 
-    var fn;
     switch(SetGame.button_action_mode) {
     case 'F':
-        fn = 0;
+        Radio.set("Fn", 0);
         break;
     case 'W':
-        fn = 1;
+        Radio.set("Fn", 1);
         break;
     case 'U':
-        fn = 2;
+        Radio.set("Fn", 2);
         break;
     default:
-        fn = 3;
+        Radio.set("Fn", 3);
     }
-    Radio.set("Fn", fn);
 
-    var game_mode;
     switch(SetGame.game_mode) {
     case 'S':
-        game_mode = 0;
+        Radio.set("GameType", 0);
         break;
     default:
-        game_mode = 1;
+        Radio.set("GameType", 1);
     }
-    Radio.set("GameType", game_mode);
+
+    switch(SetGame.sound_set_type) {
+    case 'CZ':
+        Radio.set("SoundSetType", 0);
+        break;
+    default:
+        Radio.set("SoundSetType", 1);
+    }
 }
 
 // načtení nastavení hry
@@ -75,30 +79,34 @@ $(document).ready(function () {
         SetGame.enable_immorality = Check.get('SetGame-Immorality')
         SetGame.enable_vest_light = !Check.get('SetGame-OffLED')
 
-        var fn;
         switch(Radio.get('Fn')) {
         case 0:
-            fn = 'F';
+            SetGame.button_action_mode = 'F';
             break;
         case 1:
-            fn = 'W';
+            SetGame.button_action_mode = 'W';
             break;
         case 2:
-            fn = 'U';
+            SetGame.button_action_mode = 'U';
             break;
         default:
-            fn = 'D';
+            SetGame.button_action_mode = 'D';
         }
-        SetGame.button_action_mode = fn;
 
-        var game_mode;
         switch(Radio.get("GameType")) {
         case 0:
-            game_mode = 'S';
+            SetGame.game_mode = 'S';
             break;
         default:
-            game_mode = 'T';
+            SetGame.game_mode = 'T';
         }
-        SetGame.game_mode = game_mode;
+
+        switch(Radio.get('SoundSetType')) {
+        case 0:
+            SetGame.sound_set_type = 'CZ';
+            break;
+        default:
+            SetGame.sound_set_type = 'EN';
+        }
     });
 });

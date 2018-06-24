@@ -16,6 +16,7 @@ def type_game(request):
                 'game_duration': int(tg.game_duration.total_seconds()),
                 'death_duration': int(tg.death_duration.total_seconds()),
                 'batch_shots_count': tg.batch_shots_count,
+                'sound_set_type': tg.sound_set_type,
                 'enable_sound': tg.enable_sound,
                 'enable_vest_light': tg.enable_vest_light,
                 'enable_immorality': tg.enable_immorality,

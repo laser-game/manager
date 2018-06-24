@@ -26,7 +26,7 @@ def set_game(config):
     dat_game.name = game_config['name']
     dat_game.game_mode = game_config['game_mode']
     dat_game.button_action_mode = game_config['button_action_mode']
-    dat_game.sound_set_type = TypeGame.SOUND_SET_TYPE_CZ
+    dat_game.sound_set_type = game_config['sound_set_type']
     dat_game.game_duration = timedelta(seconds=game_config['game_duration'])
     dat_game.death_duration = timedelta(seconds=game_config['death_duration'])
     dat_game.batch_shots_count = game_config['batch_shots_count']
