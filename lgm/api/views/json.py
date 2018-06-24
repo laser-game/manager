@@ -1,4 +1,6 @@
 from django.http import JsonResponse
+from django.utils import timezone
+from datetime import timedelta
 
 from core.conf import core_settings
 from core.models import TypeGame, TypeColor, Vest, Game
@@ -58,18 +60,24 @@ def actual_game(request):
         'started_time': '-',
         'elapsed_time': '-',
     }
-    dat_game = Game.objects.filter(state=Game.STATE_PLAY)
-    if len(dat_game) == 0:
-        dat_game = Game.objects.filter(state=Game.STATE_SET)
-        if len(dat_game) == 0:
-            return JsonResponse(context, safe=False)
-    dat_game = dat_game.first()
+    dat_game = Game.objects.filter(state=Game.STATE_PLAY).first()
+    if dat_game is None:
+        return JsonResponse(context, safe=False)
+
+    dat_game.elapsed_time = dat_game.started_time + dat_game.game_duration - timezone.now()
+    if dat_game.elapsed_time.total_seconds() < 0:
+        dat_game.elapsed_time = timedelta(seconds=0)
+    dat_game.save()
+
     context['name'] = dat_game.name
     context['player_count'] = str(dat_game.player_count)
     if dat_game.started_time is not None:
         context['started_time'] = dat_game.started_time.strftime('%H:%M')
-
-    context['elapsed_time'] = str(dat_game.elapsed_time)
+    if dat_game.elapsed_time is not None:
+        context['elapsed_time'] = '{:02d}:{:02d}'.format(
+            dat_game.elapsed_time.seconds // 60,
+            dat_game.elapsed_time.seconds % 60
+        )
     return JsonResponse(context, safe=False)
 
 
