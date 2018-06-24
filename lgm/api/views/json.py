@@ -36,7 +36,7 @@ def color(request):
 def default_team_name(request):
     return JsonResponse(
         tuple(
-            TypeColor.objects.all().order_by('index').values_list('name', flat=True)
+            TypeColor.objects.order_by('index').values_list('name', flat=True)
         ),
         safe=False
     )
@@ -45,7 +45,7 @@ def default_team_name(request):
 def vest(request):
     return JsonResponse(
         tuple(
-            Vest.objects.all().order_by('address').filter(enable=True, online=True).values_list('address', flat=True)
+            Vest.objects.order_by('address').filter(enable=True, online=True).values_list('address', flat=True)
         ),
         safe=False
     )
@@ -58,9 +58,9 @@ def actual_game(request):
         'started_time': '-',
         'elapsed_time': '-',
     }
-    dat_game = Game.objects.all().filter(state=Game.STATE_PLAY)
+    dat_game = Game.objects.filter(state=Game.STATE_PLAY)
     if len(dat_game) == 0:
-        dat_game = Game.objects.all().filter(state=Game.STATE_SET)
+        dat_game = Game.objects.filter(state=Game.STATE_SET)
         if len(dat_game) == 0:
             return JsonResponse(context, safe=False)
     dat_game = dat_game.first()
@@ -76,13 +76,13 @@ def actual_game(request):
 def default(request):
     context = {
         'VEST': tuple(
-            Vest.objects.all().order_by('address').filter(enable=True, online=True).values_list('address', flat=True)
+            Vest.objects.order_by('address').filter(enable=True, online=True).values_list('address', flat=True)
         ),
         'COLOR': tuple(
-            TypeColor.objects.all().order_by('index').values_list('css', flat=True)
+            TypeColor.objects.order_by('index').values_list('css', flat=True)
         ),
         'DEFAULT_TEAM_NAMES': tuple(
-            TypeColor.objects.all().order_by('index').values_list('name', flat=True)
+            TypeColor.objects.order_by('index').values_list('name', flat=True)
         ),
         'MIN_PLAYERS': core_settings.MIN_PLAYERS,
         'MAX_PLAYERS': core_settings.MAX_PLAYERS,

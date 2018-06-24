@@ -15,9 +15,9 @@ from django.http import JsonResponse
 @login_required
 def settings(request):
     context = {
-        'VEST': Vest.objects.all().order_by('address').filter(enable=True, online=True).values_list('address', flat=True),
-        'DEFAULT_TEAM_NAMES': TypeColor.objects.all().order_by('index').values_list('name', flat=True),
-        'COLOR': TypeColor.objects.all().order_by('index').values_list('css', flat=True),
+        'VEST': Vest.objects.order_by('address').filter(enable=True, online=True).values_list('address', flat=True),
+        'DEFAULT_TEAM_NAMES': TypeColor.objects.order_by('index').values_list('name', flat=True),
+        'COLOR': TypeColor.objects.order_by('index').values_list('css', flat=True),
     }
     return render(request, 'web/settings/index.html', context)
 
@@ -26,8 +26,8 @@ def settings(request):
 def stream(request):
     context = {
         'MAX_PLAYERS': core_settings.MAX_PLAYERS,
-        'DEFAULT_TEAM_NAMES': TypeColor.objects.all().order_by('index').values_list('name', flat=True),
-        'COLOR': TypeColor.objects.all().order_by('index').values_list('css', flat=True),
+        'DEFAULT_TEAM_NAMES': TypeColor.objects.order_by('index').values_list('name', flat=True),
+        'COLOR': TypeColor.objects.order_by('index').values_list('css', flat=True),
     }
     return render(request, 'web/stream/index.html', context)
 
@@ -36,8 +36,8 @@ def stream(request):
 def archive(request):
     context = {
         'MAX_PLAYERS': core_settings.MAX_PLAYERS,
-        'DEFAULT_TEAM_NAMES': TypeColor.objects.all().order_by('index').values_list('name', flat=True),
-        'COLOR': TypeColor.objects.all().order_by('index').values_list('css', flat=True),
+        'DEFAULT_TEAM_NAMES': TypeColor.objects.order_by('index').values_list('name', flat=True),
+        'COLOR': TypeColor.objects.order_by('index').values_list('css', flat=True),
     }
     return render(request, 'web/archive/index.html', context)
 
