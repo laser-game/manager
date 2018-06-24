@@ -3,7 +3,7 @@ from .event import Event, TypeEvent
 from .game import Game, TypeGame
 from .player import GamePlayer, Player
 from .switch import Switch, TypeGameSwitch, TypeSwitch
-from .team import Team
+from .team import Team, GameTeam
 from .vest import Vest
 
 
@@ -13,6 +13,6 @@ __all__ = [
     'TypeGame', 'Game',
     'Player', 'GamePlayer',
     'TypeSwitch', 'TypeGameSwitch', 'Switch',
-    'Team',
+    'Team', 'GameTeam',
     'Vest',
 ]

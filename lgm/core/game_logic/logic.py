@@ -6,6 +6,7 @@ from ..models import (
     Game,
     TypeGame,
     GamePlayer,
+    GameTeam,
     Player, Team,
     Vest
 )
@@ -45,11 +46,21 @@ def set_game(config):
             if not dat_team.exists():
                 dat_team = Team()
                 dat_team.name = team['name']
-                dat_team.type_color = TypeColor.objects.filter(index=team['color_index']).first()
+                dat_team.save()
             else:
                 dat_team = dat_team.first()
-                dat_team.type_color = TypeColor.objects.filter(index=team['color_index']).first()
-            dat_team.save()
+
+            dat_game_team = GameTeam()
+            dat_game_team.game = dat_game
+            dat_game_team.team = dat_team
+            dat_game_team.type_color = TypeColor.objects.filter(index=team['color_index']).first()
+            dat_game_team.position = 1
+            dat_game_team.points = 0
+            dat_game_team.shots_count = 0
+            dat_game_team.kills_count = 0
+            dat_game_team.deaths_count = 0
+            dat_game_team.friendly_kills_count = 0
+            dat_game_team.save()
 
     for player in players:
         dat_player = Player()
@@ -57,8 +68,8 @@ def set_game(config):
         dat_player.save()
 
         dat_game_player = GamePlayer()
-        dat_game_player.player = dat_player
         dat_game_player.game = dat_game
+        dat_game_player.player = dat_player
         dat_game_player.type_color = TypeColor.objects.filter(index=player['color_index']).first()
         dat_game_player.vest = Vest.objects.filter(address=player['address']).first()
         dat_game_player.position = 1
@@ -69,12 +80,11 @@ def set_game(config):
         dat_game_player.friendly_kills_count = 0
 
         if is_team_game:
-            dat_team = Team.objects.filter(
+            dat_game_team = GameTeam.objects.filter(
                 type_color__name__in=teams_names,
                 type_color__index=player['color_index']
             ).first()
-            dat_game_player.team = dat_team
-
+            dat_game_player.team = dat_game_team
         dat_game_player.save()
 
     return 'ok'

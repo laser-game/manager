@@ -5,6 +5,7 @@ from core.models import (
     Event,
     Game,
     GamePlayer,
+    GameTeam,
     Player,
     Switch,
     Team,
@@ -92,6 +93,10 @@ class GamePlayerInline(admin.TabularInline):
     model = GamePlayer
 
 
+class GameTeamInline(admin.TabularInline):
+    model = GameTeam
+
+
 class EventInline(admin.TabularInline):
     model = Event
 
@@ -100,7 +105,7 @@ class EventInline(admin.TabularInline):
 class GameAdmin(admin.ModelAdmin):
     ordering = ('-created_time',)
     list_display = ('name', 'state', 'game_mode', 'created_time', 'started_time', 'elapsed_time', 'player_count')
-    inlines = [GamePlayerInline, EventInline]
+    inlines = [GamePlayerInline, GameTeamInline, EventInline]
 
 
 @admin.register(Player)
@@ -110,14 +115,5 @@ class PlayerAdmin(admin.ModelAdmin):
 
 @admin.register(Team)
 class TeamAdmin(admin.ModelAdmin):
-    @staticmethod
-    def color_display(obj: TypeColor):
-        return format_html(
-            """
-            <svg viewBox="0 -7 90 107" style="height: 1em; fill: {};">
-                <polygon points="0,0 90,0 85,80 45,100 5,80"/>
-            </svg>""",
-            obj.type_color.css
-        )
-
-    list_display = ('name', 'color_display')
+    list_display = ('name',)
+    inlines = [GameTeamInline]
