@@ -6,7 +6,6 @@ $(document).ready(function () {
             $("#actual-players").text(data.player_count);
             $("#actual-start-time").text(data.started_time);
             $("#actual-time-to-end").text(data.elapsed_time);
-            console.log(data);
         });
 
         setTimeout(GetActualGame, 1000);
