@@ -85,21 +85,26 @@ def actual_game(request):
 def actual_players(request):
     dat_game = Game.objects.filter(state=Game.STATE_PLAY).first()
     if dat_game is None:
-        dat_game = Game.objects.filter(state=Game.STATE_DONE).first()
-    return JsonResponse(
-        [
-            {
-                'name': game_player.player.name,
-                'position': game_player.position,
-                'points': game_player.points,
-                'kills_count': game_player.kills_count,
-                'deaths_count': game_player.deaths_count,
-                'color': game_player.type_color.css,
-            }
-            for game_player in dat_game.game_player_game.order_by('position')
-        ],
-        safe=False, json_dumps_params={'indent': 4}
-    )
+        dat_game = Game.objects.order_by('-started_time').filter(state=Game.STATE_DONE).first()
+    if dat_game is None:
+        dat_game = Game.objects.order_by('-started_time').filter(state=Game.STATE_BREAK).first()
+    if dat_game is None:
+        return JsonResponse([], safe=False, json_dumps_params={'indent': 4})
+    else:
+        return JsonResponse(
+            [
+                {
+                    'name': game_player.player.name,
+                    'position': game_player.position,
+                    'points': game_player.points,
+                    'kills_count': game_player.kills_count,
+                    'deaths_count': game_player.deaths_count,
+                    'color': game_player.type_color.css,
+                }
+                for game_player in dat_game.game_player_game.order_by('position')
+            ],
+            safe=False, json_dumps_params={'indent': 4}
+        )
 
 
 def default(request):
