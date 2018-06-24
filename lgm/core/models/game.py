@@ -94,7 +94,7 @@ class Game(GameConfigurationBaseModel):
     elapsed_time = models.DurationField(_('Elapsed time'), null=True, blank=True)
 
     def __str__(self):
-        return self.name + ' ' + str(self.created_time)
+        return '{} - {} - Players {}'.format(self.name, self.created_time.strftime('%Y/%m/%d - %H:%M:%S'), self.player_count)
 
     @property
     def player_count(self):
