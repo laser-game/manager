@@ -46,7 +46,7 @@ def insert_type_colors(schema, apps):
     type_color = TypeColor()
     type_color.index = 5
     type_color.name = 'blue'
-    type_color.css = '#0000FF'
+    type_color.css = '#0099FF'
     type_color.hw = '#0000FF'
     type_color.save()
 
