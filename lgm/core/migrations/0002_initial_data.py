@@ -78,7 +78,7 @@ def insert_type_game(schema, apps):
     type_game.game_mode = 'S'
     type_game.button_action_mode = 'F'
     type_game.sound_set_type = 'CZ'
-    type_game.game_duration = timedelta(seconds=15 * 60)
+    type_game.game_duration = timedelta(minutes=15)
     type_game.death_duration = timedelta(seconds=5)
     type_game.batch_shots_count = 1
     type_game.enable_sound = True
@@ -91,7 +91,7 @@ def insert_type_game(schema, apps):
     type_game.game_mode = 'T'
     type_game.button_action_mode = 'F'
     type_game.sound_set_type = 'CZ'
-    type_game.game_duration = timedelta(seconds=15 * 60)
+    type_game.game_duration = timedelta(minutes=15)
     type_game.death_duration = timedelta(seconds=5)
     type_game.batch_shots_count = 1
     type_game.enable_sound = True
@@ -104,7 +104,7 @@ def insert_type_game(schema, apps):
     type_game.game_mode = 'S'
     type_game.button_action_mode = 'F'
     type_game.sound_set_type = 'CZ'
-    type_game.game_duration = timedelta(seconds=15 * 60)
+    type_game.game_duration = timedelta(minutes=15)
     type_game.death_duration = timedelta(seconds=5)
     type_game.batch_shots_count = 1
     type_game.enable_sound = True
@@ -117,7 +117,7 @@ def insert_type_game(schema, apps):
     type_game.game_mode = 'T'
     type_game.button_action_mode = 'F'
     type_game.sound_set_type = 'CZ'
-    type_game.game_duration = timedelta(seconds=15 * 60)
+    type_game.game_duration = timedelta(minutes=15)
     type_game.death_duration = timedelta(seconds=5)
     type_game.batch_shots_count = 1
     type_game.enable_sound = True
@@ -130,7 +130,7 @@ def insert_type_game(schema, apps):
     type_game.game_mode = 'S'
     type_game.button_action_mode = 'W'
     type_game.sound_set_type = 'CZ'
-    type_game.game_duration = timedelta(seconds=15 * 60)
+    type_game.game_duration = timedelta(minutes=15)
     type_game.death_duration = timedelta(seconds=5)
     type_game.batch_shots_count = 1
     type_game.enable_sound = True
@@ -143,7 +143,7 @@ def insert_type_game(schema, apps):
     type_game.game_mode = 'T'
     type_game.button_action_mode = 'W'
     type_game.sound_set_type = 'CZ'
-    type_game.game_duration = timedelta(seconds=15 * 60)
+    type_game.game_duration = timedelta(minutes=15)
     type_game.death_duration = timedelta(seconds=5)
     type_game.batch_shots_count = 1
     type_game.enable_sound = True
@@ -156,7 +156,7 @@ def insert_type_game(schema, apps):
     type_game.game_mode = 'S'
     type_game.button_action_mode = 'U'
     type_game.sound_set_type = 'CZ'
-    type_game.game_duration = timedelta(seconds=15 * 60)
+    type_game.game_duration = timedelta(minutes=15)
     type_game.death_duration = timedelta(seconds=5)
     type_game.batch_shots_count = 1
     type_game.enable_sound = True
@@ -169,7 +169,7 @@ def insert_type_game(schema, apps):
     type_game.game_mode = 'T'
     type_game.button_action_mode = 'U'
     type_game.sound_set_type = 'CZ'
-    type_game.game_duration = timedelta(seconds=15 * 60)
+    type_game.game_duration = timedelta(minutes=15)
     type_game.death_duration = timedelta(seconds=5)
     type_game.batch_shots_count = 1
     type_game.enable_sound = True

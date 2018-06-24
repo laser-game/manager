@@ -27,7 +27,7 @@ def set_game(config):
     dat_game.game_mode = game_config['game_mode']
     dat_game.button_action_mode = game_config['button_action_mode']
     dat_game.sound_set_type = TypeGame.SOUND_SET_TYPE_CZ
-    dat_game.game_duration = timedelta(seconds=game_config['game_duration'] * 60)
+    dat_game.game_duration = timedelta(seconds=game_config['game_duration'])
     dat_game.death_duration = timedelta(seconds=game_config['death_duration'])
     dat_game.batch_shots_count = game_config['batch_shots_count']
     dat_game.enable_sound = game_config['enable_sound']
@@ -81,7 +81,7 @@ def set_game(config):
 
 def start_game():
     dat_game = Game.objects.filter(state=Game.STATE_SET).order_by('-started_time')
-    if not dat_game.exists() or Game.objects.filter(state='P').exists():
+    if not dat_game.exists() or Game.objects.filter(state=Game.STATE_PLAY).exists():
         return 'error'
 
     dat_game = dat_game.first()
