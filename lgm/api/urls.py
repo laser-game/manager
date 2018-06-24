@@ -8,7 +8,8 @@ from .views import (
     type_game,
     GameConfig,
     GameCMD,
-    actual_game
+    actual_game,
+    actual_players
 )
 
 
@@ -21,4 +22,5 @@ urlpatterns = [
     path('game-config', GameConfig.as_view(), name='game_config'),
     path('game-cmd', GameCMD.as_view(), name='game_cmd'),
     path('actual-game', actual_game, name='actual_game'),
+    path('actual-players', actual_players, name='actual_players'),
 ]

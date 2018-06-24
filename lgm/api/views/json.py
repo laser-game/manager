@@ -23,7 +23,7 @@ def type_game(request):
             }
             for tg in TypeGame.objects.all()
         ],
-        safe=False
+        safe=False, json_dumps_params={'indent': 4}
     )
 
 
@@ -32,7 +32,7 @@ def color(request):
         tuple(
             TypeColor.objects.order_by('index').values_list('css', flat=True)
         ),
-        safe=False
+        safe=False, json_dumps_params={'indent': 4}
     )
 
 
@@ -41,7 +41,7 @@ def default_team_name(request):
         tuple(
             TypeColor.objects.order_by('index').values_list('name', flat=True)
         ),
-        safe=False
+        safe=False, json_dumps_params={'indent': 4}
     )
 
 
@@ -50,7 +50,7 @@ def vest(request):
         tuple(
             Vest.objects.order_by('address').filter(enable=True, online=True).values_list('address', flat=True)
         ),
-        safe=False
+        safe=False, json_dumps_params={'indent': 4}
     )
 
 
@@ -63,7 +63,7 @@ def actual_game(request):
     }
     dat_game = Game.objects.filter(state=Game.STATE_PLAY).first()
     if dat_game is None:
-        return JsonResponse(context, safe=False)
+        return JsonResponse(context, safe=False, json_dumps_params={'indent': 4})
 
     dat_game.elapsed_time = dat_game.started_time + dat_game.game_duration - timezone.now()
     if dat_game.elapsed_time.total_seconds() < 0:
@@ -79,7 +79,27 @@ def actual_game(request):
             dat_game.elapsed_time.seconds // 60,
             dat_game.elapsed_time.seconds % 60
         )
-    return JsonResponse(context, safe=False)
+    return JsonResponse(context, safe=False, json_dumps_params={'indent': 4})
+
+
+def actual_players(request):
+    dat_game = Game.objects.filter(state=Game.STATE_PLAY).first()
+    if dat_game is None:
+        dat_game = Game.objects.filter(state=Game.STATE_DONE).first()
+    return JsonResponse(
+        [
+            {
+                'name': game_player.player.name,
+                'position': game_player.position,
+                'points': game_player.points,
+                'kills_count': game_player.kills_count,
+                'deaths_count': game_player.deaths_count,
+                'color': game_player.type_color.css,
+            }
+            for game_player in dat_game.game_player_game.order_by('position')
+        ],
+        safe=False, json_dumps_params={'indent': 4}
+    )
 
 
 def default(request):
@@ -104,4 +124,4 @@ def default(request):
         'MIN_SHOTS_IN_BATCH': core_settings.MIN_SHOTS_IN_BATCH,
         'MAX_SHOTS_IN_BATCH': core_settings.MAX_SHOTS_IN_BATCH,
     }
-    return JsonResponse(context, safe=False)
+    return JsonResponse(context, safe=False, json_dumps_params={'indent': 4})
