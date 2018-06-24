@@ -32,6 +32,7 @@ class TypeGameAdmin(admin.ModelAdmin):
 
 @admin.register(TypeSwitch)
 class TypeSwitchAdmin(admin.ModelAdmin):
+    ordering = ('name',)
     list_display = (
         'name',
         'index',
@@ -66,6 +67,7 @@ class TypeGameAdmin(admin.ModelAdmin):
         'enable_immorality',
         'enable_sound',
     )
+    ordering = ('name',)
     inlines = [TypeGameSwitchInline]
 
 
@@ -86,6 +88,7 @@ class TypeColorAdmin(admin.ModelAdmin):
             obj.css
         )
 
+    ordering = ('index',)
     list_display = ('name', 'index', 'hw', 'css', 'color_display')
 
 
@@ -104,16 +107,36 @@ class EventInline(admin.TabularInline):
 @admin.register(Game)
 class GameAdmin(admin.ModelAdmin):
     ordering = ('-created_time',)
-    list_display = ('name', 'state', 'game_mode', 'created_time', 'started_time', 'elapsed_time', 'player_count')
+    list_display = (
+        'name',
+        'state',
+        'game_mode',
+        'created_time',
+        'started_time',
+        'elapsed_time',
+        'player_count'
+    )
     inlines = [GamePlayerInline, GameTeamInline, EventInline]
 
 
 @admin.register(Player)
 class PlayerAdmin(admin.ModelAdmin):
+    ordering = ('-x_modified',)
+    list_display = (
+        'name',
+        'email',
+        'x_created',
+        'x_modified'
+    )
     inlines = [GamePlayerInline]
 
 
 @admin.register(Team)
 class TeamAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    ordering = ('name',)
+    list_display = (
+        'name',
+        'x_created',
+        'x_modified'
+    )
     inlines = [GameTeamInline]
