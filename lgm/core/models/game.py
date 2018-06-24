@@ -36,7 +36,7 @@ class GameConfigurationBaseModel(BaseModel):
     name = models.CharField(_('Name'), max_length=32)
     game_mode = models.CharField(_('Game mode'), max_length=1, choices=GAME_MODE)
     button_action_mode = models.CharField(_('Mode of button action'), max_length=1, choices=BUTTON_ACTION_MODE)
-    sound_set_type = models.CharField(_('Set of sounds'), max_length=1, choices=SOUND_SET_TYPE)
+    sound_set_type = models.CharField(_('Set of sounds'), max_length=2, choices=SOUND_SET_TYPE)
     game_duration = models.DurationField(
         _('Time duration of game'),
         validators=[
