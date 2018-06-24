@@ -61,6 +61,7 @@ def set_game(config):
         dat_game_player.game = dat_game
         dat_game_player.type_color = TypeColor.objects.filter(index=player['color_index']).first()
         dat_game_player.vest = Vest.objects.filter(address=player['address']).first()
+        dat_game_player.position = 1
         dat_game_player.points = 0
         dat_game_player.shots_count = 0
         dat_game_player.kills_count = 0

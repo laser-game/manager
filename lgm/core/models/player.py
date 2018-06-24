@@ -23,6 +23,7 @@ class GamePlayer(BaseModel):
     type_color = models.ForeignKey('core.TypeColor', related_name='game_player_type_color', on_delete=models.PROTECT)
     vest = models.ForeignKey('core.Vest', related_name='game_player_vest', on_delete=models.PROTECT)
 
+    position = models.PositiveSmallIntegerField(_('Player position'))
     points = models.IntegerField(_('Total points'))
     shots_count = models.PositiveSmallIntegerField(_('Count of shots'))
     kills_count = models.PositiveSmallIntegerField(_('Count of kills'))
