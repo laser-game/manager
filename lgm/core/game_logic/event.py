@@ -16,6 +16,15 @@ def evaluate_positon(dat_game: Game):
         players[i].position = position
         players[i].save()
 
+    if dat_game.game_mode == Game.GAME_MODE_TEAM:
+        teams = sorted(dat_game.game_team_game.all(), key=lambda m: m.points, reverse=True)
+        position = 1
+        for i in range(len(teams)):
+            if i > 0 and teams[i].points != teams[i-1].points:
+                position += 1
+            teams[i].position = position
+            teams[i].save()
+
 
 def kill(address1: int, address2: int):
     dat_game = Game.objects.filter(state=Game.STATE_PLAY).first()

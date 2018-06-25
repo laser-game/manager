@@ -55,11 +55,6 @@ def set_game(config):
             dat_game_team.team = dat_team
             dat_game_team.type_color = TypeColor.objects.filter(index=team['color_index']).first()
             dat_game_team.position = 1
-            dat_game_team.points = 0
-            dat_game_team.shots_count = 0
-            dat_game_team.kills_count = 0
-            dat_game_team.deaths_count = 0
-            dat_game_team.friendly_kills_count = 0
             dat_game_team.save()
 
     for player in players:

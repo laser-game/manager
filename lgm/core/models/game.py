@@ -7,18 +7,6 @@ from ..conf import core_settings
 from ..utils.validators import MaxDurationValidator, MinDurationValidator
 
 
-class GameEntityBaseModel(BaseModel):
-    position = models.PositiveSmallIntegerField(_('Player position'))
-    points = models.IntegerField(_('Total points'))
-    shots_count = models.PositiveSmallIntegerField(_('Count of shots'))
-    kills_count = models.PositiveSmallIntegerField(_('Count of kills'))
-    deaths_count = models.PositiveSmallIntegerField(_('Count of deaths'))
-    friendly_kills_count = models.PositiveSmallIntegerField(_('Count of friendly kills'))
-
-    class Meta(object):
-        abstract = True
-
-
 class GameConfigurationBaseModel(BaseModel):
     GAME_MODE_SOLO = 'S'
     GAME_MODE_TEAM = 'T'
