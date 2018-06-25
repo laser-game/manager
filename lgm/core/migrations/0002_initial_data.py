@@ -4,7 +4,7 @@ from django.db import migrations
 from django.db.migrations import RunPython
 
 from core.conf import core_settings
-from core.models import TypeColor, TypeEvent, TypeGame, TypeSwitch, Vest
+from core.models import TypeColor, TypeGame, TypeSwitch, Vest
 
 
 def insert_type_colors(schema, apps):
@@ -63,13 +63,6 @@ def insert_type_colors(schema, apps):
     type_color.css = '#FFC0CB'
     type_color.hw = '#FFC0CB'
     type_color.save()
-
-
-def insert_type_event(schema, apps):
-    for event in TypeEvent.TYPE_EVENTS:
-        type_event = TypeEvent()
-        type_event.identifier = event[0]
-        type_event.save()
 
 
 def insert_type_game(schema, apps):
@@ -206,7 +199,6 @@ class Migration(migrations.Migration):
     operations = [
         RunPython(insert_type_switch),
         RunPython(insert_type_colors),
-        RunPython(insert_type_event),
         RunPython(insert_type_game),
         RunPython(insert_vest),
     ]

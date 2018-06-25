@@ -4,34 +4,44 @@ from django.utils.translation import ugettext as _
 from .base import BaseModel
 
 
-class TypeEvent(BaseModel):
-    TYPE_EVENTS = (
-        ('K', _('player kill player')),
-        ('F', _('friendly fire')),
-        ('T', _('trap')),
-        ('B', _('bonus')),
-    )
-    identifier = models.CharField(_('Identifier'), max_length=1, choices=TYPE_EVENTS)
-
-    class Meta(object):
-        verbose_name = _('Type event')
-        verbose_name_plural = _('Types events')
-
-    def __str__(self):
-        return self.get_identifier_display()
-
-
 class Event(BaseModel):
-    game = models.ForeignKey('core.Game', related_name='event_game', on_delete=models.PROTECT)
-    type_event = models.ForeignKey('core.TypeEvent', related_name='event_type_event', on_delete=models.PROTECT)
-    player1 = models.ForeignKey('core.Player', related_name='event_type_player1', on_delete=models.PROTECT, null=True, blank=True)
-    player2 = models.ForeignKey('core.Player', related_name='event_type_player2', on_delete=models.PROTECT, null=True, blank=True)
+    TYPE_EVENT_PLAYER_KILL_PLAYER = 'K'
+    TYPE_EVENT_FRIENDLY_FIRE = 'F'
+    TYPE_EVENT_TRAP = 'T'
+    TYPE_EVENT_BONUS = 'B'
+    TYPE_EVENTS = (
+        (TYPE_EVENT_PLAYER_KILL_PLAYER, _('player kill player')),
+        (TYPE_EVENT_FRIENDLY_FIRE, _('friendly fire')),
+        (TYPE_EVENT_TRAP, _('trap')),
+        (TYPE_EVENT_BONUS, _('bonus')),
+    )
 
+    game = models.ForeignKey(
+        'core.Game',
+        related_name='event_game',
+        on_delete=models.PROTECT
+    )
+    game_player1 = models.ForeignKey(
+        'core.GamePlayer',
+        related_name='event_game_player1',
+        on_delete=models.PROTECT,
+        null=True,
+        blank=True
+    )
+    game_player2 = models.ForeignKey(
+        'core.GamePlayer',
+        related_name='event_game_player2',
+        on_delete=models.PROTECT,
+        null=True,
+        blank=True
+    )
+
+    identifier = models.CharField(_('Identifier'), max_length=1, choices=TYPE_EVENTS)
     time = models.DurationField(_('Time elapsed from start of game'))
 
     @property
     def time_occurred(self):
-        return self.game.start + self.time
+        return self.game.started_time + self.time
 
     class Meta(object):
         verbose_name = _('Event')

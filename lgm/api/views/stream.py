@@ -3,7 +3,7 @@ from django.utils import timezone
 from datetime import timedelta
 
 from core.conf import core_settings
-from core.models import TypeGame, TypeColor, Vest, Game
+from core.models import Game
 
 
 def actual_game(request):
@@ -14,7 +14,7 @@ def actual_game(request):
         'elapsed_time': '-',
     }
     dat_game = Game.objects.filter(state=Game.STATE_PLAY).first()
-    if dat_game is None:
+    if not dat_game:
         return JsonResponse(context, safe=False, json_dumps_params={'indent': 4})
 
     dat_game.elapsed_time = dat_game.started_time + dat_game.game_duration - timezone.now()
@@ -36,11 +36,11 @@ def actual_game(request):
 
 def actual_players(request):
     dat_game = Game.objects.filter(state=Game.STATE_PLAY).first()
-    if dat_game is None:
+    if not dat_game:
         dat_game = Game.objects.order_by('-started_time').filter(state=Game.STATE_DONE).first()
-    if dat_game is None:
+    if not dat_game:
         dat_game = Game.objects.order_by('-started_time').filter(state=Game.STATE_BREAK).first()
-    if dat_game is None:
+    if not dat_game:
         return JsonResponse([], safe=False, json_dumps_params={'indent': 4})
     else:
         return JsonResponse(
@@ -61,11 +61,11 @@ def actual_players(request):
 
 def actual_teams(request):
     dat_game = Game.objects.filter(state=Game.STATE_PLAY).first()
-    if dat_game is None:
+    if not dat_game:
         dat_game = Game.objects.order_by('-started_time').filter(state=Game.STATE_DONE).first()
-    if dat_game is None:
+    if not dat_game:
         dat_game = Game.objects.order_by('-started_time').filter(state=Game.STATE_BREAK).first()
-    if dat_game is None or dat_game.game_mode == Game.GAME_MODE_SOLO:
+    if not dat_game or dat_game.game_mode == Game.GAME_MODE_SOLO:
         return JsonResponse([], safe=False, json_dumps_params={'indent': 4})
     else:
         return JsonResponse(
@@ -79,6 +79,34 @@ def actual_teams(request):
                     'color': game_team.type_color.css,
                 }
                 for game_team in dat_game.game_team_game.order_by('position')
+            ],
+            safe=False, json_dumps_params={'indent': 4}
+        )
+
+
+def actual_events(request):
+    dat_game = Game.objects.filter(state=Game.STATE_PLAY).first()
+    if not dat_game:
+        dat_game = Game.objects.order_by('-started_time').filter(state=Game.STATE_DONE).first()
+    if not dat_game:
+        dat_game = Game.objects.order_by('-started_time').filter(state=Game.STATE_BREAK).first()
+    if not dat_game:
+        return JsonResponse([], safe=False, json_dumps_params={'indent': 4})
+    else:
+        return JsonResponse(
+            [
+                {
+                    'identifier': event.identifier,
+                    'time': '{:02d}:{:02d}'.format(
+                        event.time.seconds // 60,
+                        event.time.seconds % 60
+                    ),
+                    'name1': event.game_player1.player.name,
+                    'name2': event.game_player2.player.name,
+                    'color1': event.game_player1.type_color.css,
+                    'color2': event.game_player2.type_color.css
+                }
+                for event in dat_game.event_game.order_by('time')[:core_settings.MAX_EVENTS]
             ],
             safe=False, json_dumps_params={'indent': 4}
         )

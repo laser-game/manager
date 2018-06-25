@@ -10,7 +10,6 @@ from core.models import (
     Switch,
     Team,
     TypeColor,
-    TypeEvent,
     TypeGame,
     TypeGameSwitch,
     TypeSwitch,
@@ -69,11 +68,6 @@ class TypeGameAdmin(admin.ModelAdmin):
     )
     ordering = ('name',)
     inlines = [TypeGameSwitchInline]
-
-
-@admin.register(TypeEvent)
-class TypeEventAdmin(admin.ModelAdmin):
-    list_display = ('identifier',)
 
 
 @admin.register(TypeColor)
