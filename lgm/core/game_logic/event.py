@@ -7,6 +7,16 @@ SCORE_OK = 100
 SCORE_FAUL = -50
 
 
+def evaluate_positon(dat_game: Game):
+    players = dat_game.game_player_game.order_by('-points')
+    position = 1
+    for i in range(len(players)):
+        if i > 0 and players[i].points != players[i-1].points:
+            position += 1
+        players[i].position = position
+        players[i].save()
+
+
 def kill(address1: int, address2: int):
     dat_game = Game.objects.filter(state=Game.STATE_PLAY).first()
     if dat_game:
@@ -45,3 +55,4 @@ def kill(address1: int, address2: int):
         dat_event.game_player1.save()
         if address1 != address2:
             dat_event.game_player2.save()
+        evaluate_positon(dat_game)
