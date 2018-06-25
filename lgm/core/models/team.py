@@ -34,7 +34,7 @@ class GameTeam(BaseModel):
         on_delete=models.PROTECT
     )
 
-    position = models.PositiveSmallIntegerField(_('Player position'))
+    position = models.PositiveSmallIntegerField(_('Team position'))
 
     @property
     def team_players(self):
